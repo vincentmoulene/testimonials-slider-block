@@ -1,0 +1,10 @@
+.git
+.github
+var/cache
+var/log
+vendor
+tests
+public/assets
+.phpunit.cache
+*.md
+!content/**/*.md

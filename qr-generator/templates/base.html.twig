@@ -1,0 +1,93 @@
+{%- set locale = app.request.locale -%}
+{#- Error pages and any template rendered outside a controller fall back to
+    minimal, non-indexable metadata rather than crashing. -#}
+{%- set seo = seo|default({
+    title: site_name,
+    description: '',
+    canonical: site_url ~ app.request.pathInfo,
+    alternates: {},
+    breadcrumbs: [],
+    jsonLd: [],
+    type: 'website',
+    image: null,
+    robots: 'noindex, follow',
+    publishedAt: null,
+    updatedAt: null,
+}) -%}
+<!DOCTYPE html>
+<html lang="{{ locale }}" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>{{ seo.title }}</title>
+    <meta name="description" content="{{ seo.description }}">
+    <meta name="robots" content="{{ seo.robots }}">
+    <link rel="canonical" href="{{ seo.canonical }}">
+
+    {# hreflang: one entry per translated version + x-default for the international audience #}
+    {% for alternateLocale, url in seo.alternates %}
+        <link rel="alternate" hreflang="{{ alternateLocale }}" href="{{ url }}">
+    {% endfor %}
+    {% if seo.alternates['en'] is defined %}
+        <link rel="alternate" hreflang="x-default" href="{{ seo.alternates['en'] }}">
+    {% endif %}
+
+    <meta property="og:site_name" content="{{ site_name }}">
+    <meta property="og:type" content="{{ seo.type }}">
+    <meta property="og:title" content="{{ seo.title }}">
+    <meta property="og:description" content="{{ seo.description }}">
+    <meta property="og:url" content="{{ seo.canonical }}">
+    <meta property="og:locale" content="{{ locale }}">
+    {% for alternateLocale in seo.alternates|keys|filter(l => l != locale) %}
+        <meta property="og:locale:alternate" content="{{ alternateLocale }}">
+    {% endfor %}
+    <meta property="og:image" content="{{ seo.image ?? (site_url ~ '/og-image.svg') }}">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{ seo.title }}">
+    <meta name="twitter:description" content="{{ seo.description }}">
+    <meta name="twitter:image" content="{{ seo.image ?? (site_url ~ '/og-image.svg') }}">
+    {% if seo.publishedAt %}<meta property="article:published_time" content="{{ seo.publishedAt }}">{% endif %}
+    {% if seo.updatedAt %}<meta property="article:modified_time" content="{{ seo.updatedAt }}">{% endif %}
+
+    <meta name="theme-color" content="#0b0f19">
+    <link rel="icon" href="/icon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/icon.svg">
+    <link rel="manifest" href="{{ path('app_manifest') }}">
+    <link rel="alternate" type="application/atom+xml" title="{{ site_name }} — {{ 'nav.blog'|trans }}" href="{{ path('app_feed', {_locale: locale}) }}">
+
+    {% for node in seo.jsonLd %}
+        <script type="application/ld+json">{{ node|json_ld }}</script>
+    {% endfor %}
+
+    {% block stylesheets %}{% endblock %}
+    {{ importmap('app') }}
+
+    {% if adsense_enabled and adsense_client %}
+        {# Google Consent Mode v2: everything denied until the visitor opts in. #}
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('consent', 'default', {
+                ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied',
+                analytics_storage: 'denied', wait_for_update: 500
+            });
+        </script>
+    {% endif %}
+</head>
+<body data-controller="consent"
+      data-consent-adsense-client-value="{{ adsense_enabled ? adsense_client : '' }}"
+      data-consent-analytics-id-value="{{ analytics_id }}">
+
+<a class="skip-link" href="#main">{{ 'a11y.skip_to_content'|trans }}</a>
+
+{% include 'partials/header.html.twig' %}
+
+<main id="main">
+    {% block body %}{% endblock %}
+</main>
+
+{% include 'partials/footer.html.twig' %}
+{% include 'partials/consent.html.twig' %}
+</body>
+</html>

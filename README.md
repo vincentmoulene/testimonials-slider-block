@@ -1,5 +1,11 @@
 # Testimonials Slider Block
 
+> **Note** — this repository also hosts [`qr-generator/`](qr-generator/README.md),
+> a standalone Symfony 8 application: a free, multilingual (en/fr/es/de/it),
+> SEO-first QR code and barcode generator funded by advertising. It is fully
+> independent from the WordPress plugin below and has its own README, tests and
+> Docker deployment.
+
 This project brings a testimonials slider block to the new WordPress Gutenberg editor.
 
 ## Features

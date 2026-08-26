@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {%- set locale = app.request.locale in enabled_locales ? app.request.locale : 'en' -%}
+    <section class="page-head wrap error-page">
+        <p class="eyebrow">{{ status_code }}</p>
+        <h1>{{ (status_code == 404 ? 'error.404.title' : 'error.generic.title')|trans({}, null, locale) }}</h1>
+        <p class="lead">{{ (status_code == 404 ? 'error.404.text' : 'error.generic.text')|trans({}, null, locale) }}</p>
+        <p><a class="btn btn-primary" href="{{ path('app_home', {_locale: locale}) }}">{{ 'error.back_home'|trans({}, null, locale) }}</a></p>
+    </section>
+{% endblock %}

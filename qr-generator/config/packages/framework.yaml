@@ -1,0 +1,22 @@
+# see https://symfony.com/doc/current/reference/configuration/framework.html
+framework:
+    secret: '%env(APP_SECRET)%'
+    trusted_hosts: '%env(TRUSTED_HOSTS)%'
+    trusted_proxies: '%env(TRUSTED_PROXIES)%'
+    trusted_headers: ['x-forwarded-for', 'x-forwarded-host', 'x-forwarded-proto', 'x-forwarded-port', 'x-forwarded-prefix']
+
+    # The app is fully stateless: no session, no cookie, no login.
+    # This keeps every page cacheable by a CDN/reverse proxy and keeps GDPR surface minimal.
+    session: false
+
+    http_method_override: false
+
+    rate_limiter:
+        generate:
+            policy: 'sliding_window'
+            limit: 120
+            interval: '1 minute'
+
+when@test:
+    framework:
+        test: true

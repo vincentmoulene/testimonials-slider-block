@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {%- set locale = app.request.locale -%}
+    {%- set tool_name = ('tool.' ~ tool.id ~ '.name')|trans -%}
+    {% include 'partials/breadcrumbs.html.twig' %}
+
+    <section class="hero hero--tool">
+        <div class="wrap hero-inner">
+            <div class="hero-copy">
+                <h1>{{ tool_name }}</h1>
+                <p class="lead">{{ ('tool.' ~ tool.id ~ '.intro')|trans }}</p>
+                <ul class="badges">
+                    <li>{{ icon('check', 16) }} {{ 'badge.free'|trans }}</li>
+                    <li>{{ icon('check', 16) }} {{ 'badge.no_account'|trans }}</li>
+                    <li>{{ icon('check', 16) }} {{ 'badge.no_expiry'|trans }}</li>
+                </ul>
+            </div>
+            {% include 'partials/generator.html.twig' %}
+        </div>
+    </section>
+
+    {% include 'partials/ads.html.twig' with {slot: 'top'} only %}
+
+    {% include 'partials/howto.html.twig' with {tool_name: ('tool.' ~ tool.id ~ '.object')|trans} %}
+
+    <section class="wrap seo-copy">
+        <h2>{{ ('tool.' ~ tool.id ~ '.copy_title')|trans }}</h2>
+        {{ ('tool.' ~ tool.id ~ '.copy_body')|trans|raw }}
+    </section>
+
+    {% include 'partials/ads.html.twig' with {slot: 'inline'} only %}
+
+    {% include 'partials/faq.html.twig' %}
+
+    {% include 'partials/tool_grid.html.twig' with {
+        list: tools,
+        current: tool,
+        title: 'tool.other_tools'|trans,
+    } %}
+{% endblock %}

@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {%- set locale = app.request.locale -%}
+    {% include 'partials/breadcrumbs.html.twig' %}
+    <section class="page-head wrap">
+        <h1>{{ 'blog.h1'|trans }}</h1>
+        <p class="lead">{{ 'blog.lead'|trans }}</p>
+    </section>
+
+    {% include 'partials/ads.html.twig' with {slot: 'top'} only %}
+
+    <section class="wrap">
+        {% if articles is empty %}
+            <p class="muted">{{ 'blog.empty'|trans }}</p>
+        {% else %}
+            <ul class="article-grid">
+                {% for article in articles %}
+                    <li>
+                        <article>
+                            <p class="muted small">
+                                <time datetime="{{ article.publishedAt|date('Y-m-d') }}">{{ article.publishedAt|format_date('long', locale=locale) }}</time>
+                                · {{ 'blog.reading_time'|trans({'%count%': article.readingTime}) }}
+                            </p>
+                            <h2><a href="{{ path('app_article', {_locale: locale, slug: article.slug}) }}">{{ article.title }}</a></h2>
+                            <p class="muted">{{ article.description }}</p>
+                            <ul class="tags">
+                                {% for tag in article.tags %}<li>#{{ tag }}</li>{% endfor %}
+                            </ul>
+                        </article>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </section>
+{% endblock %}

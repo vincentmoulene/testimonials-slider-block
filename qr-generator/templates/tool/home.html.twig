@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {%- set locale = app.request.locale -%}
+    <section class="hero">
+        <div class="wrap hero-inner">
+            <div class="hero-copy">
+                <p class="eyebrow">{{ 'home.eyebrow'|trans }}</p>
+                <h1>{{ 'home.h1'|trans }}</h1>
+                <p class="lead">{{ 'home.lead'|trans }}</p>
+                <ul class="badges">
+                    <li>{{ icon('check', 16) }} {{ 'badge.free'|trans }}</li>
+                    <li>{{ icon('check', 16) }} {{ 'badge.no_account'|trans }}</li>
+                    <li>{{ icon('check', 16) }} {{ 'badge.no_expiry'|trans }}</li>
+                    <li>{{ icon('check', 16) }} {{ 'badge.commercial'|trans }}</li>
+                </ul>
+            </div>
+            {% include 'partials/generator.html.twig' %}
+        </div>
+    </section>
+
+    {% include 'partials/ads.html.twig' with {slot: 'top'} only %}
+
+    {% include 'partials/tool_grid.html.twig' with {
+        list: tools,
+        title: 'home.tools_title'|trans,
+        subtitle: 'home.tools_subtitle'|trans,
+    } %}
+
+    <section class="features wrap">
+        <h2>{{ 'home.why_title'|trans }}</h2>
+        <div class="feature-grid">
+            {% for f in ['free', 'privacy', 'quality', 'speed'] %}
+                <article class="feature">
+                    <span class="feature-icon">{{ icon({'free': 'bolt', 'privacy': 'shield', 'quality': 'check', 'speed': 'globe'}[f], 22) }}</span>
+                    <h3>{{ ('home.why.' ~ f ~ '.title')|trans }}</h3>
+                    <p class="muted">{{ ('home.why.' ~ f ~ '.text')|trans }}</p>
+                </article>
+            {% endfor %}
+        </div>
+    </section>
+
+    {% include 'partials/howto.html.twig' with {tool_name: 'tool.url.object'|trans} %}
+
+    {% include 'partials/ads.html.twig' with {slot: 'inline'} only %}
+
+    {% include 'partials/faq.html.twig' %}
+
+    <section class="wrap seo-copy">
+        <h2>{{ 'home.copy_title'|trans }}</h2>
+        {{ 'home.copy_body'|trans|raw }}
+    </section>
+{% endblock %}

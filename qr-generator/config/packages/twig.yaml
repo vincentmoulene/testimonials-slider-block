@@ -1,0 +1,15 @@
+twig:
+    file_name_pattern: '*.twig'
+    globals:
+        site_name: '%app.site_name%'
+        site_url: '%app.site_url%'
+        adsense_client: '%app.adsense_client%'
+        adsense_enabled: '%app.adsense_enabled%'
+        adsense_slots: '%app.adsense_slots%'
+        analytics_id: '%app.analytics_id%'
+        contact_email: '%app.contact_email%'
+        enabled_locales: '%app.locales%'
+
+when@test:
+    twig:
+        strict_variables: true

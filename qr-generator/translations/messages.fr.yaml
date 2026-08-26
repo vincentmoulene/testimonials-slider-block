@@ -1,0 +1,357 @@
+a11y:
+    skip_to_content: 'Aller au contenu'
+    main_nav: 'Navigation principale'
+    breadcrumb: 'Fil d''Ariane'
+
+nav:
+    home: 'Accueil'
+    tools: 'Outils'
+    blog: 'Blog'
+    about: 'À propos'
+    privacy: 'Politique de confidentialité'
+    terms: 'Conditions d''utilisation'
+    cookies: 'Cookies'
+
+footer:
+    tagline: 'Générateur gratuit de QR codes et de codes-barres. Sans compte, sans filigrane, sans date d''expiration.'
+    all_tools: 'Tous les outils'
+    resources: 'Ressources'
+    legal: 'Informations légales'
+    rights: 'Tous droits réservés.'
+
+consent:
+    title: 'Cookies et publicité'
+    text: 'Ce site est gratuit grâce à la publicité. Avec votre accord, nos partenaires déposent et lisent des cookies pour afficher et mesurer les annonces. Vous pouvez changer d''avis à tout moment.'
+    learn_more: 'En savoir plus'
+    accept: 'Accepter'
+    reject: 'Refuser'
+    manage: 'Gérer les cookies'
+
+badge:
+    free: '100 % gratuit'
+    no_account: 'Sans inscription'
+    no_expiry: 'Sans expiration'
+    commercial: 'Usage commercial autorisé'
+
+action:
+    generate: 'Générer'
+    open: 'Ouvrir'
+
+options:
+    title: 'Options avancées (taille, couleurs, correction d''erreurs)'
+    ecc: 'Correction d''erreurs'
+    ecc.L: 'L — 7 % (code le plus petit)'
+    ecc.M: 'M — 15 % (recommandé)'
+    ecc.Q: 'Q — 25 %'
+    ecc.H: 'H — 30 % (impression, logo)'
+    margin: 'Marge (zone de silence)'
+    foreground: 'Couleur du motif'
+    background: 'Couleur de fond'
+    transparent: 'Fond transparent (PNG / WebP)'
+
+generator:
+    note: 'L''aperçu se met à jour pendant que vous tapez. Rien de ce que vous saisissez n''est conservé sur nos serveurs.'
+    demo_notice: 'Aperçu d''exemple — remplissez le formulaire pour générer votre code.'
+    formats_hint: 'PNG pour le web, SVG pour une qualité d''impression illimitée, WebP pour le fichier le plus léger.'
+
+choice:
+    WPA: 'WPA / WPA2 / WPA3'
+    WEP: 'WEP'
+    nopass: 'Réseau ouvert (sans mot de passe)'
+    EAN13: 'EAN-13 (commerce, 13 chiffres)'
+    EAN8: 'EAN-8 (petits emballages, 8 chiffres)'
+    UPCA: 'UPC-A (Amérique du Nord, 12 chiffres)'
+    CODE128: 'Code 128 (lettres et chiffres)'
+    CODE39: 'Code 39 (industrie)'
+    ITF14: 'ITF-14 (cartons logistiques)'
+
+field:
+    url: 'URL'
+    text: 'Texte'
+    ssid: 'Nom du réseau (SSID)'
+    password: 'Mot de passe'
+    encryption: 'Sécurité'
+    hidden: 'Réseau masqué'
+    first_name: 'Prénom'
+    last_name: 'Nom'
+    phone: 'Numéro de téléphone'
+    email: 'Adresse e-mail'
+    organization: 'Société'
+    job_title: 'Fonction'
+    website: 'Site web'
+    subject: 'Objet'
+    body: 'Message'
+    message: 'Message'
+    latitude: 'Latitude'
+    longitude: 'Longitude'
+    value: 'Valeur à encoder'
+    symbology: 'Type de code-barres'
+
+placeholder:
+    url: 'https://votre-site.fr/page'
+    text: 'Un texte libre, jusqu''à 1800 caractères'
+    ssid: 'MonReseau'
+    password: 'Mot de passe Wi-Fi'
+    encryption: ''
+    hidden: ''
+    first_name: 'Ada'
+    last_name: 'Lovelace'
+    phone: '+33 1 23 45 67 89'
+    email: 'bonjour@exemple.fr'
+    organization: 'Acme SAS'
+    job_title: 'Responsable marketing'
+    website: 'https://exemple.fr'
+    subject: 'Bonjour'
+    body: 'Votre message…'
+    message: 'Votre message…'
+    latitude: '48.8584'
+    longitude: '2.2945'
+    value: '5901234123457'
+    symbology: ''
+
+home:
+    meta_title: 'Générateur de QR code gratuit — sans inscription ni expiration | %site%'
+    meta_description: 'Créez un QR code gratuit à partir d''une URL, d''un texte, d''un Wi-Fi, d''une vCard, d''un e-mail ou d''un numéro. Téléchargement PNG, SVG et WebP haute résolution, sans compte et sans date d''expiration.'
+    eyebrow: 'Générateur de QR code gratuit'
+    h1: 'Créez un QR code gratuit à partir d''une URL en quelques secondes'
+    lead: 'Collez un lien, obtenez un QR code haute résolution à télécharger en PNG, SVG ou WebP. Sans compte, sans filigrane, sans expiration et avec un usage commercial illimité.'
+    tools_title: 'Tous les générateurs, tous gratuits'
+    tools_subtitle: 'Dix générateurs pour vos liens, votre Wi-Fi, vos cartes de visite, vos messageries et vos codes-barres commerciaux.'
+    why_title: 'Pourquoi utiliser ce générateur'
+    why:
+        free:
+            title: 'Gratuit et illimité'
+            text: 'Aucun quota, aucun formulaire d''inscription, aucune carte bancaire. La publicité finance le service pour que les outils restent ouverts à tous.'
+        privacy:
+            title: 'Respect de la vie privée'
+            text: 'Les codes sont générés à la volée et jamais stockés. Pas de compte, aucun suivi de ce que vous encodez, aucun script tiers avant votre consentement.'
+        quality:
+            title: 'Qualité prête à imprimer'
+            text: 'Téléchargez un SVG vectoriel pour vos affiches et emballages, ou un PNG jusqu''à 1024 px. Choisissez le niveau de correction d''erreurs pour que le code reste lisible même abîmé.'
+        speed:
+            title: 'Compatible partout'
+            text: 'Les codes statiques respectent les standards lus nativement par les appareils photo iOS et Android : aucune redirection, aucun domaine de tracking, rien qui puisse casser plus tard.'
+    copy_title: 'Tout ce qu''il faut savoir sur les QR codes'
+    copy_body: |
+        <p>Un QR code est un code-barres en deux dimensions qui stocke du texte — le plus souvent une adresse web. Tous les smartphones récents le lisent directement depuis l''appareil photo, ce qui en fait le pont le plus rapide entre un support imprimé et une page web : affiche, carte de visite, menu de restaurant, colis ou étiquette produit.</p>
+        <p>Les codes produits ici sont <strong>statiques</strong> : la destination est inscrite dans le motif lui-même. Une fois l''image téléchargée, plus rien ne dépend de nos serveurs, si bien qu''un code imprimé aujourd''hui fonctionnera encore dans dix ans — même si ce site disparaît. Les codes dits dynamiques vendus ailleurs font transiter chaque scan par un domaine tiers, qui peut être coupé, facturé au mois ou transformé en mouchard.</p>
+        <p>Pour l''impression, exportez toujours le SVG : il reste parfaitement net à n''importe quelle taille. Conservez une zone de silence (la marge blanche) d''au moins quatre modules autour du code, n''inversez jamais le contraste (un motif sombre sur fond clair se scanne le mieux) et testez le fichier final avec deux ou trois téléphones avant de l''envoyer à l''imprimeur.</p>
+
+tools:
+    meta_title: 'Tous les générateurs de QR codes et codes-barres gratuits'
+    meta_description: 'Dix générateurs gratuits : URL, texte, Wi-Fi, vCard, e-mail, SMS, téléphone, WhatsApp, géolocalisation et codes-barres commerciaux. Export PNG, SVG et WebP.'
+    h1: 'Tous nos générateurs gratuits'
+    lead: 'Choisissez le type de code dont vous avez besoin. Chaque générateur est gratuit, illimité et fonctionne sans compte.'
+    grid_title: 'Générateurs'
+
+tool:
+    other_tools: 'Autres générateurs gratuits'
+    url:
+        name: 'Générateur de QR code URL'
+        object: 'QR code d''URL'
+        short: 'Transformez n''importe quel lien en code scannable.'
+        meta_title: 'Générateur de QR code URL gratuit'
+        meta_description: 'Transformez un lien en QR code gratuit. Téléchargez-le en PNG, SVG ou WebP haute résolution — sans compte, sans filigrane et sans date d''expiration.'
+        form_title: 'Votre lien'
+        intro: 'Collez un lien et téléchargez un QR code qui l''ouvre instantanément sur n''importe quel téléphone. Gratuit, illimité et permanent.'
+        copy_title: 'Relier un support imprimé à une page web'
+        copy_body: |
+            <p>Le QR code d''URL est l''usage le plus courant : il ouvre une page dès qu''il est scanné, sans saisie ni faute de frappe. Utilisez-le sur un emballage pour renvoyer vers la notice, sur une affiche pour ouvrir un formulaire de réservation, sur un flyer pour amener en boutique ou sur une facture pour ouvrir la page de paiement.</p>
+            <p>Gardez une URL courte : moins de caractères, c''est moins de modules, un motif plus gros et un scan plus facile à distance. Préférez une adresse propre et lisible à une longue suite de paramètres de tracking, et testez toujours le résultat imprimé à la taille et à la distance réelles d''utilisation.</p>
+    text:
+        name: 'Générateur de QR code texte'
+        object: 'QR code texte'
+        short: 'Encodez un texte libre, lisible hors ligne.'
+        meta_title: 'Générateur de QR code texte gratuit'
+        meta_description: 'Encodez n''importe quel texte dans un QR code gratuit : message, numéro de série, mot de passe ou consignes. Export PNG, SVG et WebP.'
+        form_title: 'Votre texte'
+        intro: 'Encodez un message, une référence ou des consignes. Le texte est stocké dans le code lui-même et reste lisible hors ligne.'
+        copy_title: 'Quand le texte brut vaut mieux qu''un lien'
+        copy_body: |
+            <p>Un QR code texte n''a besoin d''aucun réseau : le téléphone affiche le contenu immédiatement, même dans un sous-sol, un entrepôt ou un avion. C''est l''idéal pour un numéro de série de machine, des consignes de maintenance, une référence de rayon, les informations d''un événement ou un petit mot sur un cadeau.</p>
+            <p>Restez concis. En dessous d''environ 300 caractères, le motif reste confortable à scanner ; au-delà de 1000, il devient dense et exige une impression plus grande et un niveau de correction d''erreurs plus élevé.</p>
+    wifi:
+        name: 'Générateur de QR code Wi-Fi'
+        object: 'QR code Wi-Fi'
+        short: 'Vos invités se connectent sans taper le mot de passe.'
+        meta_title: 'Générateur de QR code Wi-Fi gratuit'
+        meta_description: 'Créez un QR code Wi-Fi gratuit : vos invités le scannent et se connectent sans taper le mot de passe. Compatible iOS et Android. Export PNG et SVG.'
+        form_title: 'Votre réseau Wi-Fi'
+        intro: 'Imprimez le code, affichez-le au mur : vos invités le scannent et rejoignent le réseau sans jamais voir le mot de passe.'
+        copy_title: 'La bonne façon de partager un réseau Wi-Fi'
+        copy_body: |
+            <p>Depuis iOS 11 et Android 10, l''appareil photo reconnaît un QR code Wi-Fi et propose de rejoindre le réseau en un geste. Hôtels, cafés, espaces de coworking, salles d''attente et locations saisonnières l''utilisent pour ne plus dicter un mot de passe de vingt caractères à longueur de journée.</p>
+            <p>Saisissez le nom du réseau exactement tel qu''il est diffusé : les SSID sont sensibles à la casse. Choisissez WPA pour tout routeur moderne (WPA2 et WPA3 utilisent le même réglage) et ne cochez « réseau masqué » que si le SSID n''est réellement pas diffusé, sinon certains téléphones échoueront à se connecter.</p>
+    vcard:
+        name: 'Générateur de QR code vCard'
+        object: 'QR code vCard'
+        short: 'Partagez vos coordonnées en un scan.'
+        meta_title: 'Générateur de QR code vCard gratuit (carte de visite)'
+        meta_description: 'Créez un QR code vCard gratuit avec votre nom, téléphone, e-mail et société. Un scan et vos coordonnées entrent dans le répertoire. Export PNG et SVG.'
+        form_title: 'Vos coordonnées'
+        intro: 'Un scan et vos coordonnées arrivent directement dans le répertoire de votre interlocuteur — sans saisie, sans faute, sans application.'
+        copy_title: 'La carte de visite qui survit à la poche'
+        copy_body: |
+            <p>Un QR code vCard encode un fichier de contact standard (vCard 3.0), compris par iOS, Android, Outlook et tous les carnets d''adresses modernes. Imprimez-le sur votre carte de visite, ajoutez-le à une signature d''e-mail, à un badge de salon ou à une vitrine.</p>
+            <p>N''incluez que ce que vous souhaitez diffuser publiquement : un nom, un numéro, un e-mail professionnel et un site web suffisent le plus souvent. Moins il y a de champs, plus le motif est léger et le scan rapide.</p>
+    email:
+        name: 'Générateur de QR code e-mail'
+        object: 'QR code e-mail'
+        short: 'Ouvre un e-mail prérempli en un scan.'
+        meta_title: 'Générateur de QR code e-mail gratuit'
+        meta_description: 'Créez un QR code gratuit qui ouvre un e-mail prérempli avec objet et message. Idéal pour le support, les devis et les avis. Export PNG et SVG.'
+        form_title: 'Votre e-mail'
+        intro: 'Le scan ouvre la messagerie avec votre adresse, l''objet et le message déjà remplis. Il ne reste plus qu''à envoyer.'
+        copy_title: 'Supprimer les frictions à chaque demande'
+        copy_body: |
+            <p>Préremplir l''objet transforme une boîte de réception floue en boîte triée : « Demande de devis — campagne affichage » vous indique l''origine du message avant même de l''ouvrir. Imprimez le code sur une plaquette, un bon de livraison, un équipement ou un stand de salon.</p>
+            <p>Gardez le corps prérempli court et neutre : c''est un point de départ, pas un script. Le visiteur peut toujours le modifier avant l''envoi.</p>
+    sms:
+        name: 'Générateur de QR code SMS'
+        object: 'QR code SMS'
+        short: 'Préremplit un message texte.'
+        meta_title: 'Générateur de QR code SMS gratuit'
+        meta_description: 'Créez un QR code gratuit qui ouvre un SMS prérempli vers votre numéro. Parfait pour les votes, les commandes et le support. Export PNG et SVG.'
+        form_title: 'Votre SMS'
+        intro: 'Le scan ouvre la messagerie avec votre numéro et votre message prêts à partir.'
+        copy_title: 'Un canal universel, sans application'
+        copy_body: |
+            <p>Le SMS fonctionne sur tous les téléphones, sans compte, sans application et sans connexion data. Un QR code SMS est donc un choix fiable pour un vote, une commande à table, une demande de rappel ou une vérification de stock en magasin.</p>
+            <p>Écrivez toujours le numéro au format international (+ indicatif pays) : un format national ne fonctionne que pour les téléphones enregistrés dans le même pays.</p>
+    phone:
+        name: 'Générateur de QR code téléphone'
+        object: 'QR code téléphone'
+        short: 'Un scan lance l''appel.'
+        meta_title: 'Générateur de QR code téléphone gratuit'
+        meta_description: 'Créez un QR code gratuit qui compose votre numéro de téléphone au scan. Idéal pour vitrines, véhicules et annonces. Export PNG et SVG.'
+        form_title: 'Votre numéro de téléphone'
+        intro: 'Le scan ouvre le clavier d''appel avec votre numéro déjà saisi — sans frappe, sans erreur de chiffre.'
+        copy_title: 'Quand un code téléphone bat un lien'
+        copy_body: |
+            <p>Sur un utilitaire, une vitrine, un panneau « à vendre » ou une machine à dépanner, appeler va plus vite que naviguer. Le QR code téléphone supprime l''étape de recopie du numéro, précisément celle où les prospects abandonnent.</p>
+            <p>Utilisez le format international (+ indicatif pays) pour que le numéro fonctionne aussi pour les visiteurs étrangers, et placez le code à hauteur d''yeux pour qu''il soit scannable à un ou deux mètres.</p>
+    whatsapp:
+        name: 'Générateur de QR code WhatsApp'
+        object: 'QR code WhatsApp'
+        short: 'Ouvre une conversation WhatsApp instantanément.'
+        meta_title: 'Générateur de QR code WhatsApp gratuit'
+        meta_description: 'Créez un QR code gratuit qui ouvre une conversation WhatsApp avec un message prérempli. Sans compte WhatsApp Business. Export PNG et SVG.'
+        form_title: 'Votre conversation WhatsApp'
+        intro: 'Le scan ouvre une conversation WhatsApp avec votre numéro et, si vous le souhaitez, un message prêt à envoyer.'
+        copy_title: 'Une conversation plutôt qu''un formulaire'
+        copy_body: |
+            <p>WhatsApp est devenu le canal client par défaut dans une grande partie de l''Europe, de l''Amérique latine et de l''Asie. Un QR code qui ouvre une conversation préremplie (« Bonjour, je souhaite un devis pour… ») convertit bien mieux qu''un formulaire de contact que personne n''a envie de remplir sur mobile.</p>
+            <p>Ce générateur construit un lien wa.me standard : il fonctionne avec un compte personnel comme avec WhatsApp Business, sans abonnement, sans vérification et sans rien à renouveler.</p>
+    geo:
+        name: 'Générateur de QR code de géolocalisation'
+        object: 'QR code de géolocalisation'
+        short: 'Ouvre une carte aux bonnes coordonnées.'
+        meta_title: 'Générateur de QR code de géolocalisation gratuit (GPS)'
+        meta_description: 'Créez un QR code gratuit qui ouvre une carte à vos coordonnées GPS. Parfait pour les lieux, points de rendez-vous et livraisons. Export PNG et SVG.'
+        form_title: 'Vos coordonnées'
+        intro: 'Le scan ouvre l''application de cartographie du téléphone directement sur les coordonnées saisies.'
+        copy_title: 'Guider vers un point, pas vers une adresse'
+        copy_body: |
+            <p>Certains lieux n''ont pas d''adresse postale utilisable : entrée d''un festival, portail de livraison, départ de sentier, parcelle de terrain, point de rendez-vous sur un parking. Les coordonnées GPS les décrivent exactement, et un QR code geo les transmet à l''application de cartes en un scan.</p>
+            <p>Copiez la latitude et la longitude depuis n''importe quel service de cartographie (clic droit sur le point) et collez-les ici en degrés décimaux, par exemple 48.8584 et 2.2945.</p>
+    barcode:
+        name: 'Générateur de code-barres'
+        object: 'code-barres'
+        short: 'EAN-13, UPC-A, Code 128 et plus.'
+        meta_title: 'Générateur de code-barres gratuit (EAN-13, UPC, Code 128)'
+        meta_description: 'Créez gratuitement des codes-barres EAN-13, EAN-8, UPC-A, Code 128, Code 39 et ITF-14. Export SVG vectoriel pour l''impression. Sans compte.'
+        form_title: 'Votre code-barres'
+        intro: 'Générez un code-barres commercial ou logistique et exportez-le en vectoriel, prêt pour vos emballages et étiquettes.'
+        copy_title: 'Choisir la bonne symbologie'
+        copy_body: |
+            <p>L''EAN-13 est le standard des produits vendus en magasin en Europe (12 chiffres plus une clé), l''UPC-A son équivalent nord-américain, et l''EAN-8 la version compacte pour les petits emballages. Le Code 128 encode lettres et chiffres et équipe la plupart des logistiques internes ; le Code 39 reste courant dans l''industrie ; l''ITF-14 identifie les cartons d''expédition.</p>
+            <p>Exportez le SVG pour l''impression : un code-barres se lit à la largeur de ses barres, tout redimensionnement d''une image matricielle risque de le rendre illisible. Gardez des barres noires sur fond blanc, respectez les zones de silence de chaque côté et n''imprimez jamais en dessous de 80 % de la taille nominale.</p>
+
+howto:
+    title: 'Comment créer votre %tool% en trois étapes'
+    step1:
+        title: 'Remplissez le formulaire'
+        text: 'Saisissez vos données dans les champs ci-dessus. L''aperçu se met à jour pendant la frappe, vous vérifiez donc le résultat immédiatement.'
+    step2:
+        title: 'Ajustez l''apparence'
+        text: 'Ouvrez les options avancées pour changer les couleurs, la marge et le niveau de correction d''erreurs. Une correction plus élevée permet au code de rester lisible même partiellement couvert ou abîmé.'
+    step3:
+        title: 'Téléchargez et utilisez-le'
+        text: 'Exportez en PNG pour les écrans, en SVG pour l''impression ou en WebP pour le fichier le plus léger. Le code vous appartient, gratuitement, sans filigrane et sans date d''expiration.'
+
+faq:
+    title: 'Questions fréquentes'
+    free:
+        q: 'Ce générateur est-il vraiment gratuit ?'
+        a: 'Oui. Tous les générateurs du site sont gratuits et illimités, sans compte et sans filigrane. Le site est financé par la publicité, c''est pourquoi les annonces ne se chargent qu''après votre accord.'
+    expire:
+        q: 'Les codes expirent-ils ?'
+        a: 'Jamais. Les codes sont statiques : le contenu est inscrit dans le motif, pas stocké sur nos serveurs. Une fois téléchargé, un code continue de fonctionner même si ce site disparaît.'
+    commercial:
+        q: 'Puis-je utiliser les codes commercialement ?'
+        a: 'Oui, sans restriction : emballages, affiches, cartes de visite, produits vendus. L''image générée vous appartient et ne vous coûte rien — aucune redevance, aucune mention obligatoire.'
+    print:
+        q: 'À quelle taille imprimer un code ?'
+        a: 'Une règle simple : le code doit mesurer au moins un dixième de la distance de scan. Pour un scan à 50 cm, imprimez au minimum 5 cm de large. Exportez toujours le SVG pour l''impression, conservez la marge de silence et testez avec deux ou trois téléphones.'
+    url:
+        q: 'Puis-je changer la destination de mon QR code plus tard ?'
+        a: 'Pas sur un code statique : l''URL est inscrite dans le motif. Si vous prévoyez de la modifier, encodez un lien que vous maîtrisez (votre propre domaine, une page qui redirige) afin de changer la redirection plutôt que de réimprimer.'
+    text:
+        q: 'Combien de texte un QR code peut-il contenir ?'
+        a: 'Techniquement jusqu''à environ 4 000 caractères, mais la lisibilité chute vite. Restez sous 300 caractères pour un scan instantané, et augmentez le niveau de correction d''erreurs au-delà.'
+    wifi:
+        q: 'Quels téléphones peuvent rejoindre un réseau via un QR code ?'
+        a: 'Les iPhone depuis iOS 11 et les appareils Android depuis la version 10 le gèrent nativement depuis l''appareil photo. Les Android plus anciens peuvent nécessiter une application de lecture compatible Wi-Fi.'
+    vcard:
+        q: 'Quel format est utilisé pour la carte de contact ?'
+        a: 'La vCard 3.0, format pris en charge par iOS, Android, Outlook, Gmail et tous les carnets d''adresses courants. Rien à installer sur le téléphone de votre interlocuteur.'
+    email:
+        q: 'Le scan envoie-t-il l''e-mail automatiquement ?'
+        a: 'Non, et c''est volontaire : le scan ouvre la messagerie avec tout le contenu prérempli, et le visiteur appuie sur envoyer. Il peut encore modifier le message avant.'
+    sms:
+        q: 'Le SMS coûte-t-il quelque chose à la personne qui scanne ?'
+        a: 'Le message part depuis son propre téléphone, son forfait habituel s''applique donc. Ce site ne facture rien, et le code fonctionne même sans connexion data.'
+    phone:
+        q: 'L''appel se déclenche-t-il tout seul ?'
+        a: 'Non. Le scan ouvre le clavier d''appel avec le numéro prérempli ; la personne appuie sur le bouton d''appel. C''est une règle de sécurité imposée par iOS et Android.'
+    whatsapp:
+        q: 'Faut-il un compte WhatsApp Business ?'
+        a: 'Non. Le code ouvre une conversation wa.me standard qui fonctionne avec n''importe quel compte WhatsApp, personnel ou professionnel.'
+    geo:
+        q: 'Quelle application s''ouvre au scan ?'
+        a: 'L''application de cartes par défaut du téléphone — Plans sur iOS, Google Maps sur la plupart des Android. Les coordonnées sont transmises au format standard geo:.'
+    barcode:
+        q: 'Puis-je inventer mon propre numéro EAN-13 ?'
+        a: 'Pas pour la vente en magasin. Un EAN-13 commercialisé doit provenir d''un préfixe GS1 attribué à votre entreprise. Pour un usage interne — stock, inventaire, logistique — vous numérotez librement, et le Code 128 est souvent plus adapté.'
+
+blog:
+    meta_title: 'Guides QR code : bonnes pratiques et cas d''usage'
+    meta_description: 'Guides pratiques sur les QR codes et codes-barres : taille d''impression, correction d''erreurs, statique contre dynamique, cas d''usage marketing et bonnes pratiques de scan.'
+    h1: 'Guides et bonnes pratiques'
+    lead: 'Tout ce que nous avons appris pour créer des codes réellement scannés : tailles, contraste, formats, cas d''usage et erreurs à éviter.'
+    empty: 'Aucun article dans cette langue pour le moment.'
+    reading_time: '%count% min de lecture'
+    updated: 'mis à jour le'
+    related: 'À lire ensuite'
+    try_tool: 'Essayer le générateur correspondant'
+
+page:
+    updated: 'Dernière mise à jour :'
+
+error:
+    field_required: 'Le champ « %field% » est obligatoire.'
+    field_too_long: 'Le champ « %field% » ne doit pas dépasser %max% caractères.'
+    invalid_url: 'Cette URL n''est pas valide. Elle doit ressembler à https://exemple.fr.'
+    invalid_email: 'Cette adresse e-mail n''est pas valide.'
+    invalid_phone: 'Ce numéro de téléphone n''est pas valide. Utilisez le format international, par exemple +33 1 23 45 67 89.'
+    invalid_coordinates: 'Ces coordonnées ne sont pas valides. La latitude va de -90 à 90, la longitude de -180 à 180.'
+    unknown_tool: 'Générateur inconnu.'
+    unknown_symbology: 'Type de code-barres inconnu.'
+    invalid_barcode_value: 'Cette valeur ne peut pas être encodée en %symbology%. Vérifiez le nombre de chiffres et les caractères autorisés.'
+    back_home: 'Retour au générateur'
+    '404':
+        title: 'Cette page n''existe pas'
+        text: 'Le lien est peut-être obsolète, ou la page n''est pas encore traduite dans cette langue.'
+    generic:
+        title: 'Une erreur est survenue'
+        text: 'Une erreur inattendue s''est produite. Merci de réessayer dans un instant.'

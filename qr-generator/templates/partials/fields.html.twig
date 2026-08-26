@@ -1,0 +1,31 @@
+{% macro field(f, values, tool) %}
+    {% set id = 'f-' ~ f.name %}
+    {% set label = ('field.' ~ f.name)|trans %}
+    <div class="field {{ f.wide ? 'field--wide' : '' }} field--{{ f.type }}">
+        {% if f.type == 'checkbox' %}
+            <label class="checkbox" for="{{ id }}">
+                <input type="checkbox" id="{{ id }}" name="{{ f.name }}" value="1" {{ values.bool(f.name) ? 'checked' : '' }}>
+                <span>{{ label }}</span>
+            </label>
+        {% else %}
+            <label for="{{ id }}">{{ label }}{% if f.required %} <span class="req" aria-hidden="true">*</span>{% endif %}</label>
+            {% if f.type == 'textarea' %}
+                <textarea id="{{ id }}" name="{{ f.name }}" rows="4" maxlength="{{ f.maxLength }}"
+                          placeholder="{{ ('placeholder.' ~ f.name)|trans }}"
+                          {{ f.required ? 'required' : '' }}>{{ values.get(f.name) }}</textarea>
+            {% elseif f.type == 'choice' %}
+                <select id="{{ id }}" name="{{ f.name }}">
+                    {% for choice in f.choices %}
+                        <option value="{{ choice }}" {{ values.get(f.name) == choice ? 'selected' : '' }}>{{ ('choice.' ~ choice)|trans }}</option>
+                    {% endfor %}
+                </select>
+            {% else %}
+                <input type="{{ f.type == 'url' ? 'url' : (f.type == 'email' ? 'email' : (f.type == 'tel' ? 'tel' : 'text')) }}"
+                       id="{{ id }}" name="{{ f.name }}" value="{{ values.get(f.name) }}"
+                       maxlength="{{ f.maxLength }}" placeholder="{{ ('placeholder.' ~ f.name)|trans }}"
+                       {% if f.type == 'url' %}inputmode="url" spellcheck="false"{% endif %}
+                       {{ f.required ? 'required' : '' }}>
+            {% endif %}
+        {% endif %}
+    </div>
+{% endmacro %}

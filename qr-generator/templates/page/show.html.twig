@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {% include 'partials/breadcrumbs.html.twig' %}
+    <article class="article wrap">
+        <header class="article-head">
+            <h1>{{ page.title }}</h1>
+            <p class="lead">{{ page.description }}</p>
+            <p class="muted small">{{ 'page.updated'|trans }} <time datetime="{{ page.updatedAt|date('Y-m-d') }}">{{ page.updatedAt|date('Y-m-d') }}</time></p>
+        </header>
+        <div class="prose">
+            {{ page.html|raw }}
+        </div>
+    </article>
+{% endblock %}

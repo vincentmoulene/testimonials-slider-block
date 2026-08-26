@@ -1,0 +1,80 @@
+{% import 'partials/fields.html.twig' as fields %}
+{%- set locale = app.request.locale -%}
+<section class="generator" id="generator"
+         data-controller="generator"
+         data-generator-endpoint-value="{{ path('app_api_generate') }}"
+         data-generator-image-base-value="{{ path('app_generate', {format: 'png'}) }}"
+         data-generator-tool-value="{{ tool.id }}"
+    <form class="generator-form" method="get" action="{{ tool_path(tool, locale) }}"
+          data-generator-target="form"
+          data-action="input->generator#schedule change->generator#schedule submit->generator#submit">
+        <h2 class="generator-title">{{ ('tool.' ~ tool.id ~ '.form_title')|trans }}</h2>
+
+        <div class="fields">
+            {% for f in tool.fields %}
+                {{ fields.field(f, values, tool) }}
+            {% endfor %}
+        </div>
+
+        <details class="options" {{ app.request.query.count > 0 ? 'open' : '' }}>
+            <summary>{{ 'options.title'|trans }}</summary>
+            <div class="fields">
+                <div class="field">
+                    <label for="f-ecc">{{ 'options.ecc'|trans }}</label>
+                    <select id="f-ecc" name="ecc" {{ tool.kind == 'barcode' ? 'disabled' : '' }}>
+                        {% for level in ['L', 'M', 'Q', 'H'] %}
+                            <option value="{{ level }}" {{ options.ecc == level ? 'selected' : '' }}>{{ ('options.ecc.' ~ level)|trans }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="field">
+                    <label for="f-margin">{{ 'options.margin'|trans }}</label>
+                    <input type="number" id="f-margin" name="margin" min="0" max="80" step="2" value="{{ options.margin }}">
+                </div>
+                <div class="field">
+                    <label for="f-fg">{{ 'options.foreground'|trans }}</label>
+                    <input type="color" id="f-fg" name="fg" value="{{ options.foreground }}">
+                </div>
+                <div class="field">
+                    <label for="f-bg">{{ 'options.background'|trans }}</label>
+                    <input type="color" id="f-bg" name="bg" value="{{ options.background }}">
+                </div>
+                <div class="field field--wide">
+                    <label class="checkbox" for="f-transparent">
+                        <input type="checkbox" id="f-transparent" name="transparent" value="1" {{ options.transparent ? 'checked' : '' }}>
+                        <span>{{ 'options.transparent'|trans }}</span>
+                    </label>
+                </div>
+            </div>
+        </details>
+
+        <button type="submit" class="btn btn-primary btn-block" data-generator-target="submit">
+            {{ icon('bolt', 18) }} {{ 'action.generate'|trans }}
+        </button>
+        <p class="form-note muted">{{ 'generator.note'|trans }}</p>
+    </form>
+
+    <div class="generator-preview">
+        <figure class="preview-frame {{ tool.kind == 'barcode' ? 'preview-frame--wide' : '' }}">
+            {% if preview_url %}
+                <img data-generator-target="image" src="{{ preview_url }}" alt="{{ ('tool.' ~ tool.id ~ '.name')|trans }}"
+                     width="{{ tool.kind == 'barcode' ? 600 : 512 }}" height="{{ tool.kind == 'barcode' ? 200 : 512 }}"
+                     fetchpriority="high" decoding="async">
+            {% else %}
+                <img data-generator-target="image" src="/placeholder.svg" alt="" width="512" height="512">
+            {% endif %}
+            {% if is_demo %}
+                <figcaption class="muted">{{ 'generator.demo_notice'|trans }}</figcaption>
+            {% endif %}
+        </figure>
+
+        <p class="error" data-generator-target="error" {{ error ? '' : 'hidden' }}>{{ error }}</p>
+
+        <div class="downloads" data-generator-target="downloads">
+            <a class="btn btn-primary" data-generator-target="downloadPng" href="{{ downloads.png }}" download>{{ icon('download', 18) }} PNG</a>
+            <a class="btn" data-generator-target="downloadSvg" href="{{ downloads.svg }}" download>{{ icon('download', 18) }} SVG</a>
+            <a class="btn" data-generator-target="downloadWebp" href="{{ downloads.webp }}" download>{{ icon('download', 18) }} WebP</a>
+        </div>
+        <p class="muted small">{{ 'generator.formats_hint'|trans }}</p>
+    </div>
+</section>

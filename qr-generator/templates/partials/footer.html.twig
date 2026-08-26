@@ -1,0 +1,44 @@
+{%- set locale = app.request.locale -%}
+<footer class="site-footer">
+    {% include 'partials/ads.html.twig' with {slot: 'footer'} only %}
+    <div class="wrap footer-grid">
+        <div>
+            <p class="footer-brand">{{ site_name }}</p>
+            <p class="muted">{{ 'footer.tagline'|trans }}</p>
+        </div>
+        <div>
+            <p class="footer-title">{{ 'nav.tools'|trans }}</p>
+            <ul>
+                {% for tool in featured_tools() %}
+                    <li><a href="{{ tool_path(tool, locale) }}">{{ ('tool.' ~ tool.id ~ '.name')|trans }}</a></li>
+                {% endfor %}
+                <li><a href="{{ path('app_tools', {_locale: locale}) }}">{{ 'footer.all_tools'|trans }}</a></li>
+            </ul>
+        </div>
+        <div>
+            <p class="footer-title">{{ 'footer.resources'|trans }}</p>
+            <ul>
+                <li><a href="{{ path('app_blog', {_locale: locale}) }}">{{ 'nav.blog'|trans }}</a></li>
+                <li><a href="{{ path('app_about', {_locale: locale}) }}">{{ 'nav.about'|trans }}</a></li>
+                <li><a href="{{ path('app_feed', {_locale: locale}) }}">RSS</a></li>
+            </ul>
+        </div>
+        <div>
+            <p class="footer-title">{{ 'footer.legal'|trans }}</p>
+            <ul>
+                <li><a href="{{ path('app_privacy', {_locale: locale}) }}">{{ 'nav.privacy'|trans }}</a></li>
+                <li><a href="{{ path('app_terms', {_locale: locale}) }}">{{ 'nav.terms'|trans }}</a></li>
+                <li><a href="{{ path('app_cookies', {_locale: locale}) }}">{{ 'nav.cookies'|trans }}</a></li>
+                <li><button type="button" class="link-button" data-action="consent#reopen">{{ 'consent.manage'|trans }}</button></li>
+            </ul>
+        </div>
+    </div>
+    <div class="wrap footer-bottom">
+        <p class="muted">© {{ 'now'|date('Y') }} {{ site_name }} — {{ 'footer.rights'|trans }}</p>
+        <ul class="footer-langs">
+            {% for available in enabled_locales %}
+                <li><a hreflang="{{ available }}" href="{{ seo.alternates[available] ?? path('app_home', {_locale: available}) }}">{{ locale_name(available) }}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
+</footer>

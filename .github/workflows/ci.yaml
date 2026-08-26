@@ -1,0 +1,51 @@
+name: CI
+
+on:
+    push:
+        branches: ['**']
+    pull_request:
+
+jobs:
+    tests:
+        name: Tests (PHP ${{ matrix.php }})
+        runs-on: ubuntu-latest
+        strategy:
+            fail-fast: false
+            matrix:
+                php: ['8.4']
+        steps:
+            - uses: actions/checkout@v4
+
+            - name: Set up PHP
+              uses: shivammathur/setup-php@v2
+              with:
+                  php-version: ${{ matrix.php }}
+                  extensions: gd, intl, mbstring, zip
+                  coverage: none
+
+            - name: Install dependencies
+              working-directory: qr-generator
+              run: composer install --prefer-dist --no-progress --no-interaction
+
+            - name: Lint YAML, Twig and the container
+              working-directory: qr-generator
+              run: |
+                  php bin/console lint:yaml config translations --parse-tags
+                  php bin/console lint:twig templates
+                  php bin/console lint:container
+
+            - name: Check that no translation is missing
+              working-directory: qr-generator
+              run: |
+                  for locale in en fr es de it; do
+                      output=$(php bin/console debug:translation "$locale" --only-missing 2>&1 || true)
+                      if echo "$output" | grep -qi 'missing'; then
+                          echo "Missing translations for $locale:"
+                          echo "$output"
+                          exit 1
+                      fi
+                  done
+
+            - name: Run the test suite
+              working-directory: qr-generator
+              run: php bin/phpunit

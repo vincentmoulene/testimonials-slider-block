@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {%- set locale = app.request.locale -%}
+    {% include 'partials/breadcrumbs.html.twig' %}
+
+    <article class="article wrap">
+        <header class="article-head">
+            <h1>{{ article.title }}</h1>
+            <p class="muted small">
+                <time datetime="{{ article.publishedAt|date('Y-m-d') }}">{{ article.publishedAt|format_date('long', locale=locale) }}</time>
+                · {{ 'blog.reading_time'|trans({'%count%': article.readingTime}) }}
+                {% if article.updatedAt > article.publishedAt %}
+                    · {{ 'blog.updated'|trans }} <time datetime="{{ article.updatedAt|date('Y-m-d') }}">{{ article.updatedAt|format_date('long', locale=locale) }}</time>
+                {% endif %}
+            </p>
+            <p class="lead">{{ article.description }}</p>
+        </header>
+
+        {% include 'partials/ads.html.twig' with {slot: 'top'} only %}
+
+        <div class="prose">
+            {{ article.html|raw }}
+        </div>
+
+        {% if related_tool %}
+            <aside class="cta-box">
+                <p class="cta-title">{{ 'blog.try_tool'|trans }}</p>
+                <a class="btn btn-primary" href="{{ tool_path(related_tool, locale) }}">
+                    {{ icon(related_tool.icon, 18) }} {{ ('tool.' ~ related_tool.id ~ '.name')|trans }}
+                </a>
+            </aside>
+        {% endif %}
+    </article>
+
+    {% include 'partials/ads.html.twig' with {slot: 'inline'} only %}
+
+    {% if related is not empty %}
+        <section class="wrap">
+            <h2>{{ 'blog.related'|trans }}</h2>
+            <ul class="article-grid">
+                {% for item in related %}
+                    <li>
+                        <article>
+                            <h3><a href="{{ path('app_article', {_locale: locale, slug: item.slug}) }}">{{ item.title }}</a></h3>
+                            <p class="muted">{{ item.description }}</p>
+                        </article>
+                    </li>
+                {% endfor %}
+            </ul>
+        </section>
+    {% endif %}
+{% endblock %}

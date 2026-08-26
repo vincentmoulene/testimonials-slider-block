@@ -1,0 +1,19 @@
+{%- set locale = app.request.locale -%}
+<section class="wrap tool-grid-section">
+    <h2>{{ title }}</h2>
+    {% if subtitle is defined and subtitle %}<p class="section-sub muted">{{ subtitle }}</p>{% endif %}
+    <ul class="tool-grid">
+        {% for t in list %}
+            {% if current is not defined or current is null or current.id != t.id %}
+                <li>
+                    <a href="{{ tool_path(t, locale) }}">
+                        <span class="tool-icon">{{ icon(t.icon, 22) }}</span>
+                        <span class="tool-name">{{ ('tool.' ~ t.id ~ '.name')|trans }}</span>
+                        <span class="tool-desc muted">{{ ('tool.' ~ t.id ~ '.short')|trans }}</span>
+                        <span class="tool-cta">{{ 'action.open'|trans }} {{ icon('arrow', 16) }}</span>
+                    </a>
+                </li>
+            {% endif %}
+        {% endfor %}
+    </ul>
+</section>

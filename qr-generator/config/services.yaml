@@ -1,0 +1,34 @@
+# yaml-language-server: $schema=../vendor/symfony/dependency-injection/Loader/schema/services.schema.json
+
+parameters:
+    app.site_name: '%env(SITE_NAME)%'
+    app.site_url: '%env(SITE_URL)%'
+    app.adsense_client: '%env(ADSENSE_CLIENT)%'
+    app.adsense_enabled: '%env(bool:ADSENSE_ENABLED)%'
+    app.adsense_slots:
+        top: '%env(ADSENSE_SLOT_TOP)%'
+        inline: '%env(ADSENSE_SLOT_INLINE)%'
+        footer: '%env(ADSENSE_SLOT_FOOTER)%'
+    app.analytics_id: '%env(ANALYTICS_ID)%'
+    app.contact_email: '%env(CONTACT_EMAIL)%'
+    app.locales: ['en', 'fr', 'es', 'de', 'it']
+    app.default_locale: 'en'
+    app.content_dir: '%kernel.project_dir%/content'
+
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+        bind:
+            array $enabledLocales: '%app.locales%'
+            string $defaultLocale: '%app.default_locale%'
+            string $contentDir: '%app.content_dir%'
+            string $siteUrl: '%app.site_url%'
+            string $siteName: '%app.site_name%'
+            string $adsenseClient: '%app.adsense_client%'
+
+    App\:
+        resource: '../src/'
+
+    App\Twig\AppExtension:
+        tags: ['twig.extension']

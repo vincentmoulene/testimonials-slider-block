@@ -1,0 +1,34 @@
+{%- set locale = app.request.locale -%}
+<header class="site-header">
+    <div class="wrap header-inner">
+        <a class="brand" href="{{ path('app_home', {_locale: locale}) }}">
+            <span class="brand-mark" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="28" height="28" fill="currentColor"><path d="M3 3h8v8H3V3zm2 2v4h4V5H5zm8-2h8v8h-8V3zm2 2v4h4V5h-4zM3 13h8v8H3v-8zm2 2v4h4v-4H5zm8 6v-4h2v2h2v-2h2v2h2v2h-4v2h-2v-2h-2zm4-8h4v2h-4v-2z"/></svg>
+            </span>
+            <span class="brand-name">{{ site_name }}</span>
+        </a>
+
+        <nav class="site-nav" aria-label="{{ 'a11y.main_nav'|trans }}">
+            <a href="{{ path('app_tools', {_locale: locale}) }}">{{ 'nav.tools'|trans }}</a>
+            <a href="{{ path('app_blog', {_locale: locale}) }}">{{ 'nav.blog'|trans }}</a>
+            <a href="{{ path('app_about', {_locale: locale}) }}">{{ 'nav.about'|trans }}</a>
+        </nav>
+
+        <div class="lang-switch" data-controller="lang">
+            <button type="button" class="lang-button" data-action="lang#toggle" aria-expanded="false" aria-haspopup="true">
+                {{ icon('globe', 18) }}<span>{{ locale|upper }}</span>
+            </button>
+            <ul class="lang-menu" data-lang-target="menu" hidden>
+                {% for available in enabled_locales %}
+                    <li>
+                        <a lang="{{ available }}" hreflang="{{ available }}"
+                           href="{{ seo.alternates[available] ?? path('app_home', {_locale: available}) }}"
+                           {{ available == locale ? 'aria-current="true"' : '' }}>
+                            {{ locale_name(available) }}
+                        </a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</header>

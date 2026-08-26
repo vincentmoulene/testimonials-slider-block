@@ -1,0 +1,28 @@
+# Deploy with: fly launch --no-deploy && fly deploy
+# Secrets:     fly secrets set APP_SECRET=... SITE_URL=https://your-domain.com ADSENSE_CLIENT=ca-pub-...
+app = "qr-generator"
+primary_region = "cdg"
+
+[build]
+  dockerfile = "Dockerfile"
+
+[env]
+  APP_ENV = "prod"
+  SERVER_NAME = ":8080"
+  TRUSTED_PROXIES = "127.0.0.1,REMOTE_ADDR,::1"
+
+[http_service]
+  internal_port = 8080
+  force_https = true
+  auto_stop_machines = "suspend"
+  auto_start_machines = true
+  min_machines_running = 1
+
+  [http_service.concurrency]
+    type = "requests"
+    soft_limit = 200
+    hard_limit = 250
+
+[[vm]]
+  size = "shared-cpu-1x"
+  memory = "512mb"

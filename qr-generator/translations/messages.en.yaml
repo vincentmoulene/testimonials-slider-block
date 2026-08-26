@@ -1,0 +1,357 @@
+a11y:
+    skip_to_content: 'Skip to content'
+    main_nav: 'Main navigation'
+    breadcrumb: 'Breadcrumb'
+
+nav:
+    home: 'Home'
+    tools: 'Tools'
+    blog: 'Blog'
+    about: 'About'
+    privacy: 'Privacy policy'
+    terms: 'Terms of use'
+    cookies: 'Cookies'
+
+footer:
+    tagline: 'Free QR code and barcode generator. No account, no watermark, no expiry date.'
+    all_tools: 'All tools'
+    resources: 'Resources'
+    legal: 'Legal'
+    rights: 'All rights reserved.'
+
+consent:
+    title: 'Cookies and advertising'
+    text: 'This site is free thanks to advertising. With your consent, our partners store and read cookies to display and measure ads. You can change your mind at any time.'
+    learn_more: 'Learn more'
+    accept: 'Accept'
+    reject: 'Reject'
+    manage: 'Manage cookies'
+
+badge:
+    free: '100% free'
+    no_account: 'No sign-up'
+    no_expiry: 'Never expires'
+    commercial: 'Commercial use allowed'
+
+action:
+    generate: 'Generate'
+    open: 'Open'
+
+options:
+    title: 'Advanced options (size, colours, error correction)'
+    ecc: 'Error correction'
+    ecc.L: 'L — 7% (smallest code)'
+    ecc.M: 'M — 15% (recommended)'
+    ecc.Q: 'Q — 25%'
+    ecc.H: 'H — 30% (print, logos)'
+    margin: 'Margin (quiet zone)'
+    foreground: 'Foreground colour'
+    background: 'Background colour'
+    transparent: 'Transparent background (PNG / WebP)'
+
+generator:
+    note: 'The preview updates as you type. Nothing you enter is stored on our servers.'
+    demo_notice: 'Sample preview — fill in the form to generate your own code.'
+    formats_hint: 'PNG for the web, SVG for unlimited print quality, WebP for the lightest file.'
+
+choice:
+    WPA: 'WPA / WPA2 / WPA3'
+    WEP: 'WEP'
+    nopass: 'Open network (no password)'
+    EAN13: 'EAN-13 (retail, 13 digits)'
+    EAN8: 'EAN-8 (small packaging, 8 digits)'
+    UPCA: 'UPC-A (North America, 12 digits)'
+    CODE128: 'Code 128 (letters and digits)'
+    CODE39: 'Code 39 (industry)'
+    ITF14: 'ITF-14 (logistics cartons)'
+
+field:
+    url: 'URL'
+    text: 'Text'
+    ssid: 'Network name (SSID)'
+    password: 'Password'
+    encryption: 'Security'
+    hidden: 'Hidden network'
+    first_name: 'First name'
+    last_name: 'Last name'
+    phone: 'Phone number'
+    email: 'Email address'
+    organization: 'Company'
+    job_title: 'Job title'
+    website: 'Website'
+    subject: 'Subject'
+    body: 'Message'
+    message: 'Message'
+    latitude: 'Latitude'
+    longitude: 'Longitude'
+    value: 'Value to encode'
+    symbology: 'Barcode type'
+
+placeholder:
+    url: 'https://your-website.com/page'
+    text: 'Any text, up to 1800 characters'
+    ssid: 'MyNetwork'
+    password: 'Wi-Fi password'
+    encryption: ''
+    hidden: ''
+    first_name: 'Ada'
+    last_name: 'Lovelace'
+    phone: '+1 555 010 199'
+    email: 'hello@example.com'
+    organization: 'Acme Inc.'
+    job_title: 'Head of Marketing'
+    website: 'https://example.com'
+    subject: 'Hello'
+    body: 'Your message…'
+    message: 'Your message…'
+    latitude: '48.8584'
+    longitude: '2.2945'
+    value: '5901234123457'
+    symbology: ''
+
+home:
+    meta_title: 'Free QR Code Generator — no sign-up, no expiry | %site%'
+    meta_description: 'Create a free QR code from a URL, text, Wi-Fi, vCard, email or phone number. High-resolution PNG, SVG and WebP downloads, no account and no expiry date.'
+    eyebrow: 'Free QR code generator'
+    h1: 'Create a free QR code from any URL in seconds'
+    lead: 'Paste a link, get a high-resolution QR code you can download as PNG, SVG or WebP. No account, no watermark, no expiry, and unlimited commercial use.'
+    tools_title: 'Every generator, all free'
+    tools_subtitle: 'Ten generators for links, Wi-Fi, contact cards, payments-free messaging and retail barcodes.'
+    why_title: 'Why use this generator'
+    why:
+        free:
+            title: 'Free and unlimited'
+            text: 'No quota, no sign-up form and no credit card. Ads keep the service running so the tools stay open to everyone.'
+        privacy:
+            title: 'Privacy by design'
+            text: 'Codes are generated on the fly and never stored. No account, no tracking of what you encode, no third-party script before your consent.'
+        quality:
+            title: 'Print-ready quality'
+            text: 'Download vector SVG for posters and packaging, or PNG up to 1024 px. Pick the error-correction level so your code still scans when partly damaged.'
+        speed:
+            title: 'Works everywhere'
+            text: 'Static codes follow the standards used by native iOS and Android cameras — no redirect, no tracking domain, nothing to break later.'
+    copy_title: 'Everything you need to know about QR codes'
+    copy_body: |
+        <p>A QR code is a two-dimensional barcode that stores text — most often a URL. Every recent smartphone reads one straight from the camera app, which makes it the fastest bridge between a printed medium and a web page: a poster, a business card, a restaurant menu, a parcel or a product label.</p>
+        <p>The codes produced here are <strong>static</strong>: the destination is encoded in the pattern itself. Nothing depends on our servers once the image is downloaded, so a code printed today still works in ten years — even if this website disappears. Dynamic codes sold elsewhere route every scan through a third-party domain that can be switched off, rented monthly or turned into a tracking pixel.</p>
+        <p>For print, always export the SVG: it stays razor-sharp at any size. Keep a quiet zone (the white margin) of at least four modules around the code, never invert the contrast (dark pattern on a light background scans best), and test the final artwork with two or three phones before sending it to the printer.</p>
+
+tools:
+    meta_title: 'All free QR code and barcode generators'
+    meta_description: 'Ten free generators: URL, plain text, Wi-Fi, vCard, email, SMS, phone, WhatsApp, location and retail barcodes. PNG, SVG and WebP downloads.'
+    h1: 'All our free generators'
+    lead: 'Pick the type of code you need. Every generator is free, unlimited and works without an account.'
+    grid_title: 'Generators'
+
+tool:
+    other_tools: 'Other free generators'
+    url:
+        name: 'URL QR code generator'
+        object: 'URL QR code'
+        short: 'Turn any link into a scannable code.'
+        meta_title: 'Free URL QR Code Generator'
+        meta_description: 'Turn any link into a free QR code. Download PNG, SVG or WebP in high resolution — no account, no watermark and no expiry date.'
+        form_title: 'Your link'
+        intro: 'Paste a link and download a QR code that opens it instantly on any phone. Free, unlimited and permanent.'
+        copy_title: 'Linking a printed medium to a web page'
+        copy_body: |
+            <p>A URL QR code is the most common use case: it opens a page as soon as it is scanned, with no typing and no error. Use it on packaging to link to instructions, on a poster to open a booking form, on a flyer to reach your shop, or on an invoice to open the payment page.</p>
+            <p>Keep the encoded URL short — a shorter link means fewer modules, a bigger pattern and an easier scan from a distance. Prefer a clean, readable address to a long string of tracking parameters, and always test the printed result at the real size and distance where people will scan it.</p>
+    text:
+        name: 'Text QR code generator'
+        object: 'text QR code'
+        short: 'Encode any plain text, offline.'
+        meta_title: 'Free Text QR Code Generator'
+        meta_description: 'Encode any plain text in a free QR code: a message, a serial number, a Wi-Fi password or instructions. PNG, SVG and WebP downloads.'
+        form_title: 'Your text'
+        intro: 'Encode a message, a reference or a set of instructions. The text is stored inside the code itself and stays readable offline.'
+        copy_title: 'When plain text beats a link'
+        copy_body: |
+            <p>A text QR code needs no network: the phone displays the content immediately, even in a basement, a warehouse or a plane. That makes it ideal for machine serial numbers, maintenance instructions, shelf references, event details or a short message on a gift.</p>
+            <p>Keep it concise. Below roughly 300 characters the pattern stays comfortable to scan; beyond 1000 it becomes dense and needs a larger print size and a higher error-correction level.</p>
+    wifi:
+        name: 'Wi-Fi QR code generator'
+        object: 'Wi-Fi QR code'
+        short: 'Guests connect without typing a password.'
+        meta_title: 'Free Wi-Fi QR Code Generator'
+        meta_description: 'Create a free Wi-Fi QR code: your guests scan it and connect without typing the password. Works on iOS and Android. PNG and SVG downloads.'
+        form_title: 'Your Wi-Fi network'
+        intro: 'Print the code, stick it on the wall: guests scan it and join your network without ever seeing the password typed out.'
+        copy_title: 'The right way to share a Wi-Fi network'
+        copy_body: |
+            <p>Since iOS 11 and Android 10, the camera recognises a Wi-Fi QR code and offers to join the network in one tap. Hotels, cafés, coworking spaces, waiting rooms and holiday rentals use it to stop dictating a twenty-character password all day long.</p>
+            <p>Type the network name exactly as it is broadcast — SSIDs are case-sensitive. Pick WPA for any modern router (WPA2 and WPA3 use the same setting), and tick "hidden network" only if the SSID is genuinely not broadcast, otherwise some phones will fail to connect.</p>
+    vcard:
+        name: 'vCard QR code generator'
+        object: 'vCard QR code'
+        short: 'Share your contact details in one scan.'
+        meta_title: 'Free vCard QR Code Generator (contact card)'
+        meta_description: 'Create a free vCard QR code with your name, phone, email and company. One scan adds you to any phone contact list. PNG and SVG downloads.'
+        form_title: 'Your contact details'
+        intro: 'One scan and your details land straight in the other person’s address book — no typing, no typo, no app.'
+        copy_title: 'The business card that survives the pocket'
+        copy_body: |
+            <p>A vCard QR code encodes a standard contact file (vCard 3.0), understood by iOS, Android, Outlook and every modern address book. Print it on your business card, add it to an email signature, a conference badge or a shop window.</p>
+            <p>Include only what you want to hand out publicly: a name, a phone number, a professional email and a website are usually enough. The fewer fields you add, the lighter the pattern and the faster the scan.</p>
+    email:
+        name: 'Email QR code generator'
+        object: 'email QR code'
+        short: 'Open a pre-filled email in one scan.'
+        meta_title: 'Free Email QR Code Generator'
+        meta_description: 'Create a free QR code that opens a pre-filled email with subject and message. Ideal for support, quotes and feedback. PNG and SVG downloads.'
+        form_title: 'Your email'
+        intro: 'The scan opens the mail app with your address, subject and message already filled in. All the visitor has to do is press send.'
+        copy_title: 'Removing friction from every request'
+        copy_body: |
+            <p>Pre-filling the subject line turns a vague inbox into a sorted one: "Quote request — poster campaign" tells you where the message comes from before you even open it. Print the code on a leaflet, a delivery note, a piece of equipment or an exhibition stand.</p>
+            <p>Keep the pre-filled body short and neutral: it is a starting point, not a script. The visitor can always edit it before sending.</p>
+    sms:
+        name: 'SMS QR code generator'
+        object: 'SMS QR code'
+        short: 'Pre-fill a text message.'
+        meta_title: 'Free SMS QR Code Generator'
+        meta_description: 'Create a free QR code that opens a pre-filled SMS to your number. Perfect for votes, orders and support. PNG and SVG downloads.'
+        form_title: 'Your SMS'
+        intro: 'The scan opens the messaging app with your number and message ready to send.'
+        copy_title: 'A universal channel, no app required'
+        copy_body: |
+            <p>SMS works on every phone, without an account, an app or a data connection. That makes an SMS QR code a reliable choice for a vote, a table order, a callback request or a stock check in a shop.</p>
+            <p>Always write the number in international format (+ country code): a national format only works for people whose phone is registered in the same country.</p>
+    phone:
+        name: 'Phone QR code generator'
+        object: 'phone QR code'
+        short: 'One scan starts the call.'
+        meta_title: 'Free Phone Number QR Code Generator'
+        meta_description: 'Create a free QR code that dials your phone number when scanned. Ideal for shop windows, vehicles and adverts. PNG and SVG downloads.'
+        form_title: 'Your phone number'
+        intro: 'The scan opens the dialler with your number already entered — no typing, no wrong digit.'
+        copy_title: 'Where a phone code beats a link'
+        copy_body: |
+            <p>On a van, a shop window, a for-sale sign or a machine that needs servicing, calling is faster than browsing. A phone QR code removes the transcription step, which is exactly where prospects give up.</p>
+            <p>Use the international format (+ country code) so the number works for visitors and roaming customers, and place the code at eye level so it can be scanned from a couple of metres away.</p>
+    whatsapp:
+        name: 'WhatsApp QR code generator'
+        object: 'WhatsApp QR code'
+        short: 'Start a WhatsApp chat instantly.'
+        meta_title: 'Free WhatsApp QR Code Generator'
+        meta_description: 'Create a free QR code that opens a WhatsApp conversation with a pre-filled message. No WhatsApp Business account required. PNG and SVG downloads.'
+        form_title: 'Your WhatsApp conversation'
+        intro: 'The scan opens a WhatsApp conversation with your number and, if you want, a ready-to-send message.'
+        copy_title: 'A conversation instead of a form'
+        copy_body: |
+            <p>WhatsApp has become the default customer channel in much of Europe, Latin America and Asia. A QR code that opens a pre-filled conversation ("Hi, I would like a quote for…") converts far better than a contact form nobody wants to fill in on a phone.</p>
+            <p>This generator builds a standard wa.me link, so it works with a personal account as well as with WhatsApp Business — no subscription, no verification, nothing to renew.</p>
+    geo:
+        name: 'Location QR code generator'
+        object: 'location QR code'
+        short: 'Open a map at the right coordinates.'
+        meta_title: 'Free Location QR Code Generator (GPS)'
+        meta_description: 'Create a free QR code that opens a map at your GPS coordinates. Perfect for venues, meeting points and deliveries. PNG and SVG downloads.'
+        form_title: 'Your coordinates'
+        intro: 'The scan opens the phone’s map app directly at the coordinates you entered.'
+        copy_title: 'Guiding people to a point, not an address'
+        copy_body: |
+            <p>Some places have no usable street address: a festival entrance, a delivery gate, a trailhead, a plot of land, a meeting point in a car park. GPS coordinates describe them exactly, and a geo QR code hands them to the map app in one scan.</p>
+            <p>Copy the latitude and longitude from any mapping service (right-click on the point) and paste them here in decimal degrees, for example 48.8584 and 2.2945.</p>
+    barcode:
+        name: 'Barcode generator'
+        object: 'barcode'
+        short: 'EAN-13, UPC-A, Code 128 and more.'
+        meta_title: 'Free Barcode Generator (EAN-13, UPC, Code 128)'
+        meta_description: 'Create free EAN-13, EAN-8, UPC-A, Code 128, Code 39 and ITF-14 barcodes. Vector SVG export for print. No account required.'
+        form_title: 'Your barcode'
+        intro: 'Generate a retail or logistics barcode and export it as a vector file, ready for packaging and labels.'
+        copy_title: 'Choosing the right symbology'
+        copy_body: |
+            <p>EAN-13 is the standard for retail products in Europe (12 digits plus a check digit), UPC-A its North American equivalent, and EAN-8 the compact version for small packaging. Code 128 encodes letters and digits and drives most internal logistics; Code 39 remains common in industry; ITF-14 identifies shipping cartons.</p>
+            <p>Export the SVG for printing: a barcode is read by its bar widths, so any rescaling of a bitmap risks making it unreadable. Keep the bars black on white, respect the quiet zones on both sides and never print it below 80% of the nominal size.</p>
+
+howto:
+    title: 'How to create your %tool% in three steps'
+    step1:
+        title: 'Fill in the form'
+        text: 'Enter your data in the fields above. The preview updates as you type, so you can check the result immediately.'
+    step2:
+        title: 'Adjust the look'
+        text: 'Open the advanced options to change the colours, the margin and the error-correction level. Higher correction means a code that still scans when partly covered or damaged.'
+    step3:
+        title: 'Download and use it'
+        text: 'Export PNG for screens, SVG for print or WebP for the lightest file. The code is yours, free, with no watermark and no expiry date.'
+
+faq:
+    title: 'Frequently asked questions'
+    free:
+        q: 'Is this generator really free?'
+        a: 'Yes. Every generator on this site is free and unlimited, with no account and no watermark. The site is funded by advertising, which is why the ads only load after you accept them.'
+    expire:
+        q: 'Do the codes expire?'
+        a: 'Never. The codes are static: the content is encoded in the pattern itself, not stored on our servers. Once downloaded, a code keeps working even if this website disappears.'
+    commercial:
+        q: 'Can I use the codes commercially?'
+        a: 'Yes, without restriction: packaging, posters, business cards, products for sale. You own the generated image and owe us nothing — no royalties, no attribution.'
+    print:
+        q: 'What size should I print a code at?'
+        a: 'A rule of thumb: the code should be at least a tenth of the scanning distance. For a scan at 50 cm, print at least 5 cm wide. Always export the SVG for print, keep the quiet margin and test with two or three phones.'
+    url:
+        q: 'Can I change the destination of my QR code later?'
+        a: 'Not on a static code — the URL is inside the pattern. If you need to change it later, encode a link you control (your own domain, a page that redirects) so you can change the redirect instead of reprinting.'
+    text:
+        q: 'How much text can a QR code hold?'
+        a: 'Technically up to about 4,000 characters, but readability drops fast. Stay under 300 characters for a code that scans instantly, and raise the error-correction level if you go beyond that.'
+    wifi:
+        q: 'Which phones can join a network from a QR code?'
+        a: 'iPhones since iOS 11 and Android devices since version 10 handle it natively from the camera app. Older Android phones may need a QR reader app that supports Wi-Fi codes.'
+    vcard:
+        q: 'Which format is used for the contact card?'
+        a: 'vCard 3.0, the format supported by iOS, Android, Outlook, Gmail and every mainstream address book. Nothing to install on the other person’s phone.'
+    email:
+        q: 'Does the scan send the email automatically?'
+        a: 'No, and that is deliberate: the scan opens the mail app with everything pre-filled, and the visitor presses send. They can still edit the message first.'
+    sms:
+        q: 'Does the SMS cost anything to the person scanning?'
+        a: 'The message is sent from their own phone, so their usual plan applies. Nothing is charged by this site, and the code works even without a data connection.'
+    phone:
+        q: 'Does the call start on its own?'
+        a: 'No. The scan opens the dialler with the number already filled in; the person taps the call button. This is a safety rule enforced by iOS and Android.'
+    whatsapp:
+        q: 'Do I need a WhatsApp Business account?'
+        a: 'No. The code opens a standard wa.me conversation that works with any WhatsApp account, personal or business.'
+    geo:
+        q: 'Which app opens when the code is scanned?'
+        a: 'The phone’s default map app — Apple Maps on iOS, Google Maps on most Android devices. The coordinates are handed over in the standard geo: format.'
+    barcode:
+        q: 'Can I invent my own EAN-13 number?'
+        a: 'Not for retail. An EAN-13 sold in shops must come from a GS1 prefix assigned to your company. For internal use — stock, assets, internal logistics — you are free to number as you like, and Code 128 is usually the better fit.'
+
+blog:
+    meta_title: 'QR code guides, best practices and use cases'
+    meta_description: 'Practical guides about QR codes and barcodes: print sizes, error correction, static versus dynamic codes, marketing use cases and scanning best practices.'
+    h1: 'Guides and best practices'
+    lead: 'Everything we have learned about creating codes that actually get scanned — sizes, contrast, formats, use cases and mistakes to avoid.'
+    empty: 'No article in this language yet.'
+    reading_time: '%count% min read'
+    updated: 'updated on'
+    related: 'Keep reading'
+    try_tool: 'Try the matching generator'
+
+page:
+    updated: 'Last updated:'
+
+error:
+    field_required: 'The field "%field%" is required.'
+    field_too_long: 'The field "%field%" must not exceed %max% characters.'
+    invalid_url: 'This URL is not valid. It should look like https://example.com.'
+    invalid_email: 'This email address is not valid.'
+    invalid_phone: 'This phone number is not valid. Use the international format, for example +1 555 010 199.'
+    invalid_coordinates: 'These coordinates are not valid. Latitude runs from -90 to 90, longitude from -180 to 180.'
+    unknown_tool: 'Unknown generator.'
+    unknown_symbology: 'Unknown barcode type.'
+    invalid_barcode_value: 'This value cannot be encoded as %symbology%. Check the number of digits and the allowed characters.'
+    back_home: 'Back to the generator'
+    '404':
+        title: 'This page does not exist'
+        text: 'The link may be outdated, or the page may not be translated into this language yet.'
+    generic:
+        title: 'Something went wrong'
+        text: 'An unexpected error occurred. Please try again in a moment.'

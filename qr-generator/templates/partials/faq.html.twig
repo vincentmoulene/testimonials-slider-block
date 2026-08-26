@@ -1,0 +1,11 @@
+<section class="faq wrap" id="faq">
+    <h2>{{ 'faq.title'|trans }}</h2>
+    <div class="faq-list">
+        {% for entry in faq %}
+            <details {{ loop.first ? 'open' : '' }}>
+                <summary><h3>{{ entry[0] }}</h3></summary>
+                <p>{{ entry[1] }}</p>
+            </details>
+        {% endfor %}
+    </div>
+</section>

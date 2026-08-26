@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {% include 'partials/breadcrumbs.html.twig' %}
+    <section class="page-head wrap">
+        <h1>{{ 'tools.h1'|trans }}</h1>
+        <p class="lead">{{ 'tools.lead'|trans }}</p>
+    </section>
+
+    {% include 'partials/ads.html.twig' with {slot: 'top'} only %}
+
+    {% include 'partials/tool_grid.html.twig' with {
+        list: tools,
+        title: 'tools.grid_title'|trans,
+    } %}
+{% endblock %}

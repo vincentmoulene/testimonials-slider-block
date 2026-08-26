@@ -1,0 +1,18 @@
+services:
+    app:
+        build:
+            context: .
+            target: app
+        ports:
+            - "8080:80"
+        environment:
+            APP_ENV: prod
+            APP_SECRET: ${APP_SECRET:-change-me-in-production}
+            SITE_NAME: ${SITE_NAME:-QRLab}
+            SITE_URL: ${SITE_URL:-http://localhost:8080}
+            CONTACT_EMAIL: ${CONTACT_EMAIL:-contact@example.com}
+            ADSENSE_ENABLED: ${ADSENSE_ENABLED:-0}
+            ADSENSE_CLIENT: ${ADSENSE_CLIENT:-}
+            ANALYTICS_ID: ${ANALYTICS_ID:-}
+            TRUSTED_PROXIES: ${TRUSTED_PROXIES:-127.0.0.1,REMOTE_ADDR}
+        restart: unless-stopped

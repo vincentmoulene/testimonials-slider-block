@@ -1,0 +1,13 @@
+{# Ad placeholders. The AdSense script itself is only injected by the consent
+   controller once the visitor has accepted personalised or basic ads, so the
+   page stays fast and compliant when nobody consents. #}
+{% if adsense_enabled and adsense_client %}
+    <aside class="ad-slot ad-slot--{{ slot }}" aria-label="Publicité">
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="{{ adsense_client }}"
+             {% if adsense_slots[slot] is defined and adsense_slots[slot] %}data-ad-slot="{{ adsense_slots[slot] }}"{% endif %}
+             data-ad-format="{{ slot == 'inline' ? 'fluid' : 'auto' }}"
+             data-full-width-responsive="true"></ins>
+    </aside>
+{% endif %}
