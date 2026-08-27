@@ -78,6 +78,28 @@ final class SiteSmokeTest extends WebTestCase
         self::assertCount(1, $crawler->filter('form.generator-form textarea[name="content"]'));
     }
 
+    /**
+     * The whole interactive layer — live preview, email gate, language menu,
+     * consent banner — dies silently if the entrypoint stops booting Stimulus.
+     */
+    public function testTheJavaScriptEntrypointBootsStimulus(): void
+    {
+        $client = static::createClient();
+        $crawler = $client->request('GET', '/fr');
+
+        self::assertResponseIsSuccessful();
+        $importmap = $crawler->filter('script[type="importmap"]')->text();
+
+        self::assertStringContainsString('@hotwired/stimulus', $importmap, 'Stimulus itself must be in the importmap');
+        self::assertStringContainsString('@symfony/stimulus-bundle', $importmap);
+        foreach (['generator_controller', 'lead_controller', 'consent_controller', 'lang_controller'] as $controller) {
+            self::assertStringContainsString($controller, $importmap, $controller.' must be registered');
+        }
+
+        $entrypoint = (string) file_get_contents(\dirname(__DIR__, 2).'/assets/app.js');
+        self::assertStringContainsString('stimulus_bootstrap', $entrypoint, 'app.js must import the Stimulus bootstrap');
+    }
+
     public function testAPrefilledToolPageIsNotIndexable(): void
     {
         $client = static::createClient();

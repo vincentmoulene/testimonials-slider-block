@@ -24,5 +24,9 @@
  */
 return [
     'app' => ['path' => './assets/app.js', 'entrypoint' => true],
+    // Vendored on purpose so no build step needs a CDN. This is the dist
+    // bundle shipped by @hotwired/stimulus 3.2.2 on npm, MIT licensed
+    // (its own header still reads 3.2.1 upstream). See assets/lib/.
+    '@hotwired/stimulus' => ['path' => './assets/lib/stimulus.js'],
     '@symfony/stimulus-bundle' => ['path' => './vendor/symfony/stimulus-bundle/assets/dist/loader.js'],
 ];

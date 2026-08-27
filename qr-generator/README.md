@@ -157,7 +157,8 @@ languages. If you change what you do with the addresses, change those pages too.
 
 ## Requirements
 
-PHP 8.4 with `gd`, `intl` and a PDO driver. SQLite is the default and needs no
+PHP 8.4 with `gd`, `intl` and a PDO driver. Stimulus is vendored in
+`assets/lib/`, so no build step and no CDN are needed for the JavaScript. SQLite is the default and needs no
 setup; PostgreSQL is the right choice as soon as you run more than one instance.
 No Redis, no Node.js.
 
@@ -174,12 +175,16 @@ links, Wi-Fi and contact cards.
 ```bash
 composer install
 php bin/console doctrine:migrations:migrate --no-interaction
-php -d variables_order=EGPCS -S 127.0.0.1:8000 -t public public/index.php
+php bin/console asset-map:compile
+php -d variables_order=EGPCS -S 127.0.0.1:8000 -t public router.php
 # then open http://127.0.0.1:8000/
 ```
 
-(`variables_order=EGPCS` lets PHP's built-in server pass real environment
-variables through to Symfony; the Docker image sets it in `docker/php.ini`.)
+Two details about the built-in server: `router.php` is what lets it serve the
+compiled CSS and JS instead of routing them through the front controller (skip
+it and the site renders unstyled), and `variables_order=EGPCS` lets real
+environment variables reach Symfony. The Docker image needs neither — Caddy
+serves the files and `docker/php.ini` sets the variables order.
 
 Run the checks:
 

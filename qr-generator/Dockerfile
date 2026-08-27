@@ -44,6 +44,7 @@ COPY . .
 
 RUN composer dump-autoload --classmap-authoritative --no-dev \
     && php bin/console cache:warmup \
+    && php bin/console importmap:install \
     && php bin/console asset-map:compile \
     && mkdir -p var/data \
     && chown -R www-data:www-data var public/assets

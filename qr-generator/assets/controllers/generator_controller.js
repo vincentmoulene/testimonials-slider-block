@@ -8,7 +8,7 @@ import { Controller } from '@hotwired/stimulus';
  * it, debounce the input and swap the preview + download links in place.
  */
 export default class extends Controller {
-    static targets = ['form', 'image', 'error', 'downloadPng', 'downloadSvg', 'downloadWebp'];
+    static targets = ['form', 'image', 'error', 'demoNotice', 'downloadPng', 'downloadSvg', 'downloadWebp'];
     static values = { endpoint: String, imageBase: String, tool: String };
 
     connect() {
@@ -79,6 +79,10 @@ export default class extends Controller {
 
             this.hideError();
             this.imageTarget.src = result.image;
+            // The preview is the visitor's own code now, not the sample one.
+            if (this.hasDemoNoticeTarget) {
+                this.demoNoticeTarget.remove();
+            }
             this.updateDownloads(values);
             this.updateAddressBar(values);
         } catch (error) {
