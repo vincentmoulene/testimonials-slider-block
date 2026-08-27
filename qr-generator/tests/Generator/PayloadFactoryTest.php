@@ -109,6 +109,160 @@ final class PayloadFactoryTest extends TestCase
         self::assertSame('https://g.page/r/abc/review', $this->build('review', ['url' => 'g.page/r/abc/review']));
     }
 
+    public function testSepaPayloadFollowsTheEpcLayout(): void
+    {
+        $payload = $this->build('sepa', [
+            'beneficiary_name' => 'Association Exemple',
+            'iban' => 'FR76 3000 6000 0112 3456 7890 189',
+            'amount_eur' => '25',
+            'remittance' => 'Don 2026',
+        ]);
+
+        self::assertSame([
+            'BCD',
+            '002',
+            '1',
+            'SCT',
+            '',
+            'Association Exemple',
+            'FR7630006000011234567890189',
+            'EUR25.00',
+            '',
+            '',
+            'Don 2026',
+        ], explode("\n", $payload));
+        self::assertLessThanOrEqual(331, \strlen($payload), 'The EPC specification caps the payload at 331 bytes');
+    }
+
+    public function testSepaOmitsTheTrailingEmptyFields(): void
+    {
+        $payload = $this->build('sepa', ['beneficiary_name' => 'Acme', 'iban' => 'FR7630006000011234567890189']);
+
+        self::assertSame("BCD\n002\n1\nSCT\n\nAcme\nFR7630006000011234567890189", $payload);
+    }
+
+    public function testAnIbanWithAWrongChecksumIsRejected(): void
+    {
+        $this->expectException(InvalidPayloadException::class);
+        // Same IBAN as above with the last digit changed.
+        $this->build('sepa', ['beneficiary_name' => 'Acme', 'iban' => 'FR7630006000011234567890188']);
+    }
+
+    /** The 331-byte cap is on bytes, so multi-byte characters can blow it. */
+    public function testAnOverlongSepaPayloadIsRejected(): void
+    {
+        $this->expectException(InvalidPayloadException::class);
+        $this->build('sepa', [
+            'beneficiary_name' => str_repeat('é', 70),
+            'iban' => 'FR7630006000011234567890189',
+            'remittance' => str_repeat('€', 140),
+        ]);
+    }
+
+    public function testTotpProducesAnOtpauthUri(): void
+    {
+        $payload = $this->build('totp', ['issuer' => 'Acme', 'account' => 'ada@example.com', 'secret' => 'jbsw y3dp ehpk 3pxp']);
+
+        self::assertStringStartsWith('otpauth://totp/Acme:ada%40example.com?', $payload);
+        self::assertStringContainsString('secret=JBSWY3DPEHPK3PXP', $payload, 'The secret is normalised, not passed through');
+        self::assertStringContainsString('issuer=Acme', $payload);
+        self::assertStringContainsString('algorithm=SHA1&digits=6&period=30', $payload);
+    }
+
+    public function testANonBase32SecretIsRejected(): void
+    {
+        $this->expectException(InvalidPayloadException::class);
+        $this->build('totp', ['issuer' => 'Acme', 'account' => 'ada@example.com', 'secret' => 'not-base-32-because-of-1-and-8']);
+    }
+
+    public function testEthereumEncodesTheAmountInWei(): void
+    {
+        $payload = $this->build('crypto', [
+            'chain' => 'ETH',
+            'address' => '0x71C7656EC7ab88b098defB751B7401B5f6d8976F',
+            'amount' => '0.05',
+        ]);
+
+        self::assertSame('ethereum:0x71C7656EC7ab88b098defB751B7401B5f6d8976F@1?value=50000000000000000', $payload);
+    }
+
+    public function testLitecoinUsesTheBip21Convention(): void
+    {
+        $payload = $this->build('crypto', [
+            'chain' => 'LTC',
+            'address' => 'LhK2kQwiaAvhjWY799cZvMyYwnQAcxkarr',
+            'amount' => '2.5',
+            'label' => 'Invoice 7',
+        ]);
+
+        self::assertSame('litecoin:LhK2kQwiaAvhjWY799cZvMyYwnQAcxkarr?amount=2.5&label=Invoice%207', $payload);
+    }
+
+    public function testMoneroUsesItsOwnParameterNames(): void
+    {
+        $payload = $this->build('crypto', [
+            'chain' => 'XMR',
+            'address' => '48jewbtxe4jU3MnzJFjTs3gVFWh2nRrbCPQD1TnCe1G3JTFvKZfSrSCEwFvJ3rAEUb4xZcFSpJmY1Sr4kcNgUyDaGSXEXAr',
+            'amount' => '1.5',
+        ]);
+
+        self::assertStringContainsString('tx_amount=1.5', $payload);
+        self::assertStringNotContainsString('amount=1.5&', $payload);
+    }
+
+    public function testAnAddressFromTheWrongChainIsRejected(): void
+    {
+        $this->expectException(InvalidPayloadException::class);
+        $this->build('crypto', ['chain' => 'LTC', 'address' => '0x71C7656EC7ab88b098defB751B7401B5f6d8976F']);
+    }
+
+    public function testAnUnknownChainIsRejected(): void
+    {
+        $this->expectException(InvalidPayloadException::class);
+        $this->build('crypto', ['chain' => 'NOPE', 'address' => '0x71C7656EC7ab88b098defB751B7401B5f6d8976F']);
+    }
+
+    public function testTelegramAcceptsAUsernameWithOrWithoutTheAt(): void
+    {
+        self::assertSame('https://t.me/durov', $this->build('telegram', ['username' => '@durov']));
+        self::assertSame('https://t.me/durov', $this->build('telegram', ['username' => 'durov']));
+    }
+
+    public function testTelegramAcceptsAPhoneNumber(): void
+    {
+        self::assertSame('https://t.me/+33612345678', $this->build('telegram', ['username' => '+33 6 12 34 56 78']));
+    }
+
+    public function testAnInvalidTelegramUsernameIsRejected(): void
+    {
+        $this->expectException(InvalidPayloadException::class);
+        $this->build('telegram', ['username' => 'no']);
+    }
+
+    public function testSignalBuildsAContactLink(): void
+    {
+        self::assertSame('https://signal.me/#p/+33123456789', $this->build('signal', ['phone' => '0033123456789']));
+    }
+
+    public function testSignalRefusesANationalNumber(): void
+    {
+        $this->expectException(InvalidPayloadException::class);
+        $this->build('signal', ['phone' => '0123456789']);
+    }
+
+    public function testDirectionsBuildAUniversalMapsLink(): void
+    {
+        $payload = $this->build('directions', ['destination' => 'Tour Eiffel, Paris', 'travel_mode' => 'transit']);
+
+        self::assertSame('https://www.google.com/maps/dir/?api=1&destination=Tour%20Eiffel%2C%20Paris&travelmode=transit', $payload);
+    }
+
+    public function testDirectionsRejectAnEmptyDestination(): void
+    {
+        $this->expectException(InvalidPayloadException::class);
+        $this->build('directions', ['destination' => '  ']);
+    }
+
     public function testUrlGetsHttpsWhenSchemeIsMissing(): void
     {
         self::assertSame('https://example.com/page', $this->build('url', ['url' => 'example.com/page']));

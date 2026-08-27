@@ -30,6 +30,12 @@ final readonly class ToolDemo
             'phone' => ['phone' => '+33123456789'],
             'whatsapp' => ['phone' => '+33123456789', 'message' => 'Hello'],
             'geo' => ['latitude' => '48.8584', 'longitude' => '2.2945'],
+            'sepa' => ['beneficiary_name' => 'Association Exemple', 'iban' => 'FR7630006000011234567890189', 'amount_eur' => '25.00', 'remittance' => 'Don 2026'],
+            'totp' => ['issuer' => 'Acme', 'account' => 'ada@example.com', 'secret' => 'JBSWY3DPEHPK3PXP'],
+            'crypto' => ['chain' => 'ETH', 'address' => '0x71C7656EC7ab88b098defB751B7401B5f6d8976F', 'amount' => '0.05'],
+            'telegram' => ['username' => 'telegram'],
+            'signal' => ['phone' => '+33123456789'],
+            'directions' => ['destination' => 'Tour Eiffel, Paris', 'travel_mode' => 'driving'],
             'barcode' => ['value' => '5901234123457', 'symbology' => 'EAN13'],
             default => [],
         };

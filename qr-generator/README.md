@@ -22,10 +22,18 @@ who download a code.
 - **A generic generator on the home page**: one field, anything inside — a link,
   a text, a reference. A bare domain is turned into a link, everything else is
   encoded verbatim.
-- **13 specialised generators**, each with its own landing page in each language:
-  URL, text, Wi-Fi, vCard, email, SMS, phone, WhatsApp, geolocation, calendar
-  event, Google review, Bitcoin payment, and 1D barcodes (EAN-13, EAN-8, UPC-A,
-  Code 128, Code 39, ITF-14).
+- **19 specialised generators**, each with its own landing page in each language:
+  - *Links & text* — URL, plain text
+  - *Contact* — vCard, email, SMS, phone, WhatsApp, Telegram, Signal
+  - *Places* — geolocation, driving directions (Google Maps), calendar event
+  - *Business* — Wi-Fi, Google review, SEPA transfer (EPC / GiroCode)
+  - *Payments & security* — Bitcoin, multi-chain crypto (Ethereum EIP-681,
+    Litecoin, Dogecoin, Bitcoin Cash, Monero, Dash, Solana Pay), 2FA / TOTP
+  - *Retail* — 1D barcodes (EAN-13, EAN-8, UPC-A, Code 128, Code 39, ITF-14)
+
+  Each payload follows the standard its readers expect — EPC069-12 for SEPA,
+  `otpauth://` for authenticators, EIP-681 for Ethereum, BIP-21 for the other
+  chains, VEVENT for calendars — rather than a link to a page we control.
 - **5 languages** (en, fr, es, de, it) with translated URLs, translated slugs and
   a full `hreflang` cluster on every page.
 - **Static codes only.** The payload is encoded in the pattern, nothing is stored,
@@ -51,8 +59,9 @@ Everything below is implemented, not aspirational:
 | Atom feed per locale | `/{locale}/feed.xml` |
 | Server-rendered HTML, one CSS file, no framework JS, `Cache-Control` on every page | AssetMapper + `setPublic()` |
 | Unique editorial copy per tool page (not a shared boilerplate block) | `tool.*.copy_body` keys |
+| Input validated to the real standard (IBAN mod 97, Base32 secrets, per-chain address formats) | `src/Generator/PayloadFactory.php` |
 
-Sitemap size today: **109 URLs**, all indexable and cross-linked. The generic
+Sitemap size today: **139 URLs**, all indexable and cross-linked. The generic
 generator deliberately has *no* landing page of its own — it is the home page,
 and a second URL for it would be duplicate content.
 

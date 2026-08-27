@@ -69,6 +69,10 @@ final class AppExtension extends AbstractExtension
     public function icon(string $name, int $size = 24): string
     {
         $paths = [
+            'bank' => '<path d="M3 10h18"/><path d="M12 3 3 8h18z"/><path d="M6 10v7"/><path d="M10 10v7"/><path d="M14 10v7"/><path d="M18 10v7"/><path d="M3 20h18"/>',
+            'key' => '<circle cx="8" cy="14" r="4"/><path d="M11 11 20 2"/><path d="M17 5l2 2"/><path d="M14 8l2 2"/>',
+            'send' => '<path d="M22 2 11 13"/><path d="M22 2l-7 20-4-9-9-4z"/>',
+            'navigation' => '<polygon points="3 11 22 2 13 21 11 13 3 11"/>',
             'qr' => '<rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><path d="M14 14h3v3h-3z"/><path d="M20 14v3"/><path d="M14 20h3"/><path d="M20 20h1"/>',
             'calendar' => '<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4"/><path d="M8 3v4"/><path d="M3 11h18"/>',
             'star' => '<polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>',

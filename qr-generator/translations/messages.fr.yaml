@@ -64,6 +64,18 @@ choice:
     CODE128: 'Code 128 (lettres et chiffres)'
     CODE39: 'Code 39 (industrie)'
     ITF14: 'ITF-14 (cartons logistiques)'
+    ETH: 'Ethereum (ETH)'
+    BTC: 'Bitcoin (BTC)'
+    LTC: 'Litecoin (LTC)'
+    DOGE: 'Dogecoin (DOGE)'
+    BCH: 'Bitcoin Cash (BCH)'
+    XMR: 'Monero (XMR)'
+    DASH: 'Dash (DASH)'
+    SOL: 'Solana (SOL)'
+    driving: 'En voiture'
+    walking: 'À pied'
+    bicycling: 'À vélo'
+    transit: 'En transports en commun'
 
 field:
     url: 'URL'
@@ -94,6 +106,17 @@ field:
     address: 'Adresse Bitcoin'
     amount: 'Montant (BTC)'
     label: 'Libellé'
+    beneficiary_name: 'Bénéficiaire'
+    iban: 'IBAN'
+    amount_eur: 'Montant (€)'
+    remittance: 'Référence affichée au payeur'
+    issuer: 'Nom du service'
+    account: 'Compte'
+    secret: 'Clé secrète'
+    chain: 'Monnaie'
+    username: 'Nom d''utilisateur ou numéro'
+    destination: 'Destination'
+    travel_mode: 'Mode de déplacement'
 
 placeholder:
     url: 'https://votre-site.fr/page'
@@ -124,6 +147,17 @@ placeholder:
     address: 'bc1q…'
     amount: '0.01'
     label: 'Facture 2026-042'
+    beneficiary_name: 'Association Exemple'
+    iban: 'FR76 3000 6000 0112 3456 7890 189'
+    amount_eur: '25.00'
+    remittance: 'Facture 2026-042'
+    issuer: 'Acme'
+    account: 'ada@exemple.fr'
+    secret: 'JBSWY3DPEHPK3PXP'
+    chain: ''
+    username: '@votrenom'
+    destination: 'Tour Eiffel, Paris'
+    travel_mode: ''
 
 home:
     meta_title: 'Générateur de QR code gratuit — sans inscription ni expiration | %site%'
@@ -132,7 +166,7 @@ home:
     h1: 'Créez un QR code gratuit en quelques secondes'
     lead: 'Collez un lien, un texte — ce que vous voulez — et obtenez un QR code haute résolution à télécharger en PNG, SVG ou WebP. Sans compte, sans filigrane, sans expiration et avec un usage commercial illimité.'
     tools_title: 'Tous les générateurs, tous gratuits'
-    tools_subtitle: 'Treize générateurs spécialisés pour vos liens, votre Wi-Fi, vos cartes de visite, vos événements, vos avis Google, vos paiements et vos codes-barres.'
+    tools_subtitle: 'Dix-neuf générateurs spécialisés : liens, Wi-Fi, cartes de visite, événements, avis Google, virements SEPA, double authentification, paiements crypto et codes-barres.'
     why_title: 'Pourquoi utiliser ce générateur'
     why:
         free:
@@ -155,7 +189,7 @@ home:
 
 tools:
     meta_title: 'Tous les générateurs de QR codes et codes-barres gratuits'
-    meta_description: 'Treize générateurs gratuits : URL, texte, Wi-Fi, vCard, e-mail, SMS, téléphone, WhatsApp, géolocalisation, événement, avis Google, Bitcoin et codes-barres. Export PNG, SVG et WebP.'
+    meta_description: 'Dix-neuf générateurs gratuits : URL, texte, Wi-Fi, vCard, e-mail, SMS, téléphone, WhatsApp, Telegram, Signal, géolocalisation, itinéraire, événement, avis Google, virement SEPA, 2FA, Bitcoin, crypto et codes-barres.'
     h1: 'Tous nos générateurs gratuits'
     lead: 'Choisissez le type de code dont vous avez besoin. Chaque générateur est gratuit, illimité et fonctionne sans compte.'
     grid_title: 'Générateurs'
@@ -322,6 +356,82 @@ tool:
         copy_body: |
             <p>Une adresse Bitcoin compte 26 à 62 caractères et une transaction est irréversible : un seul caractère erroné envoie les fonds là où personne ne pourra les récupérer. Le QR code supprime totalement l'étape de recopie, et c'est pourquoi tous les portefeuilles le prennent en charge.</p>
             <p>Ce générateur produit une URI <strong>BIP-21</strong> standard (<code>bitcoin:adresse?amount=…&amp;label=…</code>). Laissez le montant vide pour une cagnotte ou une page de dons ; renseignez-le pour une facture. Avant de publier le code, scannez-le vous-même et vérifiez les quatre premiers et quatre derniers caractères affichés par le portefeuille.</p>
+    sepa:
+        name: 'Générateur de QR code de virement SEPA'
+        object: 'QR code de virement SEPA'
+        short: 'Soyez payé par virement, sans rien faire saisir.'
+        meta_title: 'Générateur de QR code de virement SEPA gratuit (EPC / GiroCode)'
+        meta_description: 'Créez un QR code EPC gratuit (GiroCode) : le payeur le scanne et son application bancaire s''ouvre avec votre IBAN, votre nom et le montant préremplis. Export PNG et SVG.'
+        form_title: 'Votre virement'
+        intro: 'Le payeur scanne, son application bancaire s''ouvre avec votre IBAN, votre nom et le montant déjà remplis. Il n''a plus qu''à valider.'
+        copy_title: 'Le standard européen que presque personne ne connaît'
+        copy_body: |
+            <p>Le QR code EPC — aussi appelé <strong>GiroCode</strong> — est un standard du Conseil européen des paiements (EPC069-12). Scanné depuis une application bancaire, il prépare un virement SEPA : bénéficiaire, IBAN, montant et référence. Pas de carte, pas de prestataire de paiement, pas de commission : l''argent va directement d''un compte à l''autre.</p>
+            <p>Il est lu nativement par la plupart des applications bancaires en Allemagne, en Autriche, aux Pays-Bas, en Belgique et en Finlande, et par un nombre croissant d''applications françaises. Là où il n''est pas encore géré, le scan affiche simplement le texte : l''ajouter ne coûte donc rien. Imprimez-le sur vos factures, bulletins de don, appels à cotisation, journaux d''association et affiches d''événement.</p>
+            <p>Votre IBAN est vérifié ici avec l''algorithme ISO 7064, celui des banques : une faute de frappe est détectée avant l''impression. Rien n''est envoyé ailleurs, le code est construit à la volée et jamais conservé.</p>
+    totp:
+        name: 'Générateur de QR code 2FA'
+        object: 'QR code 2FA'
+        short: 'Enrôlez une application d''authentification en un scan.'
+        meta_title: 'Générateur de QR code 2FA / TOTP gratuit (otpauth)'
+        meta_description: 'Créez un QR code otpauth:// gratuit pour enrôler Google Authenticator, Authy, 1Password ou Bitwarden. TOTP standard, SHA-1, 6 chiffres, 30 secondes.'
+        form_title: 'Votre secret TOTP'
+        intro: 'Transformez un secret TOTP en le QR code qu''attendent les applications d''authentification — celui que vous affichez à la fin d''un parcours de double authentification.'
+        copy_title: 'Ce que contient un QR code 2FA'
+        copy_body: |
+            <p>Toutes les applications d''authentification lisent la même URI : <code>otpauth://totp/Service:compte?secret=…&amp;issuer=…</code>. Le secret est une chaîne Base32 partagée une seule fois entre votre serveur et l''application ; ensuite, les deux calculent les mêmes six chiffres toutes les trente secondes, hors ligne. Ce générateur produit cette URI avec les valeurs par défaut de toutes les applications : SHA-1, 6 chiffres, période de 30 secondes.</p>
+            <p>Utilisez-le pour construire un écran d''enrôlement, migrer un secret vers un nouveau téléphone, ou tester une intégration sans coder le QR vous-même. Le nom du service est ce qui s''affiche au-dessus des chiffres dans l''application : mettez celui que vos utilisateurs reconnaîtront.</p>
+            <p><strong>Une mise en garde.</strong> Un secret TOTP est un identifiant de connexion : quiconque scanne le code pourra générer vos codes indéfiniment. Ne l''envoyez jamais par e-mail ou messagerie, ne le laissez pas traîner dans une capture d''écran, et ne publiez jamais un code généré depuis un vrai secret. Dans le doute, changez le secret : cela ne coûte rien.</p>
+    crypto:
+        name: 'Générateur de QR code crypto'
+        object: 'QR code crypto'
+        short: 'Ethereum, Litecoin, Dogecoin, Monero et plus.'
+        meta_title: 'Générateur de QR code crypto gratuit (ETH, LTC, DOGE…)'
+        meta_description: 'Créez un QR code de paiement gratuit pour Ethereum, Litecoin, Dogecoin, Bitcoin Cash, Monero, Dash ou Solana. URI standard, comprise par tous les portefeuilles.'
+        form_title: 'Votre paiement'
+        intro: 'Choisissez une monnaie, collez votre adresse : le scan ouvre le portefeuille du payeur avec tout de prérempli. Pas de copier-coller, pas de caractère inversé.'
+        copy_title: 'Un code, le bon standard pour chaque chaîne'
+        copy_body: |
+            <p>Chaque chaîne a sa propre convention d''URI, et un portefeuille ne lit que la bonne. Ce générateur émet le format correct pour chacune : <strong>EIP-681</strong> pour Ethereum (<code>ethereum:0x…@1?value=…</code>, montant en wei), <strong>BIP-21</strong> pour Litecoin, Dogecoin, Bitcoin Cash et Dash, le paramètre <code>tx_amount</code> propre à Monero, et <strong>Solana Pay</strong> pour SOL.</p>
+            <p>L''adresse est vérifiée par rapport au format de la chaîne choisie : coller une adresse Ethereum sous Litecoin est détecté immédiatement — la première cause de fonds perdus. Laissez le montant vide pour une cagnotte, renseignez-le pour une facture.</p>
+            <p>Pour Bitcoin, utilisez le <em>générateur Bitcoin dédié</em> : même principe, avec les spécificités de cette chaîne. Et avant de publier un code de paiement, scannez-le vous-même et comparez les quatre premiers et quatre derniers caractères affichés par le portefeuille avec votre adresse.</p>
+    telegram:
+        name: 'Générateur de QR code Telegram'
+        object: 'QR code Telegram'
+        short: 'Ouvre une conversation Telegram en un scan.'
+        meta_title: 'Générateur de QR code Telegram gratuit'
+        meta_description: 'Créez un QR code gratuit qui ouvre votre profil, votre canal ou votre groupe Telegram. Fonctionne avec un nom d''utilisateur ou un numéro. Export PNG et SVG.'
+        form_title: 'Votre compte Telegram'
+        intro: 'Le scan ouvre directement votre profil, votre canal ou votre groupe Telegram — sans recherche, sans risque de tomber sur un usurpateur.'
+        copy_title: 'Pourquoi un code vaut mieux que « cherchez-moi sur Telegram »'
+        copy_body: |
+            <p>Les noms d''utilisateur Telegram sont faciles à imiter : une lettre changée et votre audience atterrit chez quelqu''un d''autre. Un QR code supprime l''étape de recherche, et avec elle le risque d''usurpation. Cela fonctionne pour un compte personnel, un canal public, un groupe ou un bot.</p>
+            <p>Saisissez votre nom d''utilisateur avec ou sans le @, ou un numéro au format international — <code>t.me/+33612345678</code> ouvre la même conversation. Placez le code sur une carte de visite, une vitrine, un overlay de stream ou la dernière diapositive d''une conférence.</p>
+    signal:
+        name: 'Générateur de QR code Signal'
+        object: 'QR code Signal'
+        short: 'Partagez votre contact Signal en privé.'
+        meta_title: 'Générateur de QR code Signal gratuit'
+        meta_description: 'Créez un QR code gratuit qui ouvre une conversation Signal avec votre numéro. Idéal pour les journalistes, les avocats et tous ceux qui ont besoin d''un canal privé.'
+        form_title: 'Votre numéro Signal'
+        intro: 'Le scan ouvre une conversation Signal avec votre numéro — un canal chiffré, transmis sans rien dicter.'
+        copy_title: 'Transmettre un canal sécurisé, de façon sûre'
+        copy_body: |
+            <p>Signal est la référence de la messagerie chiffrée de bout en bout, et c''est ce qu''utilisent journalistes, avocats, médecins et ONG pour recevoir des informations sensibles. Mais un canal ne sert que si l''on peut l''atteindre : un numéro dicté à voix haute, mal recopié ou lu sur une photo floue est un canal que personne n''utilise.</p>
+            <p>Le code encode un lien <code>signal.me</code> standard. Imprimez-le en bas d''un article, sur une page contact, sur une affiche en salle d''attente, sur un badge de presse. Gardez à l''esprit que le numéro reste visible pour qui scanne : Signal identifie les comptes par numéro de téléphone, publiez donc un numéro que vous acceptez de rendre public.</p>
+    directions:
+        name: 'Générateur de QR code itinéraire'
+        object: 'QR code itinéraire'
+        short: 'Lance la navigation vers votre adresse.'
+        meta_title: 'Générateur de QR code itinéraire gratuit (Google Maps)'
+        meta_description: 'Créez un QR code gratuit qui lance la navigation vers votre adresse, en voiture, à pied, à vélo ou en transports. Export PNG et SVG.'
+        form_title: 'Votre destination'
+        intro: 'Le scan ne montre pas seulement un point sur une carte : il lance la navigation vers votre adresse, dans le mode de déplacement choisi.'
+        copy_title: 'Montrer un lieu, ou y amener les gens'
+        copy_body: |
+            <p>Il y a deux façons d''envoyer quelqu''un quelque part. Un code de <em>géolocalisation</em> pose un point sur la carte — parfait pour un point de rendez-vous. Un code d''<em>itinéraire</em> lance le trajet depuis l''endroit où se trouve la personne — parfait pour une boutique, une salle, un quai de livraison ou un stand de salon.</p>
+            <p>Saisissez une adresse postale, un nom de lieu ou des coordonnées GPS. Le lien utilise le format universel de Google Maps, qui ouvre l''application sur Android, et l''application ou la version web sur iPhone. Le mode de déplacement est une suggestion : la personne peut en changer d''un geste.</p>
+            <p>Imprimez-le sur votre vitrine, un bon de livraison, une invitation, en bas d''une affiche. Et sur un support imprimé, gardez l''adresse postale écrite à côté du code : elle rassure avant le scan, et elle fonctionne encore pour qui n''a pas de téléphone en main.</p>
 
 howto:
     title: 'Comment créer votre %tool% en trois étapes'
@@ -388,6 +498,24 @@ faq:
     bitcoin:
         q: 'Le montant est-il figé dans le code ?'
         a: 'C''est une suggestion : le portefeuille le préremplit et le payeur peut encore le modifier avant de signer. Laissez le champ vide pour un don, remplissez-le pour une facture.'
+    sepa:
+        q: 'Quelles banques lisent un GiroCode ?'
+        a: 'La plupart des applications bancaires en Allemagne, en Autriche, aux Pays-Bas, en Belgique et en Finlande le font nativement, et un nombre croissant d''applications françaises. Là où ce n''est pas géré, le scan affiche simplement le texte : l''ajouter ne coûte donc rien.'
+    totp:
+        q: 'Est-il prudent de générer un code 2FA ici ?'
+        a: 'Le secret sert à construire l''image puis est abandonné : il n''est jamais conservé. Cela dit, un secret TOTP est un identifiant de connexion : ne publiez jamais un code fabriqué depuis un vrai secret, et changez le secret en cas de fuite.'
+    crypto:
+        q: 'Quelles chaînes sont prises en charge ?'
+        a: 'Ethereum (EIP-681), Litecoin, Dogecoin, Bitcoin Cash, Dash (BIP-21), Monero et Solana Pay. Bitcoin dispose de son propre générateur dédié. L''adresse est validée selon la chaîne sélectionnée.'
+    telegram:
+        q: 'Cela fonctionne-t-il pour un canal ou un bot ?'
+        a: 'Oui. N''importe quel nom d''utilisateur public fonctionne — compte personnel, canal, groupe ou bot. Un numéro au format international fonctionne également.'
+    signal:
+        q: 'Le code révèle-t-il mon numéro de téléphone ?'
+        a: 'Oui : Signal identifie les comptes par numéro de téléphone, il est donc contenu dans le lien. Ne publiez qu''un numéro que vous acceptez de rendre public.'
+    directions:
+        q: 'Cela fonctionne-t-il sans Google Maps installé ?'
+        a: 'Oui. Sur un téléphone sans l''application, le lien ouvre la version web de Google Maps, qui propose le même itinéraire.'
 
 blog:
     meta_title: 'Guides QR code : bonnes pratiques et cas d''usage'
@@ -424,6 +552,12 @@ error:
     invalid_email: 'Cette adresse e-mail n''est pas valide.'
     invalid_phone: 'Ce numéro de téléphone n''est pas valide. Utilisez le format international, par exemple +33 1 23 45 67 89.'
     invalid_coordinates: 'Ces coordonnées ne sont pas valides. La latitude va de -90 à 90, la longitude de -180 à 180.'
+    invalid_iban: 'Cet IBAN n''est pas valide — vérifiez une faute de frappe.'
+    invalid_secret: 'Cette clé secrète n''est pas valide. Elle doit être en Base32 (lettres A à Z et chiffres 2 à 7), avec au moins 16 caractères.'
+    invalid_username: 'Ce nom d''utilisateur n''est pas valide. Utilisez 5 à 32 lettres, chiffres ou tirets bas, ou un numéro au format international.'
+    invalid_crypto_address: 'Cette adresse ne correspond pas au format %chain%.'
+    unknown_chain: 'Monnaie inconnue.'
+    sepa_too_long: 'Les informations du virement sont trop longues pour être encodées. Raccourcissez le nom du bénéficiaire ou la référence.'
     invalid_date: 'Cette date n''est pas valide.'
     invalid_bitcoin_address: 'Cette adresse Bitcoin n''est pas valide. Elle doit commencer par 1, 3 ou bc1.'
     invalid_amount: 'Ce montant n''est pas valide.'
