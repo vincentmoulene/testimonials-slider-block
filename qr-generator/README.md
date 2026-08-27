@@ -53,7 +53,7 @@ Everything below is implemented, not aspirational:
 | Server-rendered HTML, one CSS file, no framework JS, `Cache-Control` on every page | AssetMapper + `setPublic()` |
 | Unique editorial copy per tool page (not a shared boilerplate block) | `tool.*.copy_body` keys |
 
-Sitemap size today: **64 URLs**, all indexable and cross-linked. The generic
+Sitemap size today: **104 URLs**, all indexable and cross-linked. The generic
 generator deliberately has *no* landing page of its own — it is the home page,
 and a second URL for it would be duplicate content.
 
@@ -245,6 +245,11 @@ the volume.
    the address landed in the database — and that the volume survives a redeploy.
 
 ## Adding content
+
+The blog ships with **49 articles**: one per use case (restaurants, retail,
+business cards, events, real estate, packaging, charities, hospitality) in the
+five languages, plus print sizing everywhere and two deeper guides in English
+and French. Articles sharing a `key` are declared as translations of each other.
 
 **A new article** — create `content/blog/{locale}/{file}.md`:
 

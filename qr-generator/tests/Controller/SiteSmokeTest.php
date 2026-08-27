@@ -125,6 +125,46 @@ final class SiteSmokeTest extends WebTestCase
         self::assertStringContainsString('BlogPosting', $crawler->filter('script[type="application/ld+json"]')->last()->text());
     }
 
+    /** Every article parses, in every language, with its front matter intact. */
+    public function testEveryArticleRendersInEveryLocale(): void
+    {
+        $client = static::createClient();
+        $repository = static::getContainer()->get(\App\Blog\ArticleRepository::class);
+        self::assertInstanceOf(\App\Blog\ArticleRepository::class, $repository);
+
+        $rendered = 0;
+        foreach (self::LOCALES as $locale) {
+            $articles = $repository->findByLocale($locale);
+            self::assertGreaterThanOrEqual(9, \count($articles), \sprintf('Locale "%s" should carry the use-case articles', $locale));
+
+            foreach ($articles as $article) {
+                $crawler = $client->request('GET', \sprintf('/%s/blog/%s', $locale, $article->slug));
+
+                self::assertResponseIsSuccessful($article->slug);
+                self::assertNotSame('', $article->title, $article->slug);
+                self::assertNotSame('', $article->description, $article->slug);
+                self::assertCount(1, $crawler->filter('h1'), $article->slug);
+                ++$rendered;
+            }
+        }
+
+        self::assertGreaterThanOrEqual(49, $rendered);
+    }
+
+    /** Articles sharing a key must cross-link, so the languages cluster. */
+    public function testTranslatedArticlesDeclareEachOther(): void
+    {
+        $client = static::createClient();
+        $crawler = $client->request('GET', '/fr/blog/qr-code-restaurant');
+
+        self::assertResponseIsSuccessful();
+        self::assertCount(6, $crawler->filter('link[rel="alternate"][hreflang]'), '5 locales + x-default');
+        self::assertSame(
+            'https://example.com/de/blog/qr-code-restaurant',
+            $crawler->filter('link[hreflang="de"]')->attr('href'),
+        );
+    }
+
     public function testLegalPagesRenderInEveryLocale(): void
     {
         $client = static::createClient();
