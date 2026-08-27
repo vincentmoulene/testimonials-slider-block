@@ -58,27 +58,7 @@ choice:
     WPA: 'WPA / WPA2 / WPA3'
     WEP: 'WEP'
     nopass: 'Red abierta (sin contraseña)'
-    EAN13: 'EAN-13 (comercio, 13 dígitos)'
-    EAN8: 'EAN-8 (envases pequeños, 8 dígitos)'
-    UPCA: 'UPC-A (Norteamérica, 12 dígitos)'
-    CODE128: 'Code 128 (letras y números)'
-    CODE39: 'Code 39 (industria)'
-    ITF14: 'ITF-14 (cajas logísticas)'
-    ETH: 'Ethereum (ETH)'
-    BTC: 'Bitcoin (BTC)'
-    LTC: 'Litecoin (LTC)'
-    DOGE: 'Dogecoin (DOGE)'
-    BCH: 'Bitcoin Cash (BCH)'
-    XMR: 'Monero (XMR)'
-    DASH: 'Dash (DASH)'
-    SOL: 'Solana (SOL)'
-    driving: 'En coche'
-    walking: 'A pie'
-    bicycling: 'En bici'
-    transit: 'En transporte público'
-
 field:
-    url: 'URL'
     text: 'Texto'
     ssid: 'Nombre de la red (SSID)'
     password: 'Contraseña'
@@ -91,35 +71,9 @@ field:
     organization: 'Empresa'
     job_title: 'Cargo'
     website: 'Sitio web'
-    subject: 'Asunto'
-    body: 'Mensaje'
     message: 'Mensaje'
-    latitude: 'Latitud'
-    longitude: 'Longitud'
-    value: 'Valor a codificar'
-    symbology: 'Tipo de código de barras'
     content: 'Contenido a codificar'
-    event_title: 'Nombre del evento'
-    start: 'Inicio'
-    end: 'Fin'
-    location: 'Lugar'
-    address: 'Dirección Bitcoin'
-    amount: 'Importe (BTC)'
-    label: 'Etiqueta'
-    beneficiary_name: 'Beneficiario'
-    iban: 'IBAN'
-    amount_eur: 'Importe (€)'
-    remittance: 'Concepto mostrado al pagador'
-    issuer: 'Nombre del servicio'
-    account: 'Cuenta'
-    secret: 'Clave secreta'
-    chain: 'Moneda'
-    username: 'Nombre de usuario o número'
-    destination: 'Destino'
-    travel_mode: 'Modo de desplazamiento'
-
 placeholder:
-    url: 'https://tu-sitio.es/pagina'
     text: 'Cualquier texto, hasta 1800 caracteres'
     ssid: 'MiRed'
     password: 'Contraseña del Wi-Fi'
@@ -132,41 +86,16 @@ placeholder:
     organization: 'Acme S.L.'
     job_title: 'Responsable de marketing'
     website: 'https://ejemplo.es'
-    subject: 'Hola'
-    body: 'Tu mensaje…'
     message: 'Tu mensaje…'
-    latitude: '48.8584'
-    longitude: '2.2945'
-    value: '5901234123457'
-    symbology: ''
     content: 'Un enlace, un texto, una referencia: lo que quieras'
-    event_title: 'Lanzamiento de producto'
-    start: ''
-    end: ''
-    location: 'Gran Vía 1, Madrid'
-    address: 'bc1q…'
-    amount: '0.01'
-    label: 'Factura 2026-042'
-    beneficiary_name: 'Asociación Ejemplo'
-    iban: 'ES91 2100 0418 4502 0005 1332'
-    amount_eur: '25.00'
-    remittance: 'Factura 2026-042'
-    issuer: 'Acme'
-    account: 'ada@ejemplo.es'
-    secret: 'JBSWY3DPEHPK3PXP'
-    chain: ''
-    username: '@tunombre'
-    destination: 'Puerta del Sol, Madrid'
-    travel_mode: ''
-
 home:
     meta_title: 'Generador de códigos QR gratis — sin registro ni caducidad | %site%'
-    meta_description: 'Crea un código QR gratis a partir de una URL, un texto, tu Wi-Fi, una vCard, un correo o un teléfono. Descarga PNG, SVG y WebP en alta resolución, sin cuenta y sin caducidad.'
+    meta_description: 'Pega un enlace y obtén un código QR gratuito al instante. Descarga PNG, SVG y WebP en alta resolución, sin cuenta, sin marca de agua y sin caducidad.'
     eyebrow: 'Generador de códigos QR gratis'
     h1: 'Crea un código QR gratis en segundos'
     lead: 'Pega un enlace, un texto —lo que quieras— y obtén un código QR en alta resolución para descargar en PNG, SVG o WebP. Sin cuenta, sin marca de agua, sin caducidad y con uso comercial ilimitado.'
-    tools_title: 'Todos los generadores, todos gratis'
-    tools_subtitle: 'Diecinueve generadores especializados: enlaces, Wi-Fi, tarjetas de contacto, eventos, reseñas de Google, transferencias SEPA, doble factor, pagos cripto y códigos de barras.'
+    tools_title: 'Unos formatos listos para usar'
+    tools_subtitle: 'El generador de arriba codifica cualquier cosa. Estas cuatro páginas rellenan el formato por ti.'
     why_title: 'Por qué usar este generador'
     why:
         free:
@@ -188,10 +117,10 @@ home:
         <p>Para imprimir, exporta siempre el SVG: se mantiene nítido a cualquier tamaño. Conserva una zona de silencio (el margen blanco) de al menos cuatro módulos alrededor del código, no inviertas nunca el contraste (patrón oscuro sobre fondo claro) y prueba el archivo final con dos o tres teléfonos antes de enviarlo a imprenta.</p>
 
 tools:
-    meta_title: 'Todos los generadores gratuitos de códigos QR y de barras'
-    meta_description: 'Diecinueve generadores gratuitos: URL, texto, Wi-Fi, vCard, correo, SMS, teléfono, WhatsApp, Telegram, Signal, ubicación, cómo llegar, evento, reseñas de Google, transferencia SEPA, 2FA, Bitcoin, cripto y códigos de barras.'
+    meta_title: 'Todos nuestros generadores gratuitos de códigos QR'
+    meta_description: 'Cuatro formatos de código QR listos para usar —Wi-Fi, tarjeta vCard, texto y WhatsApp— más un generador genérico que lo codifica todo. Gratis y sin cuenta.'
     h1: 'Todos nuestros generadores gratuitos'
-    lead: 'Elige el tipo de código que necesitas. Todos los generadores son gratuitos, ilimitados y funcionan sin cuenta.'
+    lead: 'Para un enlace basta el generador de la página de inicio. Estas páginas rellenan el formato por ti.'
     grid_title: 'Generadores'
 
 tool:
@@ -200,18 +129,6 @@ tool:
         name: 'Generador de códigos QR'
         object: 'código QR'
         form_title: '¿Qué debe contener el código?'
-    url:
-        name: 'Generador de código QR con URL'
-        object: 'código QR de URL'
-        short: 'Convierte cualquier enlace en un código escaneable.'
-        meta_title: 'Generador gratuito de código QR con URL'
-        meta_description: 'Convierte un enlace en un código QR gratuito. Descárgalo en PNG, SVG o WebP en alta resolución, sin cuenta, sin marca de agua y sin caducidad.'
-        form_title: 'Tu enlace'
-        intro: 'Pega un enlace y descarga un código QR que lo abre al instante en cualquier teléfono. Gratis, ilimitado y permanente.'
-        copy_title: 'Conectar un soporte impreso con una página web'
-        copy_body: |
-            <p>El código QR de URL es el uso más habitual: abre una página en cuanto se escanea, sin teclear y sin errores. Úsalo en un envase para enlazar las instrucciones, en un cartel para abrir un formulario de reserva, en un folleto para llevar a tu tienda o en una factura para abrir la página de pago.</p>
-            <p>Mantén la URL corta: menos caracteres significan menos módulos, un patrón más grande y un escaneo más fácil a distancia. Prueba siempre el resultado impreso al tamaño y a la distancia reales de uso.</p>
     text:
         name: 'Generador de código QR de texto'
         object: 'código QR de texto'
@@ -248,42 +165,6 @@ tool:
         copy_body: |
             <p>Un código QR vCard codifica un archivo de contacto estándar (vCard 3.0) que entienden iOS, Android, Outlook y todas las agendas modernas. Imprímelo en tu tarjeta, en la firma del correo, en una acreditación de feria o en un escaparate.</p>
             <p>Incluye solo lo que quieras hacer público: nombre, teléfono, correo profesional y sitio web suelen bastar. Cuantos menos campos, más ligero el patrón y más rápido el escaneo.</p>
-    email:
-        name: 'Generador de código QR de correo'
-        object: 'código QR de correo'
-        short: 'Abre un correo ya rellenado en un escaneo.'
-        meta_title: 'Generador gratuito de código QR de correo electrónico'
-        meta_description: 'Crea un código QR gratuito que abre un correo con asunto y mensaje ya escritos. Ideal para soporte, presupuestos y opiniones. PNG y SVG.'
-        form_title: 'Tu correo'
-        intro: 'El escaneo abre la aplicación de correo con tu dirección, el asunto y el mensaje ya rellenados. Solo queda enviar.'
-        copy_title: 'Quitar fricción a cada solicitud'
-        copy_body: |
-            <p>Rellenar el asunto convierte una bandeja de entrada confusa en una ordenada: «Solicitud de presupuesto — campaña de carteles» te dice de dónde viene el mensaje antes de abrirlo. Imprime el código en un folleto, un albarán, un equipo o un estand.</p>
-            <p>Mantén el cuerpo prerrellenado corto y neutro: es un punto de partida, no un guion. El visitante siempre puede editarlo antes de enviarlo.</p>
-    sms:
-        name: 'Generador de código QR de SMS'
-        object: 'código QR de SMS'
-        short: 'Prerellena un mensaje de texto.'
-        meta_title: 'Generador gratuito de código QR de SMS'
-        meta_description: 'Crea un código QR gratuito que abre un SMS ya escrito hacia tu número. Perfecto para votaciones, pedidos y soporte. Descarga en PNG y SVG.'
-        form_title: 'Tu SMS'
-        intro: 'El escaneo abre la mensajería con tu número y tu mensaje listos para enviar.'
-        copy_title: 'Un canal universal, sin aplicaciones'
-        copy_body: |
-            <p>El SMS funciona en todos los teléfonos, sin cuenta, sin aplicación y sin conexión de datos. Un código QR de SMS es una opción fiable para una votación, un pedido en mesa, una solicitud de llamada o una consulta de stock.</p>
-            <p>Escribe siempre el número en formato internacional (+ prefijo del país): el formato nacional solo funciona para teléfonos registrados en el mismo país.</p>
-    phone:
-        name: 'Generador de código QR de teléfono'
-        object: 'código QR de teléfono'
-        short: 'Un escaneo inicia la llamada.'
-        meta_title: 'Generador gratuito de código QR con número de teléfono'
-        meta_description: 'Crea un código QR gratuito que marca tu número al escanearlo. Ideal para escaparates, vehículos y anuncios. Descarga en PNG y SVG.'
-        form_title: 'Tu número de teléfono'
-        intro: 'El escaneo abre el marcador con tu número ya introducido, sin teclear y sin equivocarse de dígito.'
-        copy_title: 'Cuándo un código de teléfono gana a un enlace'
-        copy_body: |
-            <p>En una furgoneta, un escaparate, un cartel de «se vende» o una máquina averiada, llamar es más rápido que navegar. El código QR de teléfono elimina el paso de copiar el número, justo donde se pierden los clientes.</p>
-            <p>Usa el formato internacional (+ prefijo del país) para que funcione también con visitantes extranjeros, y coloca el código a la altura de los ojos.</p>
     whatsapp:
         name: 'Generador de código QR de WhatsApp'
         object: 'código QR de WhatsApp'
@@ -296,143 +177,6 @@ tool:
         copy_body: |
             <p>WhatsApp se ha convertido en el canal de atención por defecto en buena parte de Europa y de América Latina. Un código QR que abre una conversación ya iniciada («Hola, quiero un presupuesto para…») convierte mucho mejor que un formulario que nadie quiere rellenar en el móvil.</p>
             <p>Este generador crea un enlace wa.me estándar: funciona igual con una cuenta personal que con WhatsApp Business, sin suscripción ni verificación.</p>
-    geo:
-        name: 'Generador de código QR de ubicación'
-        object: 'código QR de ubicación'
-        short: 'Abre un mapa en las coordenadas exactas.'
-        meta_title: 'Generador gratuito de código QR de ubicación (GPS)'
-        meta_description: 'Crea un código QR gratuito que abre un mapa en tus coordenadas GPS. Perfecto para locales, puntos de encuentro y entregas. PNG y SVG.'
-        form_title: 'Tus coordenadas'
-        intro: 'El escaneo abre la aplicación de mapas del teléfono directamente en las coordenadas indicadas.'
-        copy_title: 'Guiar hacia un punto, no hacia una dirección'
-        copy_body: |
-            <p>Algunos lugares no tienen dirección postal utilizable: la entrada de un festival, un portón de reparto, el inicio de un sendero, una parcela o un punto de encuentro en un aparcamiento. Las coordenadas GPS los describen con exactitud.</p>
-            <p>Copia la latitud y la longitud desde cualquier servicio de mapas (clic derecho sobre el punto) y pégalas aquí en grados decimales, por ejemplo 48.8584 y 2.2945.</p>
-    barcode:
-        name: 'Generador de códigos de barras'
-        object: 'código de barras'
-        short: 'EAN-13, UPC-A, Code 128 y más.'
-        meta_title: 'Generador gratuito de códigos de barras (EAN-13, UPC, Code 128)'
-        meta_description: 'Crea gratis códigos de barras EAN-13, EAN-8, UPC-A, Code 128, Code 39 e ITF-14. Exportación SVG vectorial para imprenta. Sin cuenta.'
-        form_title: 'Tu código de barras'
-        intro: 'Genera un código de barras comercial o logístico y expórtalo en vectorial, listo para envases y etiquetas.'
-        copy_title: 'Elegir la simbología correcta'
-        copy_body: |
-            <p>El EAN-13 es el estándar de los productos de tienda en Europa (12 dígitos más un dígito de control), el UPC-A su equivalente norteamericano y el EAN-8 la versión compacta para envases pequeños. El Code 128 codifica letras y números y mueve la mayor parte de la logística interna; el Code 39 sigue siendo común en la industria; el ITF-14 identifica las cajas de expedición.</p>
-            <p>Exporta el SVG para imprimir: un código de barras se lee por el ancho de sus barras, así que reescalar una imagen de mapa de bits puede volverlo ilegible. Barras negras sobre fondo blanco, zonas de silencio a ambos lados y nunca por debajo del 80 % del tamaño nominal.</p>
-    event:
-        name: 'Generador de código QR de evento'
-        object: 'código QR de evento'
-        short: 'Añade un evento a cualquier calendario en un escaneo.'
-        meta_title: 'Generador gratuito de código QR de evento (calendario)'
-        meta_description: 'Crea un código QR gratuito que añade tu evento al calendario de quien lo escanea: fecha, hora y lugar incluidos. Descarga en PNG y SVG.'
-        form_title: 'Tu evento'
-        intro: 'Un escaneo y tu evento aterriza en el calendario de la persona que tienes delante: fecha, hora y dirección correctas.'
-        copy_title: 'Meter una fecha en la agenda de la gente'
-        copy_body: |
-            <p>Una invitación solo funciona cuando está en el calendario. Un código QR de evento codifica una entrada de calendario estándar (VEVENT): al escanearlo se abre la aplicación de calendario del teléfono con todo relleno —título, inicio, fin y lugar—. Imprímelo en una invitación, un cartel de concierto, un programa de formación o una acreditación.</p>
-            <p>Las horas se codifican en hora local, tal y como las escribes: el lector muestra el evento tal cual, esté donde esté la persona. Para un evento recurrente, genera un código por fecha en lugar de codificar una regla de repetición: se escanea de forma mucho más fiable.</p>
-    review:
-        name: 'Generador de código QR de reseñas de Google'
-        object: 'código QR de reseñas'
-        short: 'Lleva a tus clientes directos al formulario de reseña.'
-        meta_title: 'Generador gratuito de código QR de reseñas de Google'
-        meta_description: 'Crea un código QR gratuito que abre directamente tu formulario de reseñas de Google. Perfecto para tickets, mesas y mostradores. PNG y SVG.'
-        form_title: 'Tu enlace de reseñas'
-        intro: 'Convierte a un cliente satisfecho en una reseña mientras sigue delante de ti: el escaneo abre directamente el formulario de valoración.'
-        copy_title: 'Dónde encontrar tu enlace de reseñas'
-        copy_body: |
-            <p>Abre tu Perfil de Empresa de Google, pulsa <em>Pedir reseñas</em> y copia el enlace corto que te da Google (del tipo <code>g.page/r/…/review</code>). Pégalo aquí y obtendrás un código que abre directamente el formulario de estrellas: sin búsquedas, sin menús y sin riesgo de valorar otro negocio.</p>
-            <p>La ubicación importa más que el diseño: en el ticket, en el caballete de mesa, en el mostrador junto al datáfono o en la factura que envías por correo. Pide la reseña en el momento en que el cliente está contento, justo después del servicio, no tres días más tarde. Y nunca filtres quién puede escanear: seleccionar según la nota esperada incumple las políticas de Google y provoca suspensiones.</p>
-    bitcoin:
-        name: 'Generador de código QR de Bitcoin'
-        object: 'código QR de Bitcoin'
-        short: 'Cobra sin que nadie teclee una dirección.'
-        meta_title: 'Generador gratuito de código QR de Bitcoin (BIP-21)'
-        meta_description: 'Crea un código QR de pago Bitcoin gratuito con dirección, importe y etiqueta. Formato estándar BIP-21, compatible con todos los monederos. PNG y SVG.'
-        form_title: 'Tu pago'
-        intro: 'El escaneo abre el monedero del pagador con tu dirección y, si lo indicas, el importe. Sin copiar y pegar, sin caracteres cambiados.'
-        copy_title: 'Por qué nadie debería teclear una dirección'
-        copy_body: |
-            <p>Una dirección de Bitcoin tiene entre 26 y 62 caracteres y una transacción es irreversible: un solo carácter erróneo envía los fondos a un sitio del que nadie los recupera. El código QR elimina por completo el paso de la transcripción, y por eso todos los monederos lo admiten.</p>
-            <p>Este generador produce una URI <strong>BIP-21</strong> estándar (<code>bitcoin:direccion?amount=…&amp;label=…</code>). Deja el importe vacío para un bote o una página de donaciones; rellénalo para una factura. Antes de publicar el código, escanéalo tú mismo y compara los cuatro primeros y últimos caracteres que muestra el monedero.</p>
-    sepa:
-        name: 'Generador de código QR de transferencia SEPA'
-        object: 'código QR de transferencia SEPA'
-        short: 'Cobra por transferencia sin que nadie teclee nada.'
-        meta_title: 'Generador gratuito de código QR de transferencia SEPA (EPC / GiroCode)'
-        meta_description: 'Crea un código QR EPC gratuito (GiroCode): quien paga lo escanea y su aplicación bancaria se abre con tu IBAN, tu nombre y el importe rellenados. PNG y SVG.'
-        form_title: 'Tu transferencia'
-        intro: 'Quien paga escanea y su aplicación bancaria se abre con tu IBAN, tu nombre y el importe ya rellenados. Solo tiene que confirmar.'
-        copy_title: 'El estándar europeo que casi nadie conoce'
-        copy_body: |
-            <p>El código QR EPC —también llamado <strong>GiroCode</strong>— es un estándar del Consejo Europeo de Pagos (EPC069-12). Escaneado desde una aplicación bancaria, prepara una transferencia SEPA: beneficiario, IBAN, importe y concepto. Sin tarjeta, sin pasarela de pago y sin comisión: el dinero va directamente de una cuenta a otra.</p>
-            <p>Lo leen de forma nativa la mayoría de las aplicaciones bancarias de Alemania, Austria, Países Bajos, Bélgica y Finlandia, y cada vez más en el resto de Europa. Donde todavía no se admite, el escaneo simplemente muestra el texto: añadirlo no cuesta nada. Imprímelo en facturas, formularios de donación, cuotas de socio y carteles de eventos.</p>
-            <p>Tu IBAN se comprueba aquí con el algoritmo ISO 7064, el mismo que usan los bancos, así que una errata se detecta antes de imprimir nada. No se envía a ninguna parte: el código se construye al vuelo y nunca se guarda.</p>
-    totp:
-        name: 'Generador de código QR 2FA'
-        object: 'código QR 2FA'
-        short: 'Da de alta una app de autenticación en un escaneo.'
-        meta_title: 'Generador gratuito de código QR 2FA / TOTP (otpauth)'
-        meta_description: 'Crea un código QR otpauth:// gratuito para dar de alta Google Authenticator, Authy, 1Password o Bitwarden. TOTP estándar, SHA-1, 6 dígitos, 30 segundos.'
-        form_title: 'Tu secreto TOTP'
-        intro: 'Convierte un secreto TOTP en el código QR que esperan las aplicaciones de autenticación, el que se muestra al final de un alta de doble factor.'
-        copy_title: 'Qué contiene un código QR 2FA'
-        copy_body: |
-            <p>Todas las aplicaciones de autenticación leen la misma URI: <code>otpauth://totp/Servicio:cuenta?secret=…&amp;issuer=…</code>. El secreto es una cadena Base32 compartida una sola vez entre tu servidor y la aplicación; a partir de ahí ambos calculan los mismos seis dígitos cada treinta segundos, sin conexión. Este generador produce esa URI con los valores predeterminados de todas las apps: SHA-1, 6 dígitos, periodo de 30 segundos.</p>
-            <p>Úsalo para construir una pantalla de alta, migrar un secreto a un móvil nuevo o probar una integración sin programar el QR. El nombre del servicio es lo que aparece encima de los dígitos en la aplicación: pon el que tus usuarios reconozcan.</p>
-            <p><strong>Una advertencia.</strong> Un secreto TOTP es una credencial: quien escanee el código podrá generar tus códigos indefinidamente. No lo envíes por correo ni por mensajería, no lo dejes en una captura de pantalla y no publiques nunca un código creado a partir de un secreto real. En caso de duda, cambia el secreto: no cuesta nada.</p>
-    crypto:
-        name: 'Generador de código QR cripto'
-        object: 'código QR cripto'
-        short: 'Ethereum, Litecoin, Dogecoin, Monero y más.'
-        meta_title: 'Generador gratuito de código QR de pago cripto (ETH, LTC, DOGE…)'
-        meta_description: 'Crea un código QR de pago gratuito para Ethereum, Litecoin, Dogecoin, Bitcoin Cash, Monero, Dash o Solana. URI estándar, compatible con todos los monederos.'
-        form_title: 'Tu pago'
-        intro: 'Elige una moneda y pega tu dirección: el escaneo abre el monedero de quien paga con todo rellenado. Sin copiar y pegar, sin caracteres cambiados.'
-        copy_title: 'Un código, el estándar correcto para cada cadena'
-        copy_body: |
-            <p>Cada cadena tiene su propia convención de URI, y un monedero solo lee la correcta. Este generador emite el formato adecuado para cada una: <strong>EIP-681</strong> para Ethereum (<code>ethereum:0x…@1?value=…</code>, con el importe en wei), <strong>BIP-21</strong> para Litecoin, Dogecoin, Bitcoin Cash y Dash, el parámetro <code>tx_amount</code> propio de Monero y <strong>Solana Pay</strong> para SOL.</p>
-            <p>La dirección se valida contra el formato de la cadena elegida, así que pegar una dirección de Ethereum en Litecoin se detecta de inmediato: la causa más común de fondos perdidos. Deja el importe vacío para un bote y rellénalo para una factura.</p>
-            <p>Para Bitcoin, usa el <em>generador dedicado</em>: mismo principio, con las particularidades de esa cadena. Y antes de publicar cualquier código de pago, escanéalo tú mismo y compara los cuatro primeros y últimos caracteres que muestra el monedero con tu dirección.</p>
-    telegram:
-        name: 'Generador de código QR de Telegram'
-        object: 'código QR de Telegram'
-        short: 'Abre una conversación de Telegram en un escaneo.'
-        meta_title: 'Generador gratuito de código QR de Telegram'
-        meta_description: 'Crea un código QR gratuito que abre tu perfil, canal o grupo de Telegram. Funciona con un nombre de usuario o un número. Descarga en PNG y SVG.'
-        form_title: 'Tu cuenta de Telegram'
-        intro: 'El escaneo abre directamente tu perfil, canal o grupo de Telegram: sin búsquedas y sin riesgo de acabar en una cuenta suplantada.'
-        copy_title: 'Por qué un código gana a «búscame en Telegram»'
-        copy_body: |
-            <p>Los nombres de usuario de Telegram son fáciles de imitar: una letra cambiada y tu audiencia acaba en otra cuenta. Un código QR elimina el paso de la búsqueda y con él el riesgo de suplantación. Funciona con una cuenta personal, un canal público, un grupo o un bot.</p>
-            <p>Escribe tu nombre de usuario con o sin @, o un número en formato internacional: <code>t.me/+34600000000</code> abre la misma conversación. Coloca el código en una tarjeta, un escaparate, un overlay de directo o la última diapositiva de una charla.</p>
-    signal:
-        name: 'Generador de código QR de Signal'
-        object: 'código QR de Signal'
-        short: 'Comparte tu contacto de Signal en privado.'
-        meta_title: 'Generador gratuito de código QR de Signal'
-        meta_description: 'Crea un código QR gratuito que abre una conversación de Signal con tu número. Ideal para periodistas, abogados y cualquiera que necesite un canal privado.'
-        form_title: 'Tu número de Signal'
-        intro: 'El escaneo abre una conversación de Signal con tu número: un canal cifrado, entregado sin dictar nada.'
-        copy_title: 'Entregar un canal seguro, de forma segura'
-        copy_body: |
-            <p>Signal es la referencia en mensajería cifrada de extremo a extremo, y es lo que usan periodistas, abogados, médicos y ONG para recibir información sensible. Pero un canal solo sirve si se puede alcanzar: un número dictado en voz alta, mal copiado o leído en una foto borrosa es un canal que nadie usa.</p>
-            <p>El código contiene un enlace <code>signal.me</code> estándar. Imprímelo al pie de un artículo, en una página de contacto, en un cartel de sala de espera o en una acreditación de prensa. Ten en cuenta que el número queda visible para quien escanea: Signal identifica las cuentas por número, así que publica uno que aceptes hacer público.</p>
-    directions:
-        name: 'Generador de código QR de cómo llegar'
-        object: 'código QR de cómo llegar'
-        short: 'Lanza la navegación hasta tu dirección.'
-        meta_title: 'Generador gratuito de código QR de cómo llegar (Google Maps)'
-        meta_description: 'Crea un código QR gratuito que inicia la navegación hasta tu dirección, en coche, a pie, en bici o en transporte público. Descarga en PNG y SVG.'
-        form_title: 'Tu destino'
-        intro: 'El escaneo no solo muestra un punto en el mapa: inicia la navegación hasta tu dirección, en el modo de desplazamiento que elijas.'
-        copy_title: 'Enseñar un lugar o llevar a la gente hasta él'
-        copy_body: |
-            <p>Hay dos formas de enviar a alguien a un sitio. Un código de <em>ubicación</em> pone un punto en el mapa: perfecto para un punto de encuentro. Un código de <em>cómo llegar</em> inicia la ruta desde donde esté la persona: perfecto para una tienda, una sala, un muelle de carga o un estand.</p>
-            <p>Escribe una dirección postal, el nombre de un lugar o unas coordenadas GPS. El enlace usa el formato universal de Google Maps, que abre la aplicación en Android y la aplicación o la versión web en iPhone. El modo de desplazamiento es una sugerencia: se puede cambiar con un toque.</p>
-            <p>Imprímelo en el escaparate, en un albarán, en una invitación o al pie de un cartel. Y en papel, mantén la dirección postal escrita junto al código: tranquiliza antes de escanear y sigue sirviendo a quien no tiene el móvil a mano.</p>
-
 howto:
     title: 'Cómo crear tu %tool% en tres pasos'
     step1:
@@ -459,9 +203,6 @@ faq:
     print:
         q: '¿A qué tamaño debo imprimir un código?'
         a: 'Una regla práctica: el código debe medir al menos una décima parte de la distancia de escaneo. Para escanear a 50 cm, imprime al menos 5 cm de ancho. Exporta siempre el SVG, conserva el margen y prueba con dos o tres teléfonos.'
-    url:
-        q: '¿Puedo cambiar después el destino de mi código QR?'
-        a: 'No en un código estático: la URL está en el patrón. Si prevés cambiarla, codifica un enlace que controles (tu propio dominio, una página que redirige) para cambiar la redirección en lugar de reimprimir.'
     text:
         q: '¿Cuánto texto cabe en un código QR?'
         a: 'Técnicamente hasta unos 4000 caracteres, pero la legibilidad cae rápido. Quédate por debajo de 300 caracteres para un escaneo instantáneo y sube la corrección de errores si te pasas.'
@@ -471,52 +212,9 @@ faq:
     vcard:
         q: '¿Qué formato se usa para la tarjeta de contacto?'
         a: 'vCard 3.0, el formato compatible con iOS, Android, Outlook, Gmail y todas las agendas habituales. No hay que instalar nada en el teléfono de la otra persona.'
-    email:
-        q: '¿El escaneo envía el correo automáticamente?'
-        a: 'No, y es intencionado: el escaneo abre la aplicación de correo con todo rellenado y la persona pulsa enviar. Todavía puede editar el mensaje antes.'
-    sms:
-        q: '¿El SMS tiene coste para quien escanea?'
-        a: 'El mensaje sale de su propio teléfono, así que se aplica su tarifa habitual. Este sitio no cobra nada y el código funciona incluso sin datos.'
-    phone:
-        q: '¿La llamada se inicia sola?'
-        a: 'No. El escaneo abre el marcador con el número ya escrito y la persona pulsa el botón de llamar. Es una norma de seguridad de iOS y Android.'
     whatsapp:
         q: '¿Hace falta una cuenta de WhatsApp Business?'
         a: 'No. El código abre una conversación wa.me estándar que funciona con cualquier cuenta de WhatsApp, personal o profesional.'
-    geo:
-        q: '¿Qué aplicación se abre al escanear?'
-        a: 'La aplicación de mapas predeterminada del teléfono: Mapas en iOS, Google Maps en la mayoría de Android. Las coordenadas se transmiten en el formato estándar geo:.'
-    barcode:
-        q: '¿Puedo inventarme un número EAN-13?'
-        a: 'No para la venta en tienda. Un EAN-13 comercializado debe proceder de un prefijo GS1 asignado a tu empresa. Para uso interno —inventario, activos, logística— puedes numerar libremente, y el Code 128 suele encajar mejor.'
-    event:
-        q: '¿Qué calendarios aceptan el código?'
-        a: 'El escaneo abre el calendario nativo de iOS y Android, que después sincroniza con Google Calendar, iCloud u Outlook como siempre. El formato codificado es el VEVENT estándar.'
-    review:
-        q: '¿Puedo enseñar el código solo a los clientes contentos?'
-        a: 'No. Filtrar a quién se invita a dejar reseña incumple las políticas de Google y puede suspender tu perfil. Enseña el mismo código a todo el mundo y pídelo cuando el servicio ha ido bien.'
-    bitcoin:
-        q: '¿El importe queda fijado en el código?'
-        a: 'Es una sugerencia: el monedero lo rellena y el pagador aún puede cambiarlo antes de firmar. Deja el campo vacío para una donación y rellénalo para una factura.'
-    sepa:
-        q: '¿Qué bancos leen un GiroCode?'
-        a: 'La mayoría de las aplicaciones bancarias de Alemania, Austria, Países Bajos, Bélgica y Finlandia lo hacen de forma nativa, y cada vez más en el resto de Europa. Donde no se admite, el escaneo solo muestra el texto: añadirlo no cuesta nada.'
-    totp:
-        q: '¿Es seguro generar aquí un código 2FA?'
-        a: 'El secreto se usa para construir la imagen y luego se descarta: nunca se guarda. Dicho esto, un secreto TOTP es una credencial: no publiques nunca un código creado con un secreto real y cámbialo si se filtra.'
-    crypto:
-        q: '¿Qué cadenas se admiten?'
-        a: 'Ethereum (EIP-681), Litecoin, Dogecoin, Bitcoin Cash, Dash (BIP-21), Monero y Solana Pay. Bitcoin tiene su propio generador. La dirección se valida según la cadena seleccionada.'
-    telegram:
-        q: '¿Funciona con un canal o un bot?'
-        a: 'Sí. Cualquier nombre de usuario público funciona: cuenta personal, canal, grupo o bot. Un número en formato internacional también sirve.'
-    signal:
-        q: '¿El código revela mi número de teléfono?'
-        a: 'Sí: Signal identifica las cuentas por número, así que va en el enlace. Publica solo un número que aceptes hacer público.'
-    directions:
-        q: '¿Funciona sin Google Maps instalado?'
-        a: 'Sí. En un móvil sin la aplicación, el enlace abre la versión web de Google Maps, que ofrece la misma ruta.'
-
 blog:
     meta_title: 'Guías de códigos QR: buenas prácticas y casos de uso'
     meta_description: 'Guías prácticas sobre códigos QR y de barras: tamaño de impresión, corrección de errores, estáticos frente a dinámicos, casos de uso de marketing y buenas prácticas de escaneo.'
@@ -551,19 +249,7 @@ error:
     invalid_url: 'Esta URL no es válida. Debería parecerse a https://ejemplo.es.'
     invalid_email: 'Esta dirección de correo no es válida.'
     invalid_phone: 'Este número de teléfono no es válido. Usa el formato internacional, por ejemplo +34 600 000 000.'
-    invalid_coordinates: 'Estas coordenadas no son válidas. La latitud va de -90 a 90 y la longitud de -180 a 180.'
-    invalid_iban: 'Este IBAN no es válido: revisa si hay una errata.'
-    invalid_secret: 'Esta clave secreta no es válida. Debe estar en Base32 (letras de la A a la Z y dígitos del 2 al 7), con al menos 16 caracteres.'
-    invalid_username: 'Este nombre de usuario no es válido. Usa entre 5 y 32 letras, dígitos o guiones bajos, o un número en formato internacional.'
-    invalid_crypto_address: 'Esta dirección no corresponde al formato %chain%.'
-    unknown_chain: 'Moneda desconocida.'
-    sepa_too_long: 'Los datos de la transferencia son demasiado largos para codificarse. Acorta el nombre del beneficiario o el concepto.'
-    invalid_date: 'Esta fecha no es válida.'
-    invalid_bitcoin_address: 'Esta dirección de Bitcoin no es válida. Debe empezar por 1, 3 o bc1.'
-    invalid_amount: 'Este importe no es válido.'
     unknown_tool: 'Generador desconocido.'
-    unknown_symbology: 'Tipo de código de barras desconocido.'
-    invalid_barcode_value: 'Este valor no puede codificarse como %symbology%. Comprueba el número de dígitos y los caracteres permitidos.'
     back_home: 'Volver al generador'
     '404':
         title: 'Esta página no existe'

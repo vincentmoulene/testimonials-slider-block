@@ -81,7 +81,7 @@ final class SiteSmokeTest extends WebTestCase
     public function testAPrefilledToolPageIsNotIndexable(): void
     {
         $client = static::createClient();
-        $crawler = $client->request('GET', '/en/tools/url-qr-code-generator?url=https://example.com');
+        $crawler = $client->request('GET', '/en/tools/wifi-qr-code-generator?ssid=MyNet');
 
         self::assertResponseIsSuccessful();
         self::assertStringContainsString('noindex', (string) $crawler->filter('meta[name="robots"]')->attr('content'));
@@ -147,7 +147,7 @@ final class SiteSmokeTest extends WebTestCase
     public function testImageEndpointReturnsACacheableImage(): void
     {
         $client = static::createClient();
-        $client->request('GET', '/q/png?t=url&url=https%3A%2F%2Fexample.com');
+        $client->request('GET', '/q/png?t=qrcode&content=https%3A%2F%2Fexample.com');
 
         self::assertResponseIsSuccessful();
         self::assertResponseHeaderSame('Content-Type', 'image/png');
@@ -157,7 +157,7 @@ final class SiteSmokeTest extends WebTestCase
     public function testImageEndpointRejectsAnInvalidPayload(): void
     {
         $client = static::createClient();
-        $client->request('GET', '/q/png?t=email&email=nope');
+        $client->request('GET', '/q/png?t=whatsapp&phone=12');
 
         self::assertResponseStatusCodeSame(400);
     }
@@ -177,7 +177,7 @@ final class SiteSmokeTest extends WebTestCase
     public function testApiErrorsAreTranslated(): void
     {
         $client = static::createClient();
-        $this->postJson($client, ['tool' => 'url', 'locale' => 'fr', 'values' => ['url' => '']]);
+        $this->postJson($client, ['tool' => 'qrcode', 'locale' => 'fr', 'values' => ['content' => '']]);
 
         $data = json_decode((string) $client->getResponse()->getContent(), true);
         self::assertFalse($data['ok']);

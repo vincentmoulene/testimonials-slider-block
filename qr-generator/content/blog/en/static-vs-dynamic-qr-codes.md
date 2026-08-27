@@ -6,7 +6,7 @@ description: 'Dynamic QR codes are editable and trackable — and they stop work
 date: 2026-08-11
 updated: 2026-08-11
 tags: [strategy, tracking]
-tool: url
+tool: qrcode
 ---
 
 Every paid QR code service sells the same headline feature: *"change the destination after printing"*. It is a real benefit, and it comes with a real hostage situation. Understanding the mechanism makes the decision obvious.

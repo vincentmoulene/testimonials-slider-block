@@ -175,7 +175,7 @@ final class ToolController extends SiteController
         $previewUrl = null;
         $previewOptions = new RenderOptions(
             format: 'svg',
-            size: 'barcode' === $tool->kind ? 600 : 512,
+            size: 512,
             margin: $options->margin,
             ecc: $options->ecc,
             foreground: $options->foreground,

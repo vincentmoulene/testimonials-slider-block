@@ -6,7 +6,7 @@ description: 'The 10:1 rule, minimum sizes for a business card, a poster or a bi
 date: 2026-08-04
 updated: 2026-08-04
 tags: [print, best-practices]
-tool: url
+tool: qrcode
 ---
 
 A QR code that does not scan is worse than no QR code at all: it burns the trust of the person who bothered to take out their phone. Almost every failure comes down to one of five things, and size is the first.

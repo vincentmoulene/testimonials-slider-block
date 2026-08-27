@@ -22,18 +22,10 @@ who download a code.
 - **A generic generator on the home page**: one field, anything inside — a link,
   a text, a reference. A bare domain is turned into a link, everything else is
   encoded verbatim.
-- **19 specialised generators**, each with its own landing page in each language:
-  - *Links & text* — URL, plain text
-  - *Contact* — vCard, email, SMS, phone, WhatsApp, Telegram, Signal
-  - *Places* — geolocation, driving directions (Google Maps), calendar event
-  - *Business* — Wi-Fi, Google review, SEPA transfer (EPC / GiroCode)
-  - *Payments & security* — Bitcoin, multi-chain crypto (Ethereum EIP-681,
-    Litecoin, Dogecoin, Bitcoin Cash, Monero, Dash, Solana Pay), 2FA / TOTP
-  - *Retail* — 1D barcodes (EAN-13, EAN-8, UPC-A, Code 128, Code 39, ITF-14)
-
-  Each payload follows the standard its readers expect — EPC069-12 for SEPA,
-  `otpauth://` for authenticators, EIP-681 for Ethereum, BIP-21 for the other
-  chains, VEVENT for calendars — rather than a link to a page we control.
+- **4 ready-made formats**, each with its own landing page in each language:
+  Wi-Fi (`WIFI:`), vCard contact card, plain text and WhatsApp (`wa.me`). Each
+  payload follows the convention native iOS and Android cameras already read —
+  no redirect, no tracking domain, nothing that can be switched off later.
 - **5 languages** (en, fr, es, de, it) with translated URLs, translated slugs and
   a full `hreflang` cluster on every page.
 - **Static codes only.** The payload is encoded in the pattern, nothing is stored,
@@ -59,9 +51,8 @@ Everything below is implemented, not aspirational:
 | Atom feed per locale | `/{locale}/feed.xml` |
 | Server-rendered HTML, one CSS file, no framework JS, `Cache-Control` on every page | AssetMapper + `setPublic()` |
 | Unique editorial copy per tool page (not a shared boilerplate block) | `tool.*.copy_body` keys |
-| Input validated to the real standard (IBAN mod 97, Base32 secrets, per-chain address formats) | `src/Generator/PayloadFactory.php` |
 
-Sitemap size today: **139 URLs**, all indexable and cross-linked. The generic
+Sitemap size today: **64 URLs**, all indexable and cross-linked. The generic
 generator deliberately has *no* landing page of its own — it is the home page,
 and a second URL for it would be duplicate content.
 
@@ -134,6 +125,14 @@ languages. If you change what you do with the addresses, change those pages too.
 PHP 8.4 with `gd`, `intl` and a PDO driver. SQLite is the default and needs no
 setup; PostgreSQL is the right choice as soon as you run more than one instance.
 No Redis, no Node.js.
+
+## Scope
+
+The product is the home page: paste anything, download a QR code. The four tool
+pages exist for search traffic, not to grow the feature set — a single-page site
+ranks for almost nothing. Resist adding more of them: each one is another page to
+keep alive in five languages, and the search demand is heavily concentrated on
+links, Wi-Fi and contact cards.
 
 ## Local development
 

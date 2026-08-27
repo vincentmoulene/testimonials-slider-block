@@ -24,7 +24,7 @@
             <div class="fields">
                 <div class="field">
                     <label for="f-ecc">{{ 'options.ecc'|trans }}</label>
-                    <select id="f-ecc" name="ecc" {{ tool.kind == 'barcode' ? 'disabled' : '' }}>
+                    <select id="f-ecc" name="ecc">
                         {% for level in ['L', 'M', 'Q', 'H'] %}
                             <option value="{{ level }}" {{ options.ecc == level ? 'selected' : '' }}>{{ ('options.ecc.' ~ level)|trans }}</option>
                         {% endfor %}
@@ -58,10 +58,10 @@
     </form>
 
     <div class="generator-preview">
-        <figure class="preview-frame {{ tool.kind == 'barcode' ? 'preview-frame--wide' : '' }}">
+        <figure class="preview-frame">
             {% if preview_url %}
                 <img data-generator-target="image" src="{{ preview_url }}" alt="{{ ('tool.' ~ tool.id ~ '.name')|trans }}"
-                     width="{{ tool.kind == 'barcode' ? 600 : 512 }}" height="{{ tool.kind == 'barcode' ? 200 : 512 }}"
+                     width="512" height="512"
                      fetchpriority="high" decoding="async">
             {% else %}
                 <img data-generator-target="image" src="/placeholder.svg" alt="" width="512" height="512">

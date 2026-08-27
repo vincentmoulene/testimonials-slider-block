@@ -6,7 +6,7 @@ description: 'La regla 10:1, los tamaños mínimos para una tarjeta, un cartel o
 date: 2026-08-04
 updated: 2026-08-04
 tags: [impresion, buenas-practicas]
-tool: url
+tool: qrcode
 ---
 
 Un código QR que no se escanea es peor que no poner ninguno: quema la confianza de quien se ha molestado en sacar el teléfono. Casi todos los fallos vienen de una de estas cinco causas, y el tamaño es la primera.

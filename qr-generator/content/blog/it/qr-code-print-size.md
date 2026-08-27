@@ -6,7 +6,7 @@ description: 'La regola 10:1, le dimensioni minime per un biglietto da visita, u
 date: 2026-08-04
 updated: 2026-08-04
 tags: [stampa, buone-pratiche]
-tool: url
+tool: qrcode
 ---
 
 Un QR code che non si scansiona è peggio di nessun QR code: brucia la fiducia di chi ha tirato fuori il telefono. Quasi tutti i fallimenti dipendono da una di cinque cause, e la dimensione viene per prima.

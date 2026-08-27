@@ -43,7 +43,7 @@ final class GenerateController extends AbstractController
     {
         $this->throttle($request);
 
-        $tool = $this->registry->get((string) $request->query->get('t', 'url'));
+        $tool = $this->registry->get((string) $request->query->get('t', 'qrcode'));
         if (null === $tool) {
             throw $this->createNotFoundException();
         }
@@ -52,7 +52,7 @@ final class GenerateController extends AbstractController
         $options = RenderOptions::fromRequest($request, $format);
 
         try {
-            $code = $this->renderer->render($tool, $this->payloadFactory->build($tool, $values), $options, $values);
+            $code = $this->renderer->renderQrCode($this->payloadFactory->build($tool, $values), $options);
         } catch (InvalidPayloadException $e) {
             return new Response($this->message($e, $request->getLocale()), Response::HTTP_BAD_REQUEST, ['Content-Type' => 'text/plain; charset=UTF-8']);
         }
@@ -71,7 +71,7 @@ final class GenerateController extends AbstractController
         if ($request->query->getBoolean('download')) {
             $response->headers->set('Content-Disposition', $response->headers->makeDisposition(
                 'attachment',
-                \sprintf('%s-%s.%s', $tool->kind, $tool->id, $code->extension),
+                \sprintf('qr-%s.%s', $tool->id, $code->extension),
             ));
         }
 
@@ -111,7 +111,7 @@ final class GenerateController extends AbstractController
 
         try {
             $data = $this->payloadFactory->build($tool, $values);
-            $code = $this->renderer->render($tool, $data, $options, $values);
+            $code = $this->renderer->renderQrCode($data, $options);
         } catch (InvalidPayloadException $e) {
             return new JsonResponse(['ok' => false, 'error' => $this->message($e, $locale)]);
         }

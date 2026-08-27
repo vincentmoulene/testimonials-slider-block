@@ -6,7 +6,7 @@ description: 'Les QR codes dynamiques sont modifiables et traçables — et ils 
 date: 2026-08-11
 updated: 2026-08-11
 tags: [strategie, tracking]
-tool: url
+tool: qrcode
 ---
 
 Tous les services payants de QR codes vendent le même argument phare : *« changez la destination après impression »*. C'est un vrai bénéfice, et il s'accompagne d'une vraie prise d'otage. Comprendre le mécanisme rend la décision évidente.

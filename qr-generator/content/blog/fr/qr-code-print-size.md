@@ -6,7 +6,7 @@ description: 'La règle du 10:1, les tailles minimales pour une carte de visite,
 date: 2026-08-04
 updated: 2026-08-04
 tags: [impression, bonnes-pratiques]
-tool: url
+tool: qrcode
 ---
 
 Un QR code qui ne se scanne pas est pire que pas de QR code du tout : il brûle la confiance de la personne qui a pris la peine de sortir son téléphone. Presque tous les échecs viennent de l'une de ces cinq causes, et la taille arrive en premier.

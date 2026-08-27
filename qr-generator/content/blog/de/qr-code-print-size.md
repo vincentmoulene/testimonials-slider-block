@@ -6,7 +6,7 @@ description: 'Die 10:1-Regel, Mindestgrößen für Visitenkarte, Plakat und Gro�
 date: 2026-08-04
 updated: 2026-08-04
 tags: [druck, best-practices]
-tool: url
+tool: qrcode
 ---
 
 Ein QR-Code, der sich nicht scannen lässt, ist schlimmer als gar keiner: Er verbrennt das Vertrauen der Person, die extra ihr Telefon herausgeholt hat. Fast jedes Scheitern geht auf eine von fünf Ursachen zurück — und die Größe steht an erster Stelle.

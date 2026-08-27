@@ -13,7 +13,6 @@
         "egulias/email-validator": "^4.0",
         "endroid/qr-code": "^6.1",
         "league/commonmark": "^2.10",
-        "picqer/php-barcode-generator": "^3.3",
         "symfony/asset": "8.1.*",
         "symfony/asset-mapper": "8.1.*",
         "symfony/console": "8.1.*",

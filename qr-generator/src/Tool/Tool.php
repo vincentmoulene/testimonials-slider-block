@@ -13,7 +13,6 @@ final readonly class Tool
      */
     public function __construct(
         public string $id,
-        public string $kind,
         public array $slugs,
         public array $fields,
         public string $icon,

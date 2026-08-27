@@ -69,11 +69,8 @@ final class ToolRegistry
     private function build(): array
     {
         $tools = [
-            // The generic generator: one field, anything inside. It is the home
-            // page, so it deliberately has no landing page of its own.
             new Tool(
                 id: 'qrcode',
-                kind: 'qr',
                 slugs: [
                     'en' => 'qr-code-generator',
                     'fr' => 'generateur-qr-code',
@@ -86,22 +83,7 @@ final class ToolRegistry
                 standalone: false,
             ),
             new Tool(
-                id: 'url',
-                kind: 'qr',
-                slugs: [
-                    'en' => 'url-qr-code-generator',
-                    'fr' => 'generateur-qr-code-url',
-                    'es' => 'generador-codigo-qr-url',
-                    'de' => 'url-qr-code-generator',
-                    'it' => 'generatore-qr-code-url',
-                ],
-                fields: [new Field('url', 'url', true, maxLength: 1800, default: 'https://')],
-                icon: 'link',
-                featured: true,
-            ),
-            new Tool(
                 id: 'text',
-                kind: 'qr',
                 slugs: [
                     'en' => 'text-qr-code-generator',
                     'fr' => 'qr-code-texte',
@@ -115,7 +97,6 @@ final class ToolRegistry
             ),
             new Tool(
                 id: 'wifi',
-                kind: 'qr',
                 slugs: [
                     'en' => 'wifi-qr-code-generator',
                     'fr' => 'qr-code-wifi',
@@ -134,7 +115,6 @@ final class ToolRegistry
             ),
             new Tool(
                 id: 'vcard',
-                kind: 'qr',
                 slugs: [
                     'en' => 'vcard-qr-code-generator',
                     'fr' => 'qr-code-vcard-contact',
@@ -155,55 +135,7 @@ final class ToolRegistry
                 featured: true,
             ),
             new Tool(
-                id: 'email',
-                kind: 'qr',
-                slugs: [
-                    'en' => 'email-qr-code-generator',
-                    'fr' => 'qr-code-email',
-                    'es' => 'codigo-qr-correo',
-                    'de' => 'email-qr-code-generator',
-                    'it' => 'qr-code-email',
-                ],
-                fields: [
-                    new Field('email', 'email', true, maxLength: 128),
-                    new Field('subject', 'text', maxLength: 160),
-                    new Field('body', 'textarea', maxLength: 800),
-                ],
-                icon: 'mail',
-                featured: true,
-            ),
-            new Tool(
-                id: 'sms',
-                kind: 'qr',
-                slugs: [
-                    'en' => 'sms-qr-code-generator',
-                    'fr' => 'qr-code-sms',
-                    'es' => 'codigo-qr-sms',
-                    'de' => 'sms-qr-code-generator',
-                    'it' => 'qr-code-sms',
-                ],
-                fields: [
-                    new Field('phone', 'tel', true, maxLength: 32, wide: false),
-                    new Field('message', 'textarea', maxLength: 500),
-                ],
-                icon: 'sms',
-            ),
-            new Tool(
-                id: 'phone',
-                kind: 'qr',
-                slugs: [
-                    'en' => 'phone-qr-code-generator',
-                    'fr' => 'qr-code-telephone',
-                    'es' => 'codigo-qr-telefono',
-                    'de' => 'telefon-qr-code-generator',
-                    'it' => 'qr-code-telefono',
-                ],
-                fields: [new Field('phone', 'tel', true, maxLength: 32)],
-                icon: 'phone',
-            ),
-            new Tool(
                 id: 'whatsapp',
-                kind: 'qr',
                 slugs: [
                     'en' => 'whatsapp-qr-code-generator',
                     'fr' => 'qr-code-whatsapp',
@@ -216,185 +148,6 @@ final class ToolRegistry
                     new Field('message', 'textarea', maxLength: 500),
                 ],
                 icon: 'chat',
-                featured: true,
-            ),
-            new Tool(
-                id: 'geo',
-                kind: 'qr',
-                slugs: [
-                    'en' => 'location-qr-code-generator',
-                    'fr' => 'qr-code-geolocalisation',
-                    'es' => 'codigo-qr-ubicacion',
-                    'de' => 'standort-qr-code-generator',
-                    'it' => 'qr-code-posizione',
-                ],
-                fields: [
-                    new Field('latitude', 'text', true, maxLength: 24, wide: false),
-                    new Field('longitude', 'text', true, maxLength: 24, wide: false),
-                ],
-                icon: 'pin',
-            ),
-            new Tool(
-                id: 'event',
-                kind: 'qr',
-                slugs: [
-                    'en' => 'event-qr-code-generator',
-                    'fr' => 'qr-code-evenement',
-                    'es' => 'codigo-qr-evento',
-                    'de' => 'termin-qr-code-generator',
-                    'it' => 'qr-code-evento',
-                ],
-                fields: [
-                    new Field('event_title', 'text', true, maxLength: 128),
-                    new Field('start', 'datetime', true, wide: false),
-                    new Field('end', 'datetime', wide: false),
-                    new Field('location', 'text', maxLength: 200),
-                ],
-                icon: 'calendar',
-            ),
-            new Tool(
-                id: 'review',
-                kind: 'qr',
-                slugs: [
-                    'en' => 'google-review-qr-code',
-                    'fr' => 'qr-code-avis-google',
-                    'es' => 'codigo-qr-resenas-google',
-                    'de' => 'google-bewertung-qr-code',
-                    'it' => 'qr-code-recensioni-google',
-                ],
-                fields: [new Field('url', 'url', true, maxLength: 512)],
-                icon: 'star',
-                featured: true,
-            ),
-            new Tool(
-                id: 'bitcoin',
-                kind: 'qr',
-                slugs: [
-                    'en' => 'bitcoin-qr-code-generator',
-                    'fr' => 'qr-code-bitcoin',
-                    'es' => 'codigo-qr-bitcoin',
-                    'de' => 'bitcoin-qr-code-generator',
-                    'it' => 'qr-code-bitcoin',
-                ],
-                fields: [
-                    new Field('address', 'text', true, maxLength: 128),
-                    new Field('amount', 'text', maxLength: 24, wide: false),
-                    new Field('label', 'text', maxLength: 64, wide: false),
-                ],
-                icon: 'coin',
-            ),
-            new Tool(
-                id: 'sepa',
-                kind: 'qr',
-                slugs: [
-                    'en' => 'sepa-payment-qr-code',
-                    'fr' => 'qr-code-virement-sepa',
-                    'es' => 'codigo-qr-transferencia-sepa',
-                    'de' => 'giro-code-generator',
-                    'it' => 'qr-code-bonifico-sepa',
-                ],
-                fields: [
-                    new Field('beneficiary_name', 'text', true, maxLength: 70),
-                    new Field('iban', 'text', true, maxLength: 42, wide: false),
-                    new Field('amount_eur', 'text', maxLength: 16, wide: false),
-                    new Field('remittance', 'text', maxLength: 140),
-                ],
-                icon: 'bank',
-                featured: true,
-            ),
-            new Tool(
-                id: 'totp',
-                kind: 'qr',
-                slugs: [
-                    'en' => '2fa-qr-code-generator',
-                    'fr' => 'qr-code-2fa-authentification',
-                    'es' => 'codigo-qr-2fa',
-                    'de' => '2fa-qr-code-generator',
-                    'it' => 'qr-code-2fa',
-                ],
-                fields: [
-                    new Field('issuer', 'text', true, maxLength: 64, wide: false),
-                    new Field('account', 'text', true, maxLength: 128, wide: false),
-                    new Field('secret', 'text', true, maxLength: 128),
-                ],
-                icon: 'key',
-            ),
-            new Tool(
-                id: 'crypto',
-                kind: 'qr',
-                slugs: [
-                    'en' => 'crypto-qr-code-generator',
-                    'fr' => 'qr-code-crypto',
-                    'es' => 'codigo-qr-cripto',
-                    'de' => 'krypto-qr-code-generator',
-                    'it' => 'qr-code-crypto',
-                ],
-                fields: [
-                    new Field('chain', 'choice', choices: ['ETH', 'BTC', 'LTC', 'DOGE', 'BCH', 'XMR', 'DASH', 'SOL'], default: 'ETH', wide: false),
-                    new Field('amount', 'text', maxLength: 32, wide: false),
-                    new Field('address', 'text', true, maxLength: 128),
-                    new Field('label', 'text', maxLength: 64),
-                ],
-                icon: 'coin',
-            ),
-            new Tool(
-                id: 'telegram',
-                kind: 'qr',
-                slugs: [
-                    'en' => 'telegram-qr-code-generator',
-                    'fr' => 'qr-code-telegram',
-                    'es' => 'codigo-qr-telegram',
-                    'de' => 'telegram-qr-code-generator',
-                    'it' => 'qr-code-telegram',
-                ],
-                fields: [new Field('username', 'text', true, maxLength: 64)],
-                icon: 'send',
-            ),
-            new Tool(
-                id: 'signal',
-                kind: 'qr',
-                slugs: [
-                    'en' => 'signal-qr-code-generator',
-                    'fr' => 'qr-code-signal',
-                    'es' => 'codigo-qr-signal',
-                    'de' => 'signal-qr-code-generator',
-                    'it' => 'qr-code-signal',
-                ],
-                fields: [new Field('phone', 'tel', true, maxLength: 32)],
-                icon: 'shield',
-            ),
-            new Tool(
-                id: 'directions',
-                kind: 'qr',
-                slugs: [
-                    'en' => 'directions-qr-code-generator',
-                    'fr' => 'qr-code-itineraire',
-                    'es' => 'codigo-qr-como-llegar',
-                    'de' => 'routen-qr-code-generator',
-                    'it' => 'qr-code-indicazioni-stradali',
-                ],
-                fields: [
-                    new Field('destination', 'text', true, maxLength: 256),
-                    new Field('travel_mode', 'choice', choices: ['driving', 'walking', 'bicycling', 'transit'], default: 'driving', wide: false),
-                ],
-                icon: 'navigation',
-                featured: true,
-            ),
-            new Tool(
-                id: 'barcode',
-                kind: 'barcode',
-                slugs: [
-                    'en' => 'barcode-generator',
-                    'fr' => 'generateur-code-barres',
-                    'es' => 'generador-codigo-barras',
-                    'de' => 'strichcode-generator',
-                    'it' => 'generatore-codice-a-barre',
-                ],
-                fields: [
-                    new Field('value', 'text', true, maxLength: 64, wide: false),
-                    new Field('symbology', 'choice', choices: ['EAN13', 'EAN8', 'UPCA', 'CODE128', 'CODE39', 'ITF14'], default: 'EAN13', wide: false),
-                ],
-                icon: 'barcode',
                 featured: true,
             ),
         ];

@@ -26,7 +26,7 @@
         {% if related_tool %}
             <aside class="cta-box">
                 <p class="cta-title">{{ 'blog.try_tool'|trans }}</p>
-                <a class="btn btn-primary" href="{{ tool_path(related_tool, locale) }}">
+                <a class="btn btn-primary" href="{{ related_tool.standalone ? tool_path(related_tool, locale) : path('app_home', {_locale: locale}) }}">
                     {{ icon(related_tool.icon, 18) }} {{ ('tool.' ~ related_tool.id ~ '.name')|trans }}
                 </a>
             </aside>
