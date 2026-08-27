@@ -6,6 +6,7 @@ a11y:
 nav:
     home: 'Accueil'
     tools: 'Outils'
+    gallery: 'Codes créés'
     blog: 'Blog'
     about: 'À propos'
     privacy: 'Politique de confidentialité'
@@ -239,6 +240,26 @@ lead:
     thanks: 'Merci ! Votre téléchargement démarre.'
     cancel: 'Fermer'
 
+
+links:
+    latest_title: 'Derniers QR codes créés'
+    latest_subtitle: 'Les 25 derniers liens transformés en code ici — %count% au total.'
+    see_all: 'Voir tous les codes'
+    notice: 'Les liens (http/https) que vous téléchargez sont listés publiquement sur cette page. Les mots de passe Wi-Fi, cartes de visite, textes et numéros ne sont jamais listés.'
+    thumbnail_alt: 'QR code de %url%'
+    meta_title: 'Tous les QR codes créés sur le site'
+    meta_description: 'Parcourez et retrouvez tous les liens transformés en QR code ici, du plus récent au plus ancien. Gratuit, sans compte.'
+    h1: 'Tous les codes créés'
+    lead: '%count% liens ont été transformés en QR code ici. Cherchez dans la liste pour en retrouver un.'
+    search_label: 'Rechercher un lien'
+    search_placeholder: 'exemple.fr, /blog, un mot…'
+    search_submit: 'Rechercher'
+    empty: 'Aucun code n''a encore été créé. Le vôtre peut être le premier.'
+    no_results: 'Aucun lien ne correspond à cette recherche.'
+    pagination: 'Pagination'
+    previous: 'Précédent'
+    next: 'Suivant'
+    page_of: 'Page %page% sur %pages%'
 
 page:
     updated: 'Dernière mise à jour :'

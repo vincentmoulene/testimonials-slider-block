@@ -5,7 +5,7 @@ description: 'What this site does and does not collect: no account, no storage o
 
 ## Summary
 
-We do not ask for an account and we never store the content of the codes you generate. We do keep one thing: the email address you enter when you download a code. No advertising or analytics cookie is set before you explicitly accept it.
+We do not ask for an account. We keep two things: the email address you enter when you download a code, and — for http(s) links only — the link itself, which is listed in the public gallery. No advertising or analytics cookie is set before you explicitly accept it.
 
 ## Data you enter in the generators
 
@@ -27,6 +27,18 @@ When you download a code you are asked for an email address. Here is exactly wha
 **Removing it.** Write to us and your address is deleted, with no questions and no delay. You can also ask for a copy of everything we hold about it.
 
 **How long we keep it.** Until you ask for its deletion, or until three years after your last download, whichever comes first.
+
+## Links listed in the public gallery
+
+When you **download** a code whose content is an ordinary web link (http or https), that link is added to the public gallery: the home page shows the 25 most recent, and the gallery page lists them all.
+
+**What is never listed**, whatever you encode: Wi-Fi passwords, contact cards, plain texts, phone numbers and WhatsApp numbers. They are built, sent to your browser and forgotten.
+
+**Links we drop even though they are links**: anything containing a username or password, anything whose address carries a parameter that looks like a secret (`token`, `key`, `signature`, `access_token`, `invite`…), local or private addresses, and hosts on our block list. This is a safety net, not a guarantee: **do not turn a private, one-time or unlisted URL into a code here** if you would mind seeing it on the gallery page.
+
+**Nothing else is stored with the link** — not your IP, not your email, not the code's colours. The link is not clickable on the site and carries no SEO value for its destination, and the gallery page is excluded from search engines.
+
+**Removal.** Write to us with the link and we take it out, no questions asked.
 
 ## Technical logs
 

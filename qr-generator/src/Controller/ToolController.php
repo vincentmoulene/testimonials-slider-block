@@ -8,6 +8,8 @@ use App\Generator\FieldValues;
 use App\Generator\InvalidPayloadException;
 use App\Generator\PayloadFactory;
 use App\Generator\RenderOptions;
+use App\Link\LinkPublisher;
+use App\Repository\PublicLinkRepository;
 use App\Seo\Seo;
 use App\Seo\SeoFactory;
 use App\Tool\Tool;
@@ -29,6 +31,8 @@ final class ToolController extends SiteController
         private readonly ToolRegistry $registry,
         private readonly ToolUrlGenerator $toolUrls,
         private readonly ToolDemo $demo,
+        private readonly PublicLinkRepository $links,
+        private readonly LinkPublisher $publisher,
         private readonly PayloadFactory $payloadFactory,
         private readonly array $enabledLocales,
     ) {
@@ -63,11 +67,17 @@ final class ToolController extends SiteController
         $seo->addJsonLd($this->faqPage($faq));
         $seo->addJsonLd($this->webSite($_locale));
 
+        $gallery = $this->publisher->isEnabled();
+
         return $this->render('tool/home.html.twig', $this->toolContext($request, $tool, $_locale) + [
             'seo' => $seo,
             'faq' => $faq,
             'is_home' => true,
-        ])->setPublic()->setMaxAge(600)->setSharedMaxAge(3600);
+            'latest_links' => $gallery ? $this->links->latest(25) : [],
+            'links_total' => $gallery ? $this->links->countAll() : 0,
+        // The gallery changes as visitors create codes: a short shared cache
+        // keeps the page fresh without giving up CDN caching entirely.
+        ])->setPublic()->setMaxAge(60)->setSharedMaxAge(300);
     }
 
     #[Route(path: [

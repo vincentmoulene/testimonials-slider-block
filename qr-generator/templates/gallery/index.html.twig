@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {%- set locale = app.request.locale -%}
+    {% include 'partials/breadcrumbs.html.twig' %}
+
+    <section class="page-head wrap">
+        <h1>{{ 'links.h1'|trans }}</h1>
+        <p class="lead">{{ 'links.lead'|trans({'%count%': total}) }}</p>
+
+        <form class="link-search" method="get" action="{{ path('app_gallery', {_locale: locale}) }}" role="search">
+            <label class="visually-hidden" for="link-search">{{ 'links.search_label'|trans }}</label>
+            <input type="search" id="link-search" name="q" value="{{ search }}"
+                   placeholder="{{ 'links.search_placeholder'|trans }}" maxlength="120">
+            <button type="submit" class="btn btn-primary">{{ 'links.search_submit'|trans }}</button>
+        </form>
+    </section>
+
+    <section class="wrap">
+        {% if links is empty %}
+            <p class="muted">{{ (search ? 'links.no_results' : 'links.empty')|trans }}</p>
+        {% else %}
+            {% include 'partials/link_grid.html.twig' %}
+
+            {% if pages > 1 %}
+                <nav class="pagination" aria-label="{{ 'links.pagination'|trans }}">
+                    {% if page > 1 %}
+                        <a class="btn" rel="prev" href="{{ path('app_gallery', {_locale: locale, page: page - 1, q: search ?: null}) }}">{{ 'links.previous'|trans }}</a>
+                    {% endif %}
+                    <span class="muted">{{ 'links.page_of'|trans({'%page%': page, '%pages%': pages}) }}</span>
+                    {% if page < pages %}
+                        <a class="btn" rel="next" href="{{ path('app_gallery', {_locale: locale, page: page + 1, q: search ?: null}) }}">{{ 'links.next'|trans }}</a>
+                    {% endif %}
+                </nav>
+            {% endif %}
+        {% endif %}
+    </section>
+{% endblock %}

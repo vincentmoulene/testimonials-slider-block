@@ -10,6 +10,7 @@ who download a code.
 /{locale}               → home page: the generic QR generator (one free-form field)
 /{locale}/tools         → all generators (localised path and slug)
 /{locale}/tools/{slug}  → one landing page per generator, per language
+/{locale}/qr-codes      → public gallery of every link turned into a code
 /{locale}/blog          → file-based blog (Markdown)
 /q/{png|svg|webp}       → stateless image endpoint (download + no-JS fallback)
 /api/generate           → JSON endpoint used by the live preview
@@ -70,6 +71,40 @@ Advertising is opt-in, per visitor, and never blocks the tool:
 
 The consent choice lives in `localStorage`, never in a cookie, and never reaches
 the server — which is why the whole site can stay cacheable by a CDN.
+
+## The public gallery of created links
+
+Downloading a code whose payload is an **http(s) link** adds that link to the
+gallery: the home page shows the 25 newest as thumbnails, and the gallery page
+lists them all with a search box and pagination. Same link twice → one row and a
+counter, not a duplicate.
+
+Everything else a visitor can encode — Wi-Fi passwords, vCards, plain texts,
+phone and WhatsApp numbers — is **never** listed. That rule lives in one place,
+`src/Link/LinkNormaliser.php`, which also drops:
+
+- URLs carrying credentials (`https://user:pass@…`);
+- URLs whose query looks like a secret (`token`, `key`, `signature`,
+  `access_token`, `invite`, `password`…) — private one-time links, in practice;
+- local and private hosts (IP addresses, `localhost`, `.local`, `.test`,
+  anything without a dot);
+- hosts listed in `BLOCKED_HOSTS`.
+
+A public wall of visitor-submitted URLs is a spam magnet, so three more
+decisions: the destinations are rendered as **plain text, never as links** (no
+outbound link equity, nothing to farm), the gallery page is `noindex, follow`
+and stays out of the sitemap, and moderation is one command away:
+
+```bash
+php bin/console app:links:moderate https://example.com/bad     # hide one link
+php bin/console app:links:moderate spam.example                # hide a whole host
+php bin/console app:links:moderate spam.example --delete       # remove the rows
+php bin/console app:links:moderate spam.example --unblock      # put it back
+```
+
+Set `PUBLIC_GALLERY=0` to turn the whole feature off: the pages disappear and
+nothing is recorded. The privacy policy describes all of this in the five
+languages — keep it in sync if you change the rules.
 
 ## Collecting the email addresses
 
@@ -169,6 +204,8 @@ Copy the variables you need into `.env.local` (never commit it):
 | `ANALYTICS_ID` | Optional GA4 id, also gated behind consent |
 | `TRUSTED_PROXIES` | Set to your CDN/proxy range when behind one |
 | `LEAD_CAPTURE_MODE` | `off`, `optional` or `download` (see above) |
+| `PUBLIC_GALLERY` | `1` to list created links publicly, `0` to keep every generation private |
+| `BLOCKED_HOSTS` | Comma-separated hosts kept out of the gallery (covers subdomains) |
 | `DATABASE_URL` | SQLite by default; PostgreSQL recommended in production |
 | `APP_SECRET` | Generate a random 32-byte hex string. **Also keys the IP hashes — changing it makes existing hashes unmatchable** |
 
@@ -242,9 +279,10 @@ src/
 ├── Blog/        Markdown articles and static pages (front matter + CommonMark)
 ├── Command/     CSV export and GDPR erasure for the collected addresses
 ├── Controller/  Thin controllers, one per surface
-├── Entity/      The single table: leads
+├── Entity/      Two tables: leads and public_links
 ├── Generator/   Payload building, rendering, options — pure functions
 ├── Lead/        Email capture: modes, validation, IP hashing
+├── Link/        What may be listed publicly, and recording it
 ├── Repository/  Lead lookups, upsert-on-download, streaming export
 ├── Seo/         Canonical/alternate URL building and sitemap
 ├── Tool/        Tool registry, localised slugs, demo values

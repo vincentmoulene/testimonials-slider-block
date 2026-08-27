@@ -19,6 +19,17 @@
         </div>
     </section>
 
+    {% if public_gallery and latest_links is not empty %}
+        <section class="wrap links-section">
+            <h2>{{ 'links.latest_title'|trans }}</h2>
+            <p class="section-sub muted">{{ 'links.latest_subtitle'|trans({'%count%': links_total}) }}</p>
+            {% include 'partials/link_grid.html.twig' with {links: latest_links} %}
+            <p class="links-more">
+                <a class="btn" href="{{ path('app_gallery', {_locale: locale}) }}">{{ 'links.see_all'|trans }} {{ icon('arrow', 16) }}</a>
+            </p>
+        </section>
+    {% endif %}
+
     {% include 'partials/ads.html.twig' with {slot: 'top'} only %}
 
     {% include 'partials/tool_grid.html.twig' with {

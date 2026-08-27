@@ -12,6 +12,8 @@ parameters:
     app.analytics_id: '%env(ANALYTICS_ID)%'
     app.contact_email: '%env(CONTACT_EMAIL)%'
     app.lead_capture_mode: '%env(LEAD_CAPTURE_MODE)%'
+    app.public_gallery: '%env(bool:PUBLIC_GALLERY)%'
+    app.blocked_hosts: '%env(csv:BLOCKED_HOSTS)%'
     app.locales: ['en', 'fr', 'es', 'de', 'it']
     app.default_locale: 'en'
     app.content_dir: '%kernel.project_dir%/content'
@@ -37,6 +39,14 @@ services:
     App\Lead\LeadCaptureMode:
         factory: ['App\Lead\LeadCaptureMode', 'fromString']
         arguments: ['%app.lead_capture_mode%']
+
+    App\Link\LinkNormaliser:
+        arguments:
+            $blockedHosts: '%app.blocked_hosts%'
+
+    App\Link\LinkPublisher:
+        arguments:
+            $enabled: '%app.public_gallery%'
 
     App\Lead\LeadCapture:
         arguments:

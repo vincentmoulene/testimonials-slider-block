@@ -5,7 +5,7 @@ description: 'Qué recoge y qué no recoge este sitio: sin cuenta, sin almacenar
 
 ## En resumen
 
-No pedimos cuenta y nunca guardamos el contenido de los códigos que generas. Sí conservamos una cosa: la dirección de correo que introduces al descargar un código. No se instala ninguna cookie publicitaria o de medición antes de que la aceptes explícitamente.
+No pedimos cuenta. Conservamos dos cosas: la dirección de correo que introduces al descargar un código y —solo para enlaces http(s)— el propio enlace, que se lista en la galería pública. No se instala ninguna cookie publicitaria o de medición antes de que la aceptes explícitamente.
 
 ## Los datos que escribes en los generadores
 
@@ -27,6 +27,18 @@ Al descargar un código te pedimos una dirección de correo electrónico. Esto e
 **Cómo eliminarla.** Escríbenos y la borramos, sin preguntas y sin demora. También puedes pedir una copia de todo lo que tenemos sobre ella.
 
 **Cuánto la conservamos.** Hasta que pidas su supresión o hasta tres años después de tu última descarga, lo que ocurra antes.
+
+## Enlaces listados en la galería pública
+
+Cuando **descargas** un código cuyo contenido es un enlace web normal (http o https), ese enlace se añade a la galería pública: la página de inicio muestra los 25 más recientes y la página de la galería los lista todos.
+
+**Lo que nunca se lista**, codifiques lo que codifiques: contraseñas de Wi-Fi, tarjetas de contacto, textos libres, números de teléfono y números de WhatsApp. Se construyen, se envían a tu navegador y se olvidan.
+
+**Enlaces que descartamos aunque sean enlaces**: los que contienen un usuario o una contraseña, aquellos cuya dirección lleva un parámetro que parece un secreto (`token`, `key`, `signature`, `access_token`, `invite`…), las direcciones locales o privadas y los hosts de nuestra lista de bloqueo. Es una red de seguridad, no una garantía: **no conviertas aquí una URL privada, de un solo uso o no listada** si te molestaría verla en la página de la galería.
+
+**No se guarda nada más junto al enlace**: ni tu IP, ni tu correo, ni los colores del código. El enlace no es clicable en el sitio y no aporta valor SEO a su destino, y la página de la galería está excluida de los buscadores.
+
+**Supresión.** Escríbenos con el enlace y lo retiramos, sin preguntas.
 
 ## Registros técnicos
 

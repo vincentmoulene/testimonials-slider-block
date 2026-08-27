@@ -9,6 +9,7 @@ twig:
         analytics_id: '%app.analytics_id%'
         contact_email: '%app.contact_email%'
         lead_capture_mode: '%app.lead_capture_mode%'
+        public_gallery: '%app.public_gallery%'
         enabled_locales: '%app.locales%'
 
 when@test:

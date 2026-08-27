@@ -79,6 +79,9 @@
             <a class="btn" data-generator-target="downloadWebp" href="{{ downloads.webp }}" download>{{ icon('download', 18) }} WebP</a>
         </div>
         <p class="muted small">{{ 'generator.formats_hint'|trans }}</p>
+        {% if public_gallery %}
+            <p class="muted small notice">{{ 'links.notice'|trans }}</p>
+        {% endif %}
 
         {% include 'partials/lead.html.twig' %}
     </div>

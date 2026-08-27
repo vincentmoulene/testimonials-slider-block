@@ -5,7 +5,7 @@ description: 'Was diese Website erhebt und was nicht: kein Konto, keine Speicher
 
 ## Kurz gefasst
 
-Wir verlangen kein Konto und speichern die Inhalte Ihrer Codes nie. Eines bewahren wir auf: die E-Mail-Adresse, die Sie beim Herunterladen eines Codes eingeben. Ein Werbe- oder Analyse-Cookie wird erst gesetzt, wenn Sie ausdrücklich zugestimmt haben.
+Wir verlangen kein Konto. Zwei Dinge bewahren wir auf: die E-Mail-Adresse, die Sie beim Herunterladen eines Codes eingeben, und — ausschließlich bei http(s)-Links — den Link selbst, der in der öffentlichen Galerie erscheint. Ein Werbe- oder Analyse-Cookie wird erst gesetzt, wenn Sie ausdrücklich zugestimmt haben.
 
 ## Ihre Eingaben in den Generatoren
 
@@ -27,6 +27,18 @@ Beim Herunterladen eines Codes werden Sie nach einer E-Mail-Adresse gefragt. Das
 **Löschen lassen.** Schreiben Sie uns, und die Adresse wird gelöscht — ohne Nachfragen und ohne Verzögerung. Sie können auch eine Kopie aller dazu gespeicherten Angaben verlangen.
 
 **Speicherdauer.** Bis zu Ihrem Löschverlangen oder bis drei Jahre nach Ihrem letzten Download, je nachdem, was zuerst eintritt.
+
+## Links in der öffentlichen Galerie
+
+Wenn Sie einen Code **herunterladen**, dessen Inhalt ein gewöhnlicher Weblink ist (http oder https), wird dieser Link in die öffentliche Galerie aufgenommen: Die Startseite zeigt die 25 neuesten, die Galerieseite listet alle.
+
+**Was nie gelistet wird**, was immer Sie codieren: WLAN-Passwörter, Kontaktkarten, freie Texte, Telefonnummern und WhatsApp-Nummern. Sie werden erzeugt, an Ihren Browser gesendet und vergessen.
+
+**Links, die wir trotzdem verwerfen**: solche mit Benutzername oder Passwort, solche mit einem Parameter, der nach einem Geheimnis aussieht (`token`, `key`, `signature`, `access_token`, `invite`…), lokale oder private Adressen sowie Hosts auf unserer Sperrliste. Das ist ein Sicherheitsnetz, keine Garantie: **verwandeln Sie hier keine private, einmalige oder nicht gelistete URL in einen Code**, wenn es Sie stören würde, sie auf der Galerieseite zu sehen.
+
+**Sonst wird nichts zum Link gespeichert** — weder Ihre IP noch Ihre E-Mail noch die Farben des Codes. Der Link ist auf der Website nicht anklickbar und bringt dem Ziel keinen SEO-Wert; die Galerieseite ist von Suchmaschinen ausgenommen.
+
+**Löschung.** Schreiben Sie uns mit dem Link — wir nehmen ihn ohne Rückfragen heraus.
 
 ## Technische Protokolle
 

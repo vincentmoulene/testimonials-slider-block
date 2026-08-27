@@ -314,3 +314,26 @@ section { scroll-margin-top: 80px; }
 .lead-inline .lead-form { padding: 1rem; }
 .lead-inline .lead-actions { justify-content: stretch; }
 .lead-inline .lead-actions .btn { flex: 1 1 auto; }
+
+/* ---------------------------------------------------------------------------
+   Public gallery of created links
+--------------------------------------------------------------------------- */
+.links-section { margin-top: 3rem; }
+.link-grid {
+    display: grid; gap: .9rem; list-style: none; padding: 0; margin: 1.4rem 0 0;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+}
+.link-grid li {
+    display: grid; gap: .3rem; justify-items: center; text-align: center;
+    padding: .8rem .6rem; background: var(--bg-elevated);
+    border: 1px solid var(--border); border-radius: var(--radius-sm);
+}
+.link-grid img { width: 100%; max-width: 120px; aspect-ratio: 1; background: #fff; border-radius: 6px; }
+.link-url { font-size: .78rem; line-height: 1.35; word-break: break-all; color: var(--text-muted); }
+.link-grid time { font-size: .7rem; }
+.links-more { margin-top: 1.4rem; }
+
+.link-search { display: flex; flex-wrap: wrap; gap: .6rem; margin-top: 1.2rem; max-width: 560px; }
+.link-search input { flex: 1 1 240px; }
+.pagination { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem; margin-top: 2rem; }
+.notice { border-left: 3px solid var(--border); padding-left: .7rem; margin-top: .6rem !important; }

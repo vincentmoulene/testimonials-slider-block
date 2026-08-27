@@ -10,6 +10,7 @@
 
         <nav class="site-nav" aria-label="{{ 'a11y.main_nav'|trans }}">
             <a href="{{ path('app_tools', {_locale: locale}) }}">{{ 'nav.tools'|trans }}</a>
+            {% if public_gallery %}<a href="{{ path('app_gallery', {_locale: locale}) }}">{{ 'nav.gallery'|trans }}</a>{% endif %}
             <a href="{{ path('app_blog', {_locale: locale}) }}">{{ 'nav.blog'|trans }}</a>
             <a href="{{ path('app_about', {_locale: locale}) }}">{{ 'nav.about'|trans }}</a>
         </nav>

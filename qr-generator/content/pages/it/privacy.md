@@ -5,7 +5,7 @@ description: 'Cosa raccoglie e cosa non raccoglie questo sito: nessun account, n
 
 ## In sintesi
 
-Non chiediamo un account e non conserviamo mai il contenuto dei codici che generi. Conserviamo una sola cosa: l'indirizzo e-mail che inserisci quando scarichi un codice. Nessun cookie pubblicitario o di misurazione viene installato prima che tu lo abbia accettato esplicitamente.
+Non chiediamo un account. Conserviamo due cose: l'indirizzo e-mail che inserisci quando scarichi un codice e — solo per i link http(s) — il link stesso, che viene elencato nella galleria pubblica. Nessun cookie pubblicitario o di misurazione viene installato prima che tu lo abbia accettato esplicitamente.
 
 ## I dati inseriti nei generatori
 
@@ -27,6 +27,18 @@ Quando scarichi un codice ti chiediamo un indirizzo e-mail. Ecco esattamente che
 **Come cancellarlo.** Scrivici e il tuo indirizzo viene cancellato, senza domande e senza attese. Puoi anche chiedere una copia di tutto ciò che conserviamo al riguardo.
 
 **Per quanto tempo.** Fino alla tua richiesta di cancellazione o fino a tre anni dopo l'ultimo download, a seconda di cosa avviene prima.
+
+## Link elencati nella galleria pubblica
+
+Quando **scarichi** un codice il cui contenuto è un normale link web (http o https), quel link viene aggiunto alla galleria pubblica: la home page mostra i 25 più recenti e la pagina della galleria li elenca tutti.
+
+**Ciò che non viene mai elencato**, qualsiasi cosa codifichi: password Wi-Fi, biglietti da visita, testi liberi, numeri di telefono e numeri WhatsApp. Vengono costruiti, inviati al tuo browser e dimenticati.
+
+**Link che scartiamo pur essendo link**: quelli che contengono un nome utente o una password, quelli il cui indirizzo porta un parametro che sembra un segreto (`token`, `key`, `signature`, `access_token`, `invite`…), gli indirizzi locali o privati e gli host presenti nella nostra lista di blocco. È una rete di sicurezza, non una garanzia: **non trasformare qui un URL privato, monouso o non elencato** se ti darebbe fastidio vederlo nella pagina della galleria.
+
+**Nient'altro viene conservato insieme al link**: né il tuo IP, né la tua e-mail, né i colori del codice. Il link non è cliccabile sul sito e non porta valore SEO alla destinazione, e la pagina della galleria è esclusa dai motori di ricerca.
+
+**Cancellazione.** Scrivici indicando il link: lo rimuoviamo, senza chiedere spiegazioni.
 
 ## Log tecnici
 

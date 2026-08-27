@@ -9,6 +9,7 @@ use App\Generator\FieldValues;
 use App\Generator\InvalidPayloadException;
 use App\Generator\PayloadFactory;
 use App\Generator\RenderOptions;
+use App\Link\LinkPublisher;
 use App\Tool\ToolRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\DependencyInjection\Attribute\Target;
@@ -32,6 +33,7 @@ final class GenerateController extends AbstractController
         private readonly ToolRegistry $registry,
         private readonly PayloadFactory $payloadFactory,
         private readonly CodeRenderer $renderer,
+        private readonly LinkPublisher $linkPublisher,
         private readonly TranslatorInterface $translator,
         #[Target('generate')]
         private readonly RateLimiterFactoryInterface $limiter,
@@ -52,7 +54,8 @@ final class GenerateController extends AbstractController
         $options = RenderOptions::fromRequest($request, $format);
 
         try {
-            $code = $this->renderer->renderQrCode($this->payloadFactory->build($tool, $values), $options);
+            $payload = $this->payloadFactory->build($tool, $values);
+            $code = $this->renderer->renderQrCode($payload, $options);
         } catch (InvalidPayloadException $e) {
             return new Response($this->message($e, $request->getLocale()), Response::HTTP_BAD_REQUEST, ['Content-Type' => 'text/plain; charset=UTF-8']);
         }
@@ -68,7 +71,10 @@ final class GenerateController extends AbstractController
         $response->setEtag(md5($code->data));
         $response->isNotModified($request);
 
+        // A download is the moment a code is really "created": that is what the
+        // gallery lists, and only when the payload is a public link.
         if ($request->query->getBoolean('download')) {
+            $this->linkPublisher->publish($payload, $request->getLocale());
             $response->headers->set('Content-Disposition', $response->headers->makeDisposition(
                 'attachment',
                 \sprintf('qr-%s.%s', $tool->id, $code->extension),

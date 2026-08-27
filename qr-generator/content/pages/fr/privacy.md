@@ -5,7 +5,7 @@ description: 'Ce que ce site collecte et ne collecte pas : aucun compte, aucun s
 
 ## En résumé
 
-Nous ne demandons pas de compte et nous ne conservons jamais le contenu des codes que vous générez. Nous conservons une seule chose : l'adresse e-mail que vous saisissez au moment de télécharger un code. Aucun cookie publicitaire ou de mesure n'est déposé avant que vous l'ayez explicitement accepté.
+Nous ne demandons pas de compte. Nous conservons deux choses : l'adresse e-mail que vous saisissez au moment de télécharger un code, et — uniquement pour les liens http(s) — le lien lui-même, qui est listé dans la galerie publique. Aucun cookie publicitaire ou de mesure n'est déposé avant que vous l'ayez explicitement accepté.
 
 ## Les données saisies dans les générateurs
 
@@ -27,6 +27,18 @@ Au moment de télécharger un code, une adresse e-mail vous est demandée. Voici
 **La supprimer.** Écrivez-nous et votre adresse est supprimée, sans justification à fournir et sans délai. Vous pouvez aussi demander une copie de tout ce que nous détenons à son sujet.
 
 **Durée de conservation.** Jusqu'à votre demande de suppression, ou trois ans après votre dernier téléchargement, selon ce qui arrive en premier.
+
+## Liens listés dans la galerie publique
+
+Lorsque vous **téléchargez** un code dont le contenu est un lien web ordinaire (http ou https), ce lien est ajouté à la galerie publique : la page d'accueil affiche les 25 plus récents, et la page galerie les liste tous.
+
+**Ce qui n'est jamais listé**, quoi que vous encodiez : les mots de passe Wi-Fi, les cartes de visite, les textes libres, les numéros de téléphone et les numéros WhatsApp. Ils sont construits, envoyés à votre navigateur, puis oubliés.
+
+**Les liens que nous écartons malgré tout** : ceux qui contiennent un identifiant ou un mot de passe, ceux dont l'adresse porte un paramètre qui ressemble à un secret (`token`, `key`, `signature`, `access_token`, `invite`…), les adresses locales ou privées, et les hôtes figurant sur notre liste de blocage. C'est un filet de sécurité, pas une garantie : **ne transformez pas ici une URL privée, à usage unique ou non répertoriée** si vous n'accepteriez pas de la voir sur la page galerie.
+
+**Rien d'autre n'est conservé avec le lien** : ni votre adresse IP, ni votre e-mail, ni les couleurs du code. Le lien n'est pas cliquable sur le site et n'apporte aucune valeur SEO à sa destination, et la page galerie est exclue des moteurs de recherche.
+
+**Suppression.** Écrivez-nous avec le lien : nous le retirons, sans justification à fournir.
 
 ## Journaux techniques
 

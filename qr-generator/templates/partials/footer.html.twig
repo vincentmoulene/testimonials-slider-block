@@ -13,6 +13,7 @@
                     <li><a href="{{ tool_path(tool, locale) }}">{{ ('tool.' ~ tool.id ~ '.name')|trans }}</a></li>
                 {% endfor %}
                 <li><a href="{{ path('app_tools', {_locale: locale}) }}">{{ 'footer.all_tools'|trans }}</a></li>
+                {% if public_gallery %}<li><a href="{{ path('app_gallery', {_locale: locale}) }}">{{ 'nav.gallery'|trans }}</a></li>{% endif %}
             </ul>
         </div>
         <div>

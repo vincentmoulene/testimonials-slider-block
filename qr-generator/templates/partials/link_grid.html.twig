@@ -1,0 +1,14 @@
+{# Thumbnails of the links visitors turned into QR codes.
+   The destination is shown as text, never as a link: a public wall of clickable
+   visitor URLs is a spam magnet, and nothing here should pass link equity. #}
+<ul class="link-grid">
+    {% for link in links %}
+        <li>
+            <img src="{{ path('app_generate', {format: 'svg', t: 'qrcode', content: link.url, size: 240, margin: 6}) }}"
+                 alt="{{ 'links.thumbnail_alt'|trans({'%url%': link.shortUrl(40)}) }}"
+                 width="120" height="120" loading="lazy" decoding="async">
+            <span class="link-url" title="{{ link.url }}">{{ link.shortUrl(38) }}</span>
+            <time class="muted small" datetime="{{ link.createdAt|date('Y-m-d') }}">{{ link.createdAt|date('d/m/Y') }}</time>
+        </li>
+    {% endfor %}
+</ul>
