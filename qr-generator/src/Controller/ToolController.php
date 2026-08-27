@@ -44,13 +44,19 @@ final class ToolController extends SiteController
     ], name: 'app_home', methods: ['GET'])]
     public function home(Request $request, string $_locale): Response
     {
-        $tool = $this->registry->get('url') ?? throw $this->createNotFoundException();
+        $tool = $this->registry->generic();
         $seo = $this->seoFor(
             'app_home',
             $_locale,
             $this->translator->trans('home.meta_title', ['%site%' => $this->siteName], locale: $_locale),
             $this->translator->trans('home.meta_description', [], locale: $_locale),
         );
+
+        // A pre-filled home page URL is a shareable convenience, not a second
+        // version of the home page for the index.
+        if ($request->query->count() > 0) {
+            $seo->robots = 'noindex, follow';
+        }
 
         $faq = $this->faqEntries(['faq.free', 'faq.expire', 'faq.commercial', 'faq.print'], $_locale);
         $seo->addJsonLd($this->webApplication($_locale, $seo->canonical));
@@ -94,14 +100,14 @@ final class ToolController extends SiteController
                     'name' => $this->translator->trans('tool.'.$tool->id.'.name', [], locale: $_locale),
                     'url' => $this->seo->absolute($this->toolUrls->path($tool, $_locale)),
                 ],
-                array_values($this->registry->all()),
-                array_keys(array_values($this->registry->all())),
+                array_values($this->registry->standalone()),
+                array_keys(array_values($this->registry->standalone())),
             )),
         ]);
 
         return $this->render('tool/index.html.twig', [
             'seo' => $seo,
-            'tools' => $this->registry->all(),
+            'tools' => $this->registry->standalone(),
         ])->setPublic()->setMaxAge(600)->setSharedMaxAge(3600);
     }
 
@@ -191,7 +197,7 @@ final class ToolController extends SiteController
 
         return [
             'tool' => $tool,
-            'tools' => $this->registry->all(),
+            'tools' => $this->registry->standalone(),
             'values' => $values,
             'options' => $options,
             'preview_url' => $previewUrl,
@@ -232,7 +238,7 @@ final class ToolController extends SiteController
             'offers' => ['@type' => 'Offer', 'price' => '0', 'priceCurrency' => 'EUR'],
             'featureList' => array_values(array_map(
                 fn (Tool $tool) => $this->translator->trans('tool.'.$tool->id.'.name', [], locale: $locale),
-                $this->registry->all(),
+                $this->registry->standalone(),
             )),
         ];
     }

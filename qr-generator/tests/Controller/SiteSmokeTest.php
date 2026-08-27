@@ -46,7 +46,7 @@ final class SiteSmokeTest extends WebTestCase
         $registry = static::getContainer()->get(ToolRegistry::class);
         self::assertInstanceOf(ToolRegistry::class, $registry);
 
-        foreach ($registry->all() as $tool) {
+        foreach ($registry->standalone() as $tool) {
             foreach (self::LOCALES as $locale) {
                 $crawler = $client->request('GET', $this->toolPath($locale, $tool->slug($locale)));
 
@@ -56,6 +56,26 @@ final class SiteSmokeTest extends WebTestCase
                 self::assertGreaterThan(0, $crawler->filter('.generator-preview img')->count(), 'The page must render a preview without JavaScript');
             }
         }
+    }
+
+    /** The generic generator is the home page, so its slug must not resolve. */
+    public function testTheGenericGeneratorHasNoLandingPageOfItsOwn(): void
+    {
+        $client = static::createClient();
+        $client->request('GET', '/en/tools/qr-code-generator');
+
+        self::assertResponseStatusCodeSame(404);
+    }
+
+    public function testTheHomePageIsTheGenericGenerator(): void
+    {
+        $client = static::createClient();
+        $crawler = $client->request('GET', '/fr');
+
+        self::assertResponseIsSuccessful();
+        self::assertCount(1, $crawler->filter('[data-generator-tool-value="qrcode"]'));
+        // One free-form field, not a specialised form.
+        self::assertCount(1, $crawler->filter('form.generator-form textarea[name="content"]'));
     }
 
     public function testAPrefilledToolPageIsNotIndexable(): void

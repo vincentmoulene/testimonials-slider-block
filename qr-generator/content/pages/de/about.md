@@ -23,7 +23,9 @@ Der Preis dafür: Das Ziel lässt sich nachträglich nicht ändern. Wenn Sie dam
 
 ## Technische Entscheidungen
 
-Die Website ist eine serverseitig gerenderte Symfony-Anwendung mit einer dünnen JavaScript-Schicht für die Live-Vorschau. Codes entstehen im Arbeitsspeicher und gehen direkt an Ihren Browser: nichts wird auf die Festplatte geschrieben, nichts protokolliert, nichts aufbewahrt.
+Die Website ist eine serverseitig gerenderte Symfony-Anwendung mit einer dünnen JavaScript-Schicht für die Live-Vorschau. Codes entstehen im Arbeitsspeicher und gehen direkt an Ihren Browser: **der Inhalt, den Sie codieren, wird nie auf die Festplatte geschrieben**.
+
+Aufbewahrt wird einzig die E-Mail-Adresse, die Sie beim Herunterladen eines Codes eingeben — damit wir Ihnen sagen können, wenn ein neuer Generator erscheint. Sie wird für sich gespeichert, nie zusammen mit dem Inhalt Ihrer Codes, und Sie können jederzeit ihre Löschung verlangen. Einzelheiten stehen in der [Datenschutzerklärung](../datenschutz).
 
 ## Kontakt
 

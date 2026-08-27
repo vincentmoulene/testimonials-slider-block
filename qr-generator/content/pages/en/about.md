@@ -23,7 +23,9 @@ The trade-off is that you cannot change the destination afterwards. If you expec
 
 ## Technical choices
 
-The site is a Symfony application rendered on the server, with a thin JavaScript layer for the live preview. Codes are generated in memory and returned directly to your browser: nothing is written to disk, nothing is logged, nothing is kept.
+The site is a Symfony application rendered on the server, with a thin JavaScript layer for the live preview. Codes are generated in memory and returned directly to your browser: **the content you encode is never written to disk**.
+
+The one thing we do keep is the email address you enter when downloading a code, so we can tell you when a new generator goes live. It is stored on its own, never alongside the content of your codes, and you can ask for its deletion at any time. See the [privacy policy](../privacy-policy) for the details.
 
 ## Contact
 

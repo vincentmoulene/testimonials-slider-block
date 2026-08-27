@@ -1,11 +1,14 @@
 {% import 'partials/fields.html.twig' as fields %}
 {%- set locale = app.request.locale -%}
 <section class="generator" id="generator"
-         data-controller="generator"
+         data-controller="generator lead"
+         data-lead-endpoint-value="{{ path('app_api_lead') }}"
+         data-lead-mode-value="{{ lead_capture_mode }}"
+         data-lead-tool-value="{{ tool.id }}"
          data-generator-endpoint-value="{{ path('app_api_generate') }}"
          data-generator-image-base-value="{{ path('app_generate', {format: 'png'}) }}"
-         data-generator-tool-value="{{ tool.id }}"
-    <form class="generator-form" method="get" action="{{ tool_path(tool, locale) }}"
+         data-generator-tool-value="{{ tool.id }}">
+    <form class="generator-form" method="get" action="{{ is_home ? path('app_home', {_locale: locale}) : tool_path(tool, locale) }}"
           data-generator-target="form"
           data-action="input->generator#schedule change->generator#schedule submit->generator#submit">
         <h2 class="generator-title">{{ ('tool.' ~ tool.id ~ '.form_title')|trans }}</h2>
@@ -70,11 +73,13 @@
 
         <p class="error" data-generator-target="error" {{ error ? '' : 'hidden' }}>{{ error }}</p>
 
-        <div class="downloads" data-generator-target="downloads">
+        <div class="downloads" data-generator-target="downloads" data-action="click->lead#intercept">
             <a class="btn btn-primary" data-generator-target="downloadPng" href="{{ downloads.png }}" download>{{ icon('download', 18) }} PNG</a>
             <a class="btn" data-generator-target="downloadSvg" href="{{ downloads.svg }}" download>{{ icon('download', 18) }} SVG</a>
             <a class="btn" data-generator-target="downloadWebp" href="{{ downloads.webp }}" download>{{ icon('download', 18) }} WebP</a>
         </div>
         <p class="muted small">{{ 'generator.formats_hint'|trans }}</p>
+
+        {% include 'partials/lead.html.twig' %}
     </div>
 </section>

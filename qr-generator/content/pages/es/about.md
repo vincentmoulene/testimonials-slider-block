@@ -23,7 +23,9 @@ La contrapartida es que no puedes cambiar el destino después. Si prevés cambia
 
 ## Decisiones técnicas
 
-El sitio es una aplicación Symfony renderizada en el servidor, con una capa ligera de JavaScript para la vista previa. Los códigos se generan en memoria y se devuelven directamente a tu navegador: nada se escribe en disco, nada se registra, nada se conserva.
+El sitio es una aplicación Symfony renderizada en el servidor, con una capa ligera de JavaScript para la vista previa. Los códigos se generan en memoria y se devuelven directamente a tu navegador: **el contenido que codificas nunca se escribe en disco**.
+
+Lo único que conservamos es la dirección de correo que introduces al descargar un código, para poder avisarte cuando publiquemos un generador nuevo. Se guarda por separado, nunca junto al contenido de tus códigos, y puedes pedir su supresión cuando quieras. Los detalles están en la [política de privacidad](../politica-de-privacidad).
 
 ## Contacto
 

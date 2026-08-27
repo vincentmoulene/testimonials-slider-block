@@ -10,6 +10,8 @@ RUN install-php-extensions \
         gd \
         intl \
         opcache \
+        pdo_pgsql \
+        pdo_sqlite \
         zip \
     && rm -rf /tmp/*
 
@@ -22,6 +24,7 @@ ENV APP_ENV=prod \
 
 COPY --from=composer/composer:2-bin /composer /usr/bin/composer
 COPY docker/php.ini /usr/local/etc/php/conf.d/app.ini
+COPY docker/entrypoint.sh /usr/local/bin/app-entrypoint
 
 # ---------------------------------------------------------------------------
 # Dependencies (cached as long as composer.json/lock do not change)
@@ -42,10 +45,18 @@ COPY . .
 RUN composer dump-autoload --classmap-authoritative --no-dev \
     && php bin/console cache:warmup \
     && php bin/console asset-map:compile \
+    && mkdir -p var/data \
     && chown -R www-data:www-data var public/assets
+
+# Mount a volume here when you keep the default SQLite database, so the
+# collected email addresses survive a redeploy. Not needed with PostgreSQL.
+VOLUME /app/var/data
 
 # The public directory is the document root; everything else stays private.
 ENV FRANKENPHP_CONFIG="worker ./public/index.php"
+
+ENTRYPOINT ["app-entrypoint"]
+CMD ["frankenphp", "run", "--config", "/etc/caddy/Caddyfile"]
 
 EXPOSE 80
 EXPOSE 443

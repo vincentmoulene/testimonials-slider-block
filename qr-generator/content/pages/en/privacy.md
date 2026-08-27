@@ -5,11 +5,28 @@ description: 'What this site does and does not collect: no account, no storage o
 
 ## Summary
 
-We do not ask for an account, we do not store the content of the codes you generate, and no advertising or analytics cookie is set before you explicitly accept it.
+We do not ask for an account and we never store the content of the codes you generate. We do keep one thing: the email address you enter when you download a code. No advertising or analytics cookie is set before you explicitly accept it.
 
 ## Data you enter in the generators
 
 The values you type — a URL, a Wi-Fi password, contact details — are sent to our server, used to build the image, and discarded as soon as the response is returned. They are not written to a database, not logged with the request, and not shared with anyone.
+
+## Your email address
+
+When you download a code you are asked for an email address. Here is exactly what happens to it.
+
+**What we store.** The address itself, the language and the generator you used, the page you came from, the date of your first and latest download, and how many codes you have downloaded. We also store a *keyed hash* of your IP address — a one-way fingerprint that lets us prove where a consent came from and block abuse, but that cannot be turned back into an IP address.
+
+**What we do with it.** Two separate purposes:
+
+1. **Delivering the download you asked for.** This is why the address is required.
+2. **Sending you news about the site** — a new generator, a new guide. This happens *only* if you ticked the consent box. Leaving it unticked changes nothing about your download.
+
+**What we never do.** We do not store your address next to the content of your codes — the two are never linked. We do not sell, rent or share the list with anyone. We do not use it for third-party advertising.
+
+**Removing it.** Write to us and your address is deleted, with no questions and no delay. You can also ask for a copy of everything we hold about it.
+
+**How long we keep it.** Until you ask for its deletion, or until three years after your last download, whichever comes first.
 
 ## Technical logs
 
@@ -23,7 +40,7 @@ More information: [Google's advertising policies](https://policies.google.com/te
 
 ## Your rights
 
-Because we do not create accounts and do not store personal data beyond technical logs, there is normally nothing to access, rectify or delete on our side. If you believe otherwise, contact us and we will answer within 30 days. You may also lodge a complaint with your national data protection authority.
+You can ask us to access, correct, export or delete your email address, and to withdraw your marketing consent, at any time. Write to us and we will act within 30 days. You may also lodge a complaint with your national data protection authority. Apart from the address itself and the technical logs below, we hold nothing about you.
 
 ## Changes
 

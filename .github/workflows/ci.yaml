@@ -20,7 +20,7 @@ jobs:
               uses: shivammathur/setup-php@v2
               with:
                   php-version: ${{ matrix.php }}
-                  extensions: gd, intl, mbstring, zip
+                  extensions: gd, intl, mbstring, pdo_sqlite, sqlite3, zip
                   coverage: none
 
             - name: Install dependencies
@@ -33,6 +33,14 @@ jobs:
                   php bin/console lint:yaml config translations --parse-tags
                   php bin/console lint:twig templates
                   php bin/console lint:container
+
+            - name: Check that the entities match the migrations
+              working-directory: qr-generator
+              env:
+                  APP_ENV: test
+              run: |
+                  php bin/console doctrine:migrations:migrate --no-interaction --quiet
+                  php bin/console doctrine:schema:validate
 
             - name: Check that no translation is missing
               working-directory: qr-generator

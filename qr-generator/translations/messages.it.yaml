@@ -50,7 +50,7 @@ options:
     transparent: 'Sfondo trasparente (PNG / WebP)'
 
 generator:
-    note: 'L''anteprima si aggiorna mentre scrivi. Nulla di ciò che inserisci viene conservato sui nostri server.'
+    note: 'L''anteprima si aggiorna mentre scrivi. Il contenuto dei tuoi codici non viene mai conservato sui nostri server.'
     demo_notice: 'Anteprima di esempio: compila il modulo per generare il tuo codice.'
     formats_hint: 'PNG per il web, SVG per una qualità di stampa illimitata, WebP per il file più leggero.'
 
@@ -86,6 +86,14 @@ field:
     longitude: 'Longitudine'
     value: 'Valore da codificare'
     symbology: 'Tipo di codice a barre'
+    content: 'Contenuto da codificare'
+    event_title: 'Nome dell''evento'
+    start: 'Inizio'
+    end: 'Fine'
+    location: 'Luogo'
+    address: 'Indirizzo Bitcoin'
+    amount: 'Importo (BTC)'
+    label: 'Etichetta'
 
 placeholder:
     url: 'https://il-tuo-sito.it/pagina'
@@ -108,15 +116,23 @@ placeholder:
     longitude: '2.2945'
     value: '5901234123457'
     symbology: ''
+    content: 'Un link, un testo, un riferimento: quello che vuoi'
+    event_title: 'Lancio di prodotto'
+    start: ''
+    end: ''
+    location: 'Via Roma 1, Milano'
+    address: 'bc1q…'
+    amount: '0.01'
+    label: 'Fattura 2026-042'
 
 home:
     meta_title: 'Generatore di QR code gratuito — senza registrazione né scadenza | %site%'
     meta_description: 'Crea gratis un QR code da un URL, un testo, il Wi-Fi, una vCard, un''e-mail o un numero di telefono. Download PNG, SVG e WebP ad alta risoluzione, senza account e senza scadenza.'
     eyebrow: 'Generatore di QR code gratuito'
-    h1: 'Crea un QR code gratuito da qualsiasi URL in pochi secondi'
-    lead: 'Incolla un link e ottieni un QR code ad alta risoluzione da scaricare in PNG, SVG o WebP. Senza account, senza filigrana, senza scadenza e con uso commerciale illimitato.'
+    h1: 'Crea un QR code gratuito in pochi secondi'
+    lead: 'Incolla un link, un testo — quello che vuoi — e ottieni un QR code ad alta risoluzione da scaricare in PNG, SVG o WebP. Senza account, senza filigrana, senza scadenza e con uso commerciale illimitato.'
     tools_title: 'Tutti i generatori, tutti gratuiti'
-    tools_subtitle: 'Dieci generatori per link, Wi-Fi, biglietti da visita, messaggistica e codici a barre commerciali.'
+    tools_subtitle: 'Tredici generatori specializzati per link, Wi-Fi, biglietti da visita, eventi, recensioni Google, pagamenti e codici a barre.'
     why_title: 'Perché usare questo generatore'
     why:
         free:
@@ -139,13 +155,17 @@ home:
 
 tools:
     meta_title: 'Tutti i generatori gratuiti di QR code e codici a barre'
-    meta_description: 'Dieci generatori gratuiti: URL, testo, Wi-Fi, vCard, e-mail, SMS, telefono, WhatsApp, posizione e codici a barre commerciali. Download PNG, SVG e WebP.'
+    meta_description: 'Tredici generatori gratuiti: URL, testo, Wi-Fi, vCard, e-mail, SMS, telefono, WhatsApp, posizione, evento, recensioni Google, Bitcoin e codici a barre. Download PNG, SVG e WebP.'
     h1: 'Tutti i nostri generatori gratuiti'
     lead: 'Scegli il tipo di codice che ti serve. Ogni generatore è gratuito, illimitato e funziona senza account.'
     grid_title: 'Generatori'
 
 tool:
     other_tools: 'Altri generatori gratuiti'
+    qrcode:
+        name: 'Generatore di QR code'
+        object: 'QR code'
+        form_title: 'Cosa deve contenere il codice?'
     url:
         name: 'Generatore di QR code per URL'
         object: 'QR code di URL'
@@ -266,6 +286,42 @@ tool:
         copy_body: |
             <p>L''EAN-13 è lo standard dei prodotti da negozio in Europa (12 cifre più una di controllo), l''UPC-A il suo equivalente nordamericano e l''EAN-8 la versione compatta per confezioni piccole. Il Code 128 codifica lettere e numeri e muove gran parte della logistica interna; il Code 39 resta comune nell''industria; l''ITF-14 identifica i cartoni di spedizione.</p>
             <p>Esporta l''SVG per la stampa: un codice a barre si legge dalla larghezza delle barre, quindi ridimensionare un''immagine raster rischia di renderlo illeggibile. Barre nere su fondo bianco, zone di silenzio su entrambi i lati e mai sotto l''80 % della dimensione nominale.</p>
+    event:
+        name: 'Generatore di QR code evento'
+        object: 'QR code evento'
+        short: 'Aggiungi un evento a qualsiasi calendario con una scansione.'
+        meta_title: 'Generatore gratuito di QR code evento (calendario)'
+        meta_description: 'Crea un QR code gratuito che aggiunge il tuo evento al calendario di chi lo scansiona: data, ora e luogo inclusi. Download PNG e SVG.'
+        form_title: 'Il tuo evento'
+        intro: 'Una scansione e il tuo evento finisce nel calendario della persona che hai davanti: data giusta, ora giusta, indirizzo giusto.'
+        copy_title: 'Far entrare una data nei calendari'
+        copy_body: |
+            <p>Un invito funziona solo quando è nel calendario. Un QR code evento contiene una voce di calendario standard (VEVENT): la scansione apre l'app calendario del telefono con tutto già compilato — titolo, inizio, fine e luogo. Stampalo su un invito, la locandina di un concerto, un programma di formazione, un save-the-date o un badge di fiera.</p>
+            <p>Gli orari sono codificati in ora locale, esattamente come li scrivi: il lettore mostra l'evento così com'è, ovunque si trovi la persona. Per un evento ricorrente genera un codice per ogni data invece di codificare una regola di ripetizione: la scansione è molto più affidabile.</p>
+    review:
+        name: 'Generatore di QR code recensioni Google'
+        object: 'QR code recensioni'
+        short: 'Porta i clienti dritti al modulo di recensione.'
+        meta_title: 'Generatore gratuito di QR code per recensioni Google'
+        meta_description: 'Crea un QR code gratuito che apre direttamente il tuo modulo di recensione Google. Perfetto per scontrini, tavoli e bancone. PNG e SVG.'
+        form_title: 'Il tuo link di recensione'
+        intro: 'Trasforma un cliente soddisfatto in una recensione mentre è ancora davanti a te: la scansione apre direttamente il modulo di valutazione.'
+        copy_title: 'Dove trovare il tuo link di recensione'
+        copy_body: |
+            <p>Apri il tuo Profilo dell'attività su Google, clicca su <em>Chiedi recensioni</em> e copia il link breve che Google ti fornisce (del tipo <code>g.page/r/…/review</code>). Incollandolo qui ottieni un codice che apre direttamente il modulo a stelle: niente ricerca, niente menu, nessun rischio di recensire l'attività sbagliata.</p>
+            <p>La collocazione conta più del design: sullo scontrino, sul cavalletto da tavolo, sul bancone accanto al POS o nella fattura inviata via e-mail. Chiedi nel momento in cui il cliente è contento — subito dopo il servizio — non tre giorni dopo. E non filtrare mai chi può scansionare: selezionare in base al voto atteso viola le regole di Google e porta a sospensioni.</p>
+    bitcoin:
+        name: 'Generatore di QR code Bitcoin'
+        object: 'QR code Bitcoin'
+        short: 'Farsi pagare senza che nessuno digiti un indirizzo.'
+        meta_title: 'Generatore gratuito di QR code Bitcoin (BIP-21)'
+        meta_description: 'Crea un QR code di pagamento Bitcoin gratuito con indirizzo, importo ed etichetta. Formato standard BIP-21, compreso da ogni wallet. PNG e SVG.'
+        form_title: 'Il tuo pagamento'
+        intro: 'La scansione apre il wallet di chi paga con il tuo indirizzo e, se lo indichi, l''importo. Niente copia-incolla, nessun carattere invertito.'
+        copy_title: 'Perché nessuno dovrebbe digitare un indirizzo'
+        copy_body: |
+            <p>Un indirizzo Bitcoin è lungo da 26 a 62 caratteri e una transazione è irreversibile: un solo carattere sbagliato manda i fondi dove nessuno potrà recuperarli. Il QR code elimina del tutto la fase di trascrizione, ed è per questo che ogni wallet lo supporta.</p>
+            <p>Questo generatore produce una URI <strong>BIP-21</strong> standard (<code>bitcoin:indirizzo?amount=…&amp;label=…</code>). Lascia l'importo vuoto per una raccolta o una pagina di donazioni; compilalo per una fattura. Prima di pubblicare il codice, scansionalo tu stesso e confronta i primi e gli ultimi quattro caratteri mostrati dal wallet con il tuo indirizzo.</p>
 
 howto:
     title: 'Come creare il tuo %tool% in tre passaggi'
@@ -323,6 +379,15 @@ faq:
     barcode:
         q: 'Posso inventare un numero EAN-13?'
         a: 'Non per la vendita al dettaglio. Un EAN-13 commercializzato deve provenire da un prefisso GS1 assegnato alla tua azienda. Per uso interno — magazzino, cespiti, logistica — puoi numerare liberamente, e spesso il Code 128 è più adatto.'
+    event:
+        q: 'Quali calendari accettano il codice?'
+        a: 'La scansione apre il calendario nativo di iOS e Android, che poi si sincronizza con Google Calendar, iCloud o Outlook come sempre. Il formato codificato è il VEVENT standard.'
+    review:
+        q: 'Posso mostrare il codice solo ai clienti soddisfatti?'
+        a: 'No. Filtrare chi viene invitato a lasciare una recensione viola le regole di Google e può portare alla sospensione del profilo. Mostra lo stesso codice a tutti e chiedilo quando il servizio è andato bene.'
+    bitcoin:
+        q: 'L''importo è fissato nel codice?'
+        a: 'È un suggerimento: il wallet lo precompila e chi paga può ancora modificarlo prima di firmare. Lascia il campo vuoto per una donazione, compilalo per una fattura.'
 
 blog:
     meta_title: 'Guide ai QR code: buone pratiche e casi d''uso'
@@ -334,6 +399,20 @@ blog:
     updated: 'aggiornato il'
     related: 'Continua a leggere'
     try_tool: 'Prova il generatore corrispondente'
+lead:
+    gate:
+        title: 'Un passaggio prima del download'
+        text: 'Inserisci il tuo indirizzo e-mail per scaricare il codice. Lo strumento resta gratuito e su questo browser te lo chiederemo una sola volta.'
+        submit: 'Scarica il mio codice'
+    inline:
+        title: 'Scopri i nuovi generatori'
+        text: 'Una breve e-mail quando pubblichiamo un nuovo generatore o una nuova guida. Nient''altro.'
+        submit: 'Iscrivimi'
+    consent: 'Voglio anche ricevere consigli e novità via e-mail.'
+    legal: 'Il tuo indirizzo è conservato per consegnarti questo download e, solo se hai spuntato la casella, per inviarti novità. Puoi chiederne la cancellazione in qualsiasi momento —'
+    thanks: 'Grazie! Il download sta per iniziare.'
+    cancel: 'Chiudi'
+
 
 page:
     updated: 'Ultimo aggiornamento:'
@@ -345,6 +424,9 @@ error:
     invalid_email: 'Questo indirizzo e-mail non è valido.'
     invalid_phone: 'Questo numero di telefono non è valido. Usa il formato internazionale, per esempio +39 02 1234567.'
     invalid_coordinates: 'Queste coordinate non sono valide. La latitudine va da -90 a 90, la longitudine da -180 a 180.'
+    invalid_date: 'Questa data non è valida.'
+    invalid_bitcoin_address: 'Questo indirizzo Bitcoin non è valido. Deve iniziare con 1, 3 o bc1.'
+    invalid_amount: 'Questo importo non è valido.'
     unknown_tool: 'Generatore sconosciuto.'
     unknown_symbology: 'Tipo di codice a barre sconosciuto.'
     invalid_barcode_value: 'Questo valore non può essere codificato come %symbology%. Controlla il numero di cifre e i caratteri ammessi.'

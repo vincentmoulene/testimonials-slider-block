@@ -47,7 +47,7 @@ final readonly class SitemapBuilder
             }
         }
 
-        foreach ($this->tools->all() as $tool) {
+        foreach ($this->tools->standalone() as $tool) {
             $alternates = array_map(
                 fn (string $path) => $this->seo->absolute($path),
                 $this->toolUrls->paths($tool, ...$this->enabledLocales),

@@ -21,10 +21,26 @@ final class ToolRegistry
         return $this->tools ??= $this->build();
     }
 
+    /**
+     * Tools that own a landing page. The generic generator is excluded: it is
+     * the home page, and giving it a second URL would duplicate it.
+     *
+     * @return array<string, Tool>
+     */
+    public function standalone(): array
+    {
+        return array_filter($this->all(), static fn (Tool $t) => $t->standalone);
+    }
+
     /** @return array<int, Tool> */
     public function featured(): array
     {
-        return array_values(array_filter($this->all(), static fn (Tool $t) => $t->featured));
+        return array_values(array_filter($this->all(), static fn (Tool $t) => $t->featured && $t->standalone));
+    }
+
+    public function generic(): Tool
+    {
+        return $this->get('qrcode') ?? throw new \LogicException('The generic generator is missing.');
     }
 
     public function get(string $id): ?Tool
@@ -34,7 +50,7 @@ final class ToolRegistry
 
     public function getBySlug(string $slug, string $locale): ?Tool
     {
-        foreach ($this->all() as $tool) {
+        foreach ($this->standalone() as $tool) {
             if ($tool->slug($locale) === $slug) {
                 return $tool;
             }
@@ -53,6 +69,22 @@ final class ToolRegistry
     private function build(): array
     {
         $tools = [
+            // The generic generator: one field, anything inside. It is the home
+            // page, so it deliberately has no landing page of its own.
+            new Tool(
+                id: 'qrcode',
+                kind: 'qr',
+                slugs: [
+                    'en' => 'qr-code-generator',
+                    'fr' => 'generateur-qr-code',
+                    'es' => 'generador-codigo-qr',
+                    'de' => 'qr-code-generator',
+                    'it' => 'generatore-qr-code',
+                ],
+                fields: [new Field('content', 'textarea', true, maxLength: 1800)],
+                icon: 'qr',
+                standalone: false,
+            ),
             new Tool(
                 id: 'url',
                 kind: 'qr',
@@ -201,6 +233,55 @@ final class ToolRegistry
                     new Field('longitude', 'text', true, maxLength: 24, wide: false),
                 ],
                 icon: 'pin',
+            ),
+            new Tool(
+                id: 'event',
+                kind: 'qr',
+                slugs: [
+                    'en' => 'event-qr-code-generator',
+                    'fr' => 'qr-code-evenement',
+                    'es' => 'codigo-qr-evento',
+                    'de' => 'termin-qr-code-generator',
+                    'it' => 'qr-code-evento',
+                ],
+                fields: [
+                    new Field('event_title', 'text', true, maxLength: 128),
+                    new Field('start', 'datetime', true, wide: false),
+                    new Field('end', 'datetime', wide: false),
+                    new Field('location', 'text', maxLength: 200),
+                ],
+                icon: 'calendar',
+            ),
+            new Tool(
+                id: 'review',
+                kind: 'qr',
+                slugs: [
+                    'en' => 'google-review-qr-code',
+                    'fr' => 'qr-code-avis-google',
+                    'es' => 'codigo-qr-resenas-google',
+                    'de' => 'google-bewertung-qr-code',
+                    'it' => 'qr-code-recensioni-google',
+                ],
+                fields: [new Field('url', 'url', true, maxLength: 512)],
+                icon: 'star',
+                featured: true,
+            ),
+            new Tool(
+                id: 'bitcoin',
+                kind: 'qr',
+                slugs: [
+                    'en' => 'bitcoin-qr-code-generator',
+                    'fr' => 'qr-code-bitcoin',
+                    'es' => 'codigo-qr-bitcoin',
+                    'de' => 'bitcoin-qr-code-generator',
+                    'it' => 'qr-code-bitcoin',
+                ],
+                fields: [
+                    new Field('address', 'text', true, maxLength: 128),
+                    new Field('amount', 'text', maxLength: 24, wide: false),
+                    new Field('label', 'text', maxLength: 64, wide: false),
+                ],
+                icon: 'coin',
             ),
             new Tool(
                 id: 'barcode',

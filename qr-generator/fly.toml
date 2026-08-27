@@ -6,10 +6,26 @@ primary_region = "cdg"
 [build]
   dockerfile = "Dockerfile"
 
+# Migrations run at boot (see docker/entrypoint.sh). Do NOT add a
+# release_command while using the SQLite default: release machines do not mount
+# volumes, so it would migrate a throw-away database. With PostgreSQL, adding
+#   [deploy]
+#   release_command = "php bin/console doctrine:migrations:migrate --no-interaction"
+# is the cleaner option.
+
 [env]
   APP_ENV = "prod"
   SERVER_NAME = ":8080"
   TRUSTED_PROXIES = "127.0.0.1,REMOTE_ADDR,::1"
+  LEAD_CAPTURE_MODE = "download"
+  # Default: SQLite on the volume below. For more than one machine, create a
+  # Postgres cluster (`fly postgres create`) and set DATABASE_URL as a secret.
+  DATABASE_URL = "sqlite:////app/var/data/app.db"
+
+# Persists the collected email addresses. Drop this block if you use Postgres.
+[[mounts]]
+  source = "qr_data"
+  destination = "/app/var/data"
 
 [http_service]
   internal_port = 8080

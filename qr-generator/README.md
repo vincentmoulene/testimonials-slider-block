@@ -1,24 +1,31 @@
 # QR & barcode generator — free, multilingual, SEO-first
 
 A Symfony 8 application that generates QR codes and barcodes for free, in five
-languages, with no account, no database and no expiry date. It is designed to be
-left online permanently and funded by advertising.
+languages, with no account and no expiry date. It is designed to be left online
+permanently, funded by advertising, and to build a mailing list from the people
+who download a code.
 
 ```
 /                       → redirects to the visitor's best-matching language
-/{locale}               → home page + URL QR generator
+/{locale}               → home page: the generic QR generator (one free-form field)
 /{locale}/tools         → all generators (localised path and slug)
 /{locale}/tools/{slug}  → one landing page per generator, per language
 /{locale}/blog          → file-based blog (Markdown)
 /q/{png|svg|webp}       → stateless image endpoint (download + no-JS fallback)
 /api/generate           → JSON endpoint used by the live preview
+/api/lead               → JSON endpoint that records the email of a downloader
 /sitemap.xml            → every URL, with hreflang alternates
 ```
 
 ## What it does
 
-- **10 generators**: URL, text, Wi-Fi, vCard, email, SMS, phone, WhatsApp,
-  geolocation, and 1D barcodes (EAN-13, EAN-8, UPC-A, Code 128, Code 39, ITF-14).
+- **A generic generator on the home page**: one field, anything inside — a link,
+  a text, a reference. A bare domain is turned into a link, everything else is
+  encoded verbatim.
+- **13 specialised generators**, each with its own landing page in each language:
+  URL, text, Wi-Fi, vCard, email, SMS, phone, WhatsApp, geolocation, calendar
+  event, Google review, Bitcoin payment, and 1D barcodes (EAN-13, EAN-8, UPC-A,
+  Code 128, Code 39, ITF-14).
 - **5 languages** (en, fr, es, de, it) with translated URLs, translated slugs and
   a full `hreflang` cluster on every page.
 - **Static codes only.** The payload is encoded in the pattern, nothing is stored,
@@ -45,7 +52,9 @@ Everything below is implemented, not aspirational:
 | Server-rendered HTML, one CSS file, no framework JS, `Cache-Control` on every page | AssetMapper + `setPublic()` |
 | Unique editorial copy per tool page (not a shared boilerplate block) | `tool.*.copy_body` keys |
 
-Sitemap size today: **94 URLs**, all indexable and cross-linked.
+Sitemap size today: **109 URLs**, all indexable and cross-linked. The generic
+generator deliberately has *no* landing page of its own — it is the home page,
+and a second URL for it would be duplicate content.
 
 ## Monetisation
 
@@ -62,14 +71,66 @@ Advertising is opt-in, per visitor, and never blocks the tool:
 The consent choice lives in `localStorage`, never in a cookie, and never reaches
 the server — which is why the whole site can stay cacheable by a CDN.
 
+## Collecting the email addresses
+
+`LEAD_CAPTURE_MODE` decides how much the site asks for:
+
+| Value | Behaviour |
+|---|---|
+| `off` | No email is ever requested. |
+| `optional` | A discreet opt-in form sits next to the download buttons. |
+| `download` (default) | The visitor is asked for an email the first time they download a code. |
+
+In `download` mode, the address is remembered in the browser's `localStorage`, so
+the same person is asked **once** and every later download is reported silently to
+`/api/lead` — the row's `generation_count` goes up instead of the visitor being
+interrupted again.
+
+What ends up in the `leads` table: the address (lower-cased, one row per person),
+the language, the generator used, the page they came from, first and last download
+dates, how many downloads, and a **keyed hash** of the IP (`hash_hmac` with
+`APP_SECRET`) that proves where a consent came from without storing an identifier.
+
+Two things are kept apart on purpose:
+
+- the **address**, required to deliver the download the visitor asked for;
+- the **marketing consent**, a separate ticked box. Only that box authorises a
+  newsletter, and a later download can never silently revoke it.
+
+The endpoint is rate limited (10 submissions per IP per 10 minutes) and carries a
+honeypot field: a bot that fills it gets a success it cannot distinguish from the
+real one, and nothing is stored.
+
+```bash
+# Everything, as CSV, on stdout (the summary goes to stderr, so piping is safe)
+php bin/console app:leads:export > leads.csv
+
+# Only the addresses you are actually allowed to email
+php bin/console app:leads:export --consented-only --since="-30 days" -o leads.csv
+
+# Erasure request
+php bin/console app:leads:forget someone@example.com
+```
+
+**Honest limitation:** the gate is enforced in the browser. Someone who reads the
+HTML can still call `/q/png?...` directly. It is a lead-capture step, not a
+paywall — and keeping it client-side is what lets every page stay fully cacheable
+by a CDN. Visitors without JavaScript download without being asked.
+
+The privacy, cookie and about pages already describe all of this, in the five
+languages. If you change what you do with the addresses, change those pages too.
+
 ## Requirements
 
-PHP 8.4 with `gd` and `intl`. No database, no Redis, no Node.js.
+PHP 8.4 with `gd`, `intl` and a PDO driver. SQLite is the default and needs no
+setup; PostgreSQL is the right choice as soon as you run more than one instance.
+No Redis, no Node.js.
 
 ## Local development
 
 ```bash
 composer install
+php bin/console doctrine:migrations:migrate --no-interaction
 php -d variables_order=EGPCS -S 127.0.0.1:8000 -t public public/index.php
 # then open http://127.0.0.1:8000/
 ```
@@ -99,7 +160,9 @@ Copy the variables you need into `.env.local` (never commit it):
 | `ADSENSE_SLOT_TOP` / `_INLINE` / `_FOOTER` | Optional manual ad units |
 | `ANALYTICS_ID` | Optional GA4 id, also gated behind consent |
 | `TRUSTED_PROXIES` | Set to your CDN/proxy range when behind one |
-| `APP_SECRET` | Generate a random 32-byte hex string |
+| `LEAD_CAPTURE_MODE` | `off`, `optional` or `download` (see above) |
+| `DATABASE_URL` | SQLite by default; PostgreSQL recommended in production |
+| `APP_SECRET` | Generate a random 32-byte hex string. **Also keys the IP hashes — changing it makes existing hashes unmatchable** |
 
 ## Deployment
 
@@ -112,8 +175,14 @@ docker run -p 8080:80 \
 ```
 
 The image is FrankenPHP (Caddy + PHP) in worker mode: one container, HTTP/2,
-automatic HTTPS on a real domain, and OPcache preloading. `compose.yaml` and
+automatic HTTPS on a real domain, and OPcache preloading. Migrations run at boot
+(set `RUN_MIGRATIONS_ON_BOOT=0` to handle them yourself). `compose.yaml` and
 `fly.toml` are provided for Docker Compose and Fly.io respectively.
+
+**Persisting the leads.** With the default SQLite database, mount a volume at
+`/app/var/data` — `compose.yaml` and `fly.toml` already do. Without it, every
+redeploy starts from an empty list. With PostgreSQL, set `DATABASE_URL` and drop
+the volume.
 
 ### Go-live checklist
 
@@ -127,6 +196,8 @@ automatic HTTPS on a real domain, and OPcache preloading. `compose.yaml` and
    (privacy, cookies, terms) and the consent banner are already in place, which is
    what the review looks for.
 6. Set `ADSENSE_ENABLED=1` once approved, and verify `/ads.txt`.
+7. Download a code yourself, then run `php bin/console app:leads:export` to check
+   the address landed in the database — and that the volume survives a redeploy.
 
 ## Adding content
 
@@ -153,18 +224,25 @@ in the `hreflang` tags and in the sitemap.
 per locale), a payload builder branch in `src/Generator/PayloadFactory.php`, demo
 values in `src/Tool/ToolDemo.php`, and the `tool.<id>.*` and `faq.<id>.*` keys in
 the five translation files. Routes, sitemap, hreflang, FAQ and structured data
-follow automatically.
+follow automatically. Pass `standalone: false` for a tool that should not get a
+landing page of its own.
 
 ## Architecture
 
 ```
 src/
 ├── Blog/        Markdown articles and static pages (front matter + CommonMark)
+├── Command/     CSV export and GDPR erasure for the collected addresses
 ├── Controller/  Thin controllers, one per surface
+├── Entity/      The single table: leads
 ├── Generator/   Payload building, rendering, options — pure functions
+├── Lead/        Email capture: modes, validation, IP hashing
+├── Repository/  Lead lookups, upsert-on-download, streaming export
 ├── Seo/         Canonical/alternate URL building and sitemap
 ├── Tool/        Tool registry, localised slugs, demo values
 └── Twig/        View helpers (icons, tool paths, JSON-LD)
 ```
 
-Nothing is persisted, so the app scales horizontally with zero shared state.
+The pages themselves stay stateless — no session, no cookie, fully cacheable. The
+only write path is `/api/lead`, so the app still scales horizontally as long as
+the database is shared (i.e. PostgreSQL rather than SQLite on a local volume).

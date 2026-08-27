@@ -1,0 +1,50 @@
+{% macro form(context) %}
+    {%- set locale = app.request.locale -%}
+    <form class="lead-form" data-lead-target="form" data-action="lead#submit" novalidate>
+        <p class="lead-title">{{ ('lead.' ~ context ~ '.title')|trans }}</p>
+        <p class="muted small">{{ ('lead.' ~ context ~ '.text')|trans }}</p>
+
+        <label class="visually-hidden" for="lead-email-{{ context }}">{{ 'field.email'|trans }}</label>
+        <input type="email" id="lead-email-{{ context }}" name="email" required
+               autocomplete="email" inputmode="email" spellcheck="false"
+               placeholder="{{ 'placeholder.email'|trans }}">
+
+        <label class="checkbox">
+            <input type="checkbox" name="consent" value="1">
+            <span>{{ 'lead.consent'|trans }}</span>
+        </label>
+
+        {# Honeypot: invisible to people, irresistible to bots. #}
+        <div class="hp" aria-hidden="true">
+            <label for="lead-company-{{ context }}">Company</label>
+            <input type="text" id="lead-company-{{ context }}" name="company" tabindex="-1" autocomplete="off">
+        </div>
+
+        <p class="error" data-lead-target="error" hidden></p>
+        <p class="success" data-lead-target="success" hidden>{{ 'lead.thanks'|trans }}</p>
+
+        <div class="lead-actions">
+            {% if context == 'gate' %}
+                <button type="button" class="btn btn-ghost" data-action="lead#close">{{ 'lead.cancel'|trans }}</button>
+            {% endif %}
+            <button type="submit" class="btn btn-primary">{{ ('lead.' ~ context ~ '.submit')|trans }}</button>
+        </div>
+
+        <p class="lead-legal muted small">
+            {{ 'lead.legal'|trans }}
+            <a href="{{ path('app_privacy', {_locale: locale}) }}">{{ 'nav.privacy'|trans }}</a>
+        </p>
+    </form>
+{% endmacro %}
+
+{% import _self as lead %}
+
+{% if lead_capture_mode == 'download' %}
+    <dialog class="lead-dialog" data-lead-target="dialog" aria-label="{{ 'lead.gate.title'|trans }}">
+        {{ lead.form('gate') }}
+    </dialog>
+{% elseif lead_capture_mode == 'optional' %}
+    <aside class="lead-inline">
+        {{ lead.form('inline') }}
+    </aside>
+{% endif %}

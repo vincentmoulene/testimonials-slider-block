@@ -20,9 +20,10 @@
                     {% endfor %}
                 </select>
             {% else %}
-                <input type="{{ f.type == 'url' ? 'url' : (f.type == 'email' ? 'email' : (f.type == 'tel' ? 'tel' : 'text')) }}"
+                {% set input_type = {'url': 'url', 'email': 'email', 'tel': 'tel', 'datetime': 'datetime-local'}[f.type]|default('text') %}
+                <input type="{{ input_type }}"
                        id="{{ id }}" name="{{ f.name }}" value="{{ values.get(f.name) }}"
-                       maxlength="{{ f.maxLength }}" placeholder="{{ ('placeholder.' ~ f.name)|trans }}"
+                       {% if f.type != 'datetime' %}maxlength="{{ f.maxLength }}" placeholder="{{ ('placeholder.' ~ f.name)|trans }}"{% endif %}
                        {% if f.type == 'url' %}inputmode="url" spellcheck="false"{% endif %}
                        {{ f.required ? 'required' : '' }}>
             {% endif %}

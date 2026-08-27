@@ -28,7 +28,10 @@ final class PayloadFactory
         }
 
         return match ($tool->id) {
-            'url' => $this->url($input->get('url')),
+            'qrcode' => $this->generic($input->get('content')),
+            'url', 'review' => $this->url($input->get('url')),
+            'event' => $this->event($input),
+            'bitcoin' => $this->bitcoin($input),
             'text' => $input->get('text'),
             'wifi' => $this->wifi($input),
             'vcard' => $this->vcard($input),
@@ -40,6 +43,74 @@ final class PayloadFactory
             'barcode' => $this->barcode($input),
             default => throw new InvalidPayloadException('error.unknown_tool'),
         };
+    }
+
+    /**
+     * The generic generator encodes exactly what was typed, with one courtesy:
+     * a bare domain becomes a link, because that is always what people mean.
+     */
+    private function generic(string $content): string
+    {
+        $content = trim($content);
+        if ('' === $content) {
+            throw new InvalidPayloadException('error.field_required', ['%field%' => 'field.content']);
+        }
+
+        $looksLikeADomain = !str_contains($content, ' ')
+            && !preg_match('#^[a-z][a-z0-9+.-]*:#i', $content)
+            && preg_match('/^[\w-]+(?:\.[\w-]+)+(?:[\/?#].*)?$/u', $content);
+
+        return $looksLikeADomain ? 'https://'.$content : $content;
+    }
+
+    private function event(FieldValues $input): string
+    {
+        $lines = [
+            'BEGIN:VEVENT',
+            'SUMMARY:'.$this->escapeVcard($input->get('event_title')),
+            'DTSTART:'.$this->icalDate($input->get('start')),
+        ];
+        if ('' !== $input->get('end')) {
+            $lines[] = 'DTEND:'.$this->icalDate($input->get('end'));
+        }
+        if ('' !== $input->get('location')) {
+            $lines[] = 'LOCATION:'.$this->escapeVcard($input->get('location'));
+        }
+        $lines[] = 'END:VEVENT';
+
+        return implode("\n", $lines);
+    }
+
+    private function icalDate(string $value): string
+    {
+        try {
+            // Local time, as produced by <input type="datetime-local">.
+            return (new \DateTimeImmutable($value))->format('Ymd\THis');
+        } catch (\Exception) {
+            throw new InvalidPayloadException('error.invalid_date');
+        }
+    }
+
+    private function bitcoin(FieldValues $input): string
+    {
+        $address = trim($input->get('address'));
+        if (!preg_match('/^(?:[13][a-km-zA-HJ-NP-Z1-9]{25,34}|bc1[a-z0-9]{25,87})$/', $address)) {
+            throw new InvalidPayloadException('error.invalid_bitcoin_address');
+        }
+
+        $query = [];
+        $amount = str_replace(',', '.', trim($input->get('amount')));
+        if ('' !== $amount) {
+            if (!is_numeric($amount) || (float) $amount <= 0) {
+                throw new InvalidPayloadException('error.invalid_amount');
+            }
+            $query['amount'] = rtrim(rtrim(number_format((float) $amount, 8, '.', ''), '0'), '.');
+        }
+        if ('' !== $input->get('label')) {
+            $query['label'] = $input->get('label');
+        }
+
+        return 'bitcoin:'.$address.($query ? '?'.http_build_query($query, '', '&', \PHP_QUERY_RFC3986) : '');
     }
 
     private function url(string $url): string

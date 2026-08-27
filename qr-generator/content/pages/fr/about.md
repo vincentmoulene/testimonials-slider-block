@@ -23,7 +23,9 @@ La contrepartie : vous ne pouvez pas changer la destination après coup. Si vous
 
 ## Choix techniques
 
-Le site est une application Symfony rendue côté serveur, avec une fine couche JavaScript pour l'aperçu en direct. Les codes sont générés en mémoire et renvoyés directement à votre navigateur : rien n'est écrit sur disque, rien n'est journalisé, rien n'est conservé.
+Le site est une application Symfony rendue côté serveur, avec une fine couche JavaScript pour l'aperçu en direct. Les codes sont générés en mémoire et renvoyés directement à votre navigateur : **le contenu que vous encodez n'est jamais écrit sur disque**.
+
+La seule chose que nous conservons est l'adresse e-mail saisie au moment du téléchargement, afin de pouvoir vous prévenir de l'arrivée d'un nouveau générateur. Elle est stockée seule, jamais avec le contenu de vos codes, et vous pouvez en demander la suppression à tout moment. Les détails sont dans la [politique de confidentialité](../politique-de-confidentialite).
 
 ## Contact
 

@@ -35,6 +35,80 @@ final class PayloadFactoryTest extends TestCase
         return $this->registry->get($id) ?? throw new \LogicException('Unknown tool '.$id);
     }
 
+    public function testTheGenericGeneratorKeepsPlainTextAsTyped(): void
+    {
+        self::assertSame('Hello world', $this->build('qrcode', ['content' => 'Hello world']));
+    }
+
+    public function testTheGenericGeneratorTurnsABareDomainIntoALink(): void
+    {
+        self::assertSame('https://example.com/page', $this->build('qrcode', ['content' => 'example.com/page']));
+    }
+
+    public function testTheGenericGeneratorLeavesAnExplicitSchemeAlone(): void
+    {
+        self::assertSame('mailto:a@b.com', $this->build('qrcode', ['content' => 'mailto:a@b.com']));
+    }
+
+    public function testAnEmptyGenericContentIsRejected(): void
+    {
+        $this->expectException(InvalidPayloadException::class);
+        $this->build('qrcode', ['content' => '   ']);
+    }
+
+    public function testEventProducesACalendarEntry(): void
+    {
+        $payload = $this->build('event', [
+            'event_title' => 'Launch party',
+            'start' => '2026-09-15T18:30',
+            'end' => '2026-09-15T21:00',
+            'location' => 'Paris',
+        ]);
+
+        self::assertStringStartsWith("BEGIN:VEVENT\nSUMMARY:Launch party", $payload);
+        self::assertStringContainsString('DTSTART:20260915T183000', $payload);
+        self::assertStringContainsString('DTEND:20260915T210000', $payload);
+        self::assertStringContainsString('LOCATION:Paris', $payload);
+        self::assertStringEndsWith('END:VEVENT', $payload);
+    }
+
+    public function testAnEventWithoutAnEndIsValid(): void
+    {
+        $payload = $this->build('event', ['event_title' => 'Standup', 'start' => '2026-09-15T09:00']);
+
+        self::assertStringNotContainsString('DTEND', $payload);
+    }
+
+    public function testBitcoinProducesABip21Uri(): void
+    {
+        $payload = $this->build('bitcoin', [
+            'address' => 'bc1qar0srrr7xfkvy5l643lydnw9re59gtzzwf5mdq',
+            'amount' => '0,015',
+            'label' => 'Invoice 42',
+        ]);
+
+        self::assertStringStartsWith('bitcoin:bc1qar0srrr7xfkvy5l643lydnw9re59gtzzwf5mdq?', $payload);
+        self::assertStringContainsString('amount=0.015', $payload);
+        self::assertStringContainsString('label=Invoice%2042', $payload);
+    }
+
+    public function testAnInvalidBitcoinAddressIsRejected(): void
+    {
+        $this->expectException(InvalidPayloadException::class);
+        $this->build('bitcoin', ['address' => 'not-an-address']);
+    }
+
+    public function testANegativeBitcoinAmountIsRejected(): void
+    {
+        $this->expectException(InvalidPayloadException::class);
+        $this->build('bitcoin', ['address' => 'bc1qar0srrr7xfkvy5l643lydnw9re59gtzzwf5mdq', 'amount' => '-1']);
+    }
+
+    public function testTheReviewToolValidatesTheLink(): void
+    {
+        self::assertSame('https://g.page/r/abc/review', $this->build('review', ['url' => 'g.page/r/abc/review']));
+    }
+
     public function testUrlGetsHttpsWhenSchemeIsMissing(): void
     {
         self::assertSame('https://example.com/page', $this->build('url', ['url' => 'example.com/page']));

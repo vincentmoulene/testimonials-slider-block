@@ -19,6 +19,8 @@ final readonly class Tool
         public string $icon,
         public array $faq = [],
         public bool $featured = false,
+        /** A non-standalone tool has no landing page of its own: it lives on the home page. */
+        public bool $standalone = true,
     ) {
     }
 

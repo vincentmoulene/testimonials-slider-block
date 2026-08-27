@@ -50,7 +50,7 @@ options:
     transparent: 'Transparent background (PNG / WebP)'
 
 generator:
-    note: 'The preview updates as you type. Nothing you enter is stored on our servers.'
+    note: 'The preview updates as you type. The content of your codes is never stored on our servers.'
     demo_notice: 'Sample preview — fill in the form to generate your own code.'
     formats_hint: 'PNG for the web, SVG for unlimited print quality, WebP for the lightest file.'
 
@@ -86,6 +86,14 @@ field:
     longitude: 'Longitude'
     value: 'Value to encode'
     symbology: 'Barcode type'
+    content: 'Content to encode'
+    event_title: 'Event name'
+    start: 'Starts'
+    end: 'Ends'
+    location: 'Location'
+    address: 'Bitcoin address'
+    amount: 'Amount (BTC)'
+    label: 'Label'
 
 placeholder:
     url: 'https://your-website.com/page'
@@ -108,15 +116,23 @@ placeholder:
     longitude: '2.2945'
     value: '5901234123457'
     symbology: ''
+    content: 'A link, a text, a reference — anything'
+    event_title: 'Product launch'
+    start: ''
+    end: ''
+    location: '10 Downing Street, London'
+    address: 'bc1q…'
+    amount: '0.01'
+    label: 'Invoice 2026-042'
 
 home:
     meta_title: 'Free QR Code Generator — no sign-up, no expiry | %site%'
     meta_description: 'Create a free QR code from a URL, text, Wi-Fi, vCard, email or phone number. High-resolution PNG, SVG and WebP downloads, no account and no expiry date.'
     eyebrow: 'Free QR code generator'
-    h1: 'Create a free QR code from any URL in seconds'
-    lead: 'Paste a link, get a high-resolution QR code you can download as PNG, SVG or WebP. No account, no watermark, no expiry, and unlimited commercial use.'
+    h1: 'Create a free QR code in seconds'
+    lead: 'Paste a link, a text — anything — and get a high-resolution QR code to download as PNG, SVG or WebP. No account, no watermark, no expiry, and unlimited commercial use.'
     tools_title: 'Every generator, all free'
-    tools_subtitle: 'Ten generators for links, Wi-Fi, contact cards, payments-free messaging and retail barcodes.'
+    tools_subtitle: 'Thirteen specialised generators for links, Wi-Fi, contact cards, events, Google reviews, payments and retail barcodes.'
     why_title: 'Why use this generator'
     why:
         free:
@@ -139,13 +155,17 @@ home:
 
 tools:
     meta_title: 'All free QR code and barcode generators'
-    meta_description: 'Ten free generators: URL, plain text, Wi-Fi, vCard, email, SMS, phone, WhatsApp, location and retail barcodes. PNG, SVG and WebP downloads.'
+    meta_description: 'Thirteen free generators: URL, plain text, Wi-Fi, vCard, email, SMS, phone, WhatsApp, location, calendar event, Google review, Bitcoin and retail barcodes. PNG, SVG and WebP downloads.'
     h1: 'All our free generators'
     lead: 'Pick the type of code you need. Every generator is free, unlimited and works without an account.'
     grid_title: 'Generators'
 
 tool:
     other_tools: 'Other free generators'
+    qrcode:
+        name: 'QR code generator'
+        object: 'QR code'
+        form_title: 'What should the code contain?'
     url:
         name: 'URL QR code generator'
         object: 'URL QR code'
@@ -266,6 +286,42 @@ tool:
         copy_body: |
             <p>EAN-13 is the standard for retail products in Europe (12 digits plus a check digit), UPC-A its North American equivalent, and EAN-8 the compact version for small packaging. Code 128 encodes letters and digits and drives most internal logistics; Code 39 remains common in industry; ITF-14 identifies shipping cartons.</p>
             <p>Export the SVG for printing: a barcode is read by its bar widths, so any rescaling of a bitmap risks making it unreadable. Keep the bars black on white, respect the quiet zones on both sides and never print it below 80% of the nominal size.</p>
+    event:
+        name: 'Event QR code generator'
+        object: 'event QR code'
+        short: 'Add an event to any calendar in one scan.'
+        meta_title: 'Free Event QR Code Generator (calendar)'
+        meta_description: 'Create a free QR code that adds your event to the calendar of whoever scans it: date, time and location included. PNG and SVG downloads.'
+        form_title: 'Your event'
+        intro: 'One scan and your event lands in the calendar of the person in front of you — right date, right time, right address.'
+        copy_title: 'Getting a date into people''s calendars'
+        copy_body: |
+            <p>An invitation only works once it is in the calendar. An event QR code encodes a standard calendar entry (VEVENT), so scanning it opens the phone's calendar app with everything pre-filled: title, start, end and location. Print it on an invitation, a concert poster, a training programme, a save-the-date or a conference badge.</p>
+            <p>Times are encoded as local time, exactly as you type them: the reader shows the event as written, wherever the person is. For a recurring event, generate one code per date rather than encoding a repeat rule — it scans far more reliably.</p>
+    review:
+        name: 'Google review QR code generator'
+        object: 'review QR code'
+        short: 'Send customers straight to your review form.'
+        meta_title: 'Free Google Review QR Code Generator'
+        meta_description: 'Create a free QR code that opens your Google review form directly. Perfect for receipts, tables and counters. PNG and SVG downloads.'
+        form_title: 'Your review link'
+        intro: 'Turn a satisfied customer into a review while they are still in front of you: the scan opens the rating form directly.'
+        copy_title: 'Where to find your review link'
+        copy_body: |
+            <p>Open your Google Business Profile, click <em>Ask for reviews</em>, and copy the short link Google gives you (it looks like <code>g.page/r/…/review</code>). Paste it here and you get a code that opens the star rating form directly — no search, no menu, no wrong business picked by mistake.</p>
+            <p>Placement matters more than design: on the receipt, on the table tent, on the counter next to the card reader, or in the invoice you email. Ask at the moment the customer is happy — right after the service — not three days later. And never filter who gets to scan it: gating reviews by expected rating is against Google's policy and gets profiles suspended.</p>
+    bitcoin:
+        name: 'Bitcoin QR code generator'
+        object: 'Bitcoin QR code'
+        short: 'Get paid without anyone typing an address.'
+        meta_title: 'Free Bitcoin QR Code Generator (BIP-21)'
+        meta_description: 'Create a free Bitcoin payment QR code with an address, an amount and a label. Standard BIP-21 format, understood by every wallet. PNG and SVG.'
+        form_title: 'Your payment'
+        intro: 'The scan opens the payer''s wallet with your address, and the amount if you set one. No copy-paste, no transposed character.'
+        copy_title: 'Why nobody should ever type an address'
+        copy_body: |
+            <p>A Bitcoin address is 26 to 62 characters long and a transaction is irreversible: a single wrong character sends the funds somewhere nobody can recover them from. The QR code removes the transcription step entirely, which is why every wallet supports it.</p>
+            <p>This generator produces a standard <strong>BIP-21</strong> URI (<code>bitcoin:address?amount=…&amp;label=…</code>). Leave the amount empty for a tip jar or a donation page; set it for an invoice. Before publishing the code, scan it yourself and check the first and last four characters shown by the wallet against your own address.</p>
 
 howto:
     title: 'How to create your %tool% in three steps'
@@ -323,6 +379,15 @@ faq:
     barcode:
         q: 'Can I invent my own EAN-13 number?'
         a: 'Not for retail. An EAN-13 sold in shops must come from a GS1 prefix assigned to your company. For internal use — stock, assets, internal logistics — you are free to number as you like, and Code 128 is usually the better fit.'
+    event:
+        q: 'Which calendars accept the code?'
+        a: 'The scan opens the native calendar on iOS and Android, which then syncs to Google Calendar, iCloud or Outlook as usual. The encoded format is the standard VEVENT.'
+    review:
+        q: 'Can I show the code only to happy customers?'
+        a: 'No. Filtering who is invited to review — "review gating" — breaks Google''s policy and can get your profile suspended. Show the same code to everyone, and ask at the moment the service went well.'
+    bitcoin:
+        q: 'Is the amount locked into the code?'
+        a: 'It is a suggestion: the wallet pre-fills it and the payer can still change it before signing. Leave the field empty for a donation, fill it in for an invoice.'
 
 blog:
     meta_title: 'QR code guides, best practices and use cases'
@@ -334,6 +399,20 @@ blog:
     updated: 'updated on'
     related: 'Keep reading'
     try_tool: 'Try the matching generator'
+lead:
+    gate:
+        title: 'One step before your download'
+        text: 'Enter your email address to download your code. The tool stays free, and you will only be asked once on this browser.'
+        submit: 'Get my code'
+    inline:
+        title: 'Hear about new generators'
+        text: 'One short email when we publish a new generator or a new guide. Nothing else.'
+        submit: 'Subscribe'
+    consent: 'I also want to receive tips and product news by email.'
+    legal: 'Your address is stored to deliver this download, and to send you news only if you ticked the box. You can ask for its deletion at any time —'
+    thanks: 'Thank you! Your download is starting.'
+    cancel: 'Close'
+
 
 page:
     updated: 'Last updated:'
@@ -345,6 +424,9 @@ error:
     invalid_email: 'This email address is not valid.'
     invalid_phone: 'This phone number is not valid. Use the international format, for example +1 555 010 199.'
     invalid_coordinates: 'These coordinates are not valid. Latitude runs from -90 to 90, longitude from -180 to 180.'
+    invalid_date: 'This date is not valid.'
+    invalid_bitcoin_address: 'This Bitcoin address is not valid. It should start with 1, 3 or bc1.'
+    invalid_amount: 'This amount is not valid.'
     unknown_tool: 'Unknown generator.'
     unknown_symbology: 'Unknown barcode type.'
     invalid_barcode_value: 'This value cannot be encoded as %symbology%. Check the number of digits and the allowed characters.'

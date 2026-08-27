@@ -23,7 +23,9 @@ Il rovescio della medaglia: non puoi cambiare la destinazione in seguito. Se pre
 
 ## Scelte tecniche
 
-Il sito è un'applicazione Symfony renderizzata lato server, con un sottile strato JavaScript per l'anteprima in tempo reale. I codici sono generati in memoria e restituiti direttamente al browser: nulla viene scritto su disco, nulla registrato, nulla conservato.
+Il sito è un'applicazione Symfony renderizzata lato server, con un sottile strato JavaScript per l'anteprima in tempo reale. I codici sono generati in memoria e restituiti direttamente al browser: **il contenuto che codifichi non viene mai scritto su disco**.
+
+L'unica cosa che conserviamo è l'indirizzo e-mail inserito al momento del download, per poterti avvisare quando esce un nuovo generatore. È memorizzato da solo, mai insieme al contenuto dei tuoi codici, e puoi chiederne la cancellazione in qualsiasi momento. I dettagli sono nell'[informativa sulla privacy](../informativa-sulla-privacy).
 
 ## Contatti
 
