@@ -1,5 +1,76 @@
 {
   "version": 1,
-  "_lisezmoi": "Liste par défaut, utilisée au tout premier lancement et par « Réinitialiser ». Ensuite, la liste vit dans le stockage local de l'iPhone. Champs : name, url, icon (emoji, 1-2 lettres ou URL d'image), color (hex ou null pour une couleur déduite du domaine), mode ('overlay' = lecteur intégré, 'browser' = navigateur).",
-  "apps": []
+  "_lisezmoi": "Liste par défaut, utilisée au tout premier lancement et par « Réinitialiser » ; ensuite la liste vit dans le stockage local de l'iPhone. Reprise du hub de l'application todo (src/Command/SeedApplicationsCommand.php). Champs : name, url, icon (emoji, 1-2 lettres ou URL d'image), color (hex ou null pour une couleur déduite du domaine), mode ('overlay' = lecteur intégré, 'browser' = navigateur).",
+  "apps": [
+    {
+      "name": "Todo",
+      "url": "https://todo.vincentmoulene.fr/tasks",
+      "icon": "✅",
+      "color": "#2f6fed",
+      "mode": "overlay"
+    },
+    {
+      "name": "Compta",
+      "url": "https://compta.vincentmoulene.fr",
+      "icon": "📊",
+      "color": "#1f9d55",
+      "mode": "overlay"
+    },
+    {
+      "name": "Ticketing",
+      "url": "https://ticketing-email.vincentmoulene.fr",
+      "icon": "🎫",
+      "color": "#d98c1f",
+      "mode": "overlay"
+    },
+    {
+      "name": "Review Management",
+      "url": "https://partagetonavis.fr",
+      "icon": "💬",
+      "color": "#06b6d4",
+      "mode": "overlay"
+    },
+    {
+      "name": "Attestation irréparabilité",
+      "url": "https://attestation-irreparabilite.com",
+      "icon": "📄",
+      "color": "#8b5cf6",
+      "mode": "overlay"
+    },
+    {
+      "name": "STL Livraison",
+      "url": "https://livraison.mdalesrousses.fr",
+      "icon": "🚚",
+      "color": "#d64545",
+      "mode": "overlay"
+    },
+    {
+      "name": "MDA Les Rousses",
+      "url": "https://app.mdalesrousses.fr",
+      "icon": "🏪",
+      "color": "#e30613",
+      "mode": "browser"
+    },
+    {
+      "name": "MDA Lons",
+      "url": "https://app.mdalons.fr",
+      "icon": "🏪",
+      "color": "#e30613",
+      "mode": "browser"
+    },
+    {
+      "name": "Kinésiologie",
+      "url": "https://kinesiologieemotionnelle.fr",
+      "icon": "🌿",
+      "color": "#10b981",
+      "mode": "overlay"
+    },
+    {
+      "name": "Site perso",
+      "url": "https://vincentmoulene.fr",
+      "icon": "🏠",
+      "color": "#6b7280",
+      "mode": "overlay"
+    }
+  ]
 }

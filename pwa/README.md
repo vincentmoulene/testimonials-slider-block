@@ -32,8 +32,37 @@ pwa/
   préférez sortir vers Safari — utile pour les apps qui doivent elles-mêmes
   poser un raccourci ou utiliser un lecteur de fichiers.
 
-Pour préremplir la liste pour tout le monde (nouvel iPhone, nouvel utilisateur),
-remplissez `apps.json` et commitez :
+## La liste par défaut
+
+`apps.json` est prérempli avec le hub d'applications de l'app **todo**
+(`src/Command/SeedApplicationsCommand.php`), noms, emojis et couleurs compris :
+
+| App | Adresse | Ouverture |
+|---|---|---|
+| Todo | `todo.vincentmoulene.fr/tasks` | lecteur intégré |
+| Compta | `compta.vincentmoulene.fr` | lecteur intégré |
+| Ticketing | `ticketing-email.vincentmoulene.fr` | lecteur intégré |
+| Review Management | `partagetonavis.fr` | lecteur intégré |
+| Attestation irréparabilité | `attestation-irreparabilite.com` | lecteur intégré |
+| STL Livraison | `livraison.mdalesrousses.fr` | lecteur intégré |
+| MDA Les Rousses | `app.mdalesrousses.fr` | navigateur |
+| MDA Lons | `app.mdalons.fr` | navigateur |
+| Kinésiologie | `kinesiologieemotionnelle.fr` | lecteur intégré |
+| Site perso | `vincentmoulene.fr` | lecteur intégré |
+
+Deux choix à connaître :
+
+- **« Avis MDA Les Rousses » n'y est pas** : le hub la pointe sur `127.0.0.1:8002`,
+  une adresse locale au poste de développement, injoignable depuis un téléphone.
+  À ajouter le jour où elle aura un domaine.
+- **Les deux apps MDA s'ouvrent dans le navigateur**, pas dans le lecteur intégré :
+  ce sont elles-mêmes des PWA à installer sur l'écran d'accueil, et Face ID
+  (WebAuthn) comme les notifications ne fonctionnent que depuis leur propre icône.
+  Le mieux reste de les installer séparément ; la vignette du lanceur ne sert qu'à
+  y accéder en attendant.
+
+Pour mettre la liste à jour pour tout le monde (nouvel iPhone, nouvel utilisateur),
+modifiez `apps.json` et commitez :
 
 ```json
 {
