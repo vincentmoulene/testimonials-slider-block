@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Mes apps</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Lanceur PWA pour ouvrir toutes mes applications web depuis l'écran d'accueil de l'iPhone.">
+
+<link rel="manifest" href="./manifest.webmanifest">
+<meta name="theme-color" content="#f5f5f7" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0b0b0f" media="(prefers-color-scheme: dark)">
+
+<!-- iOS : mode plein écran depuis l'écran d'accueil -->
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Mes apps">
+<link rel="apple-touch-icon" href="./icons/apple-touch-icon.png">
+<link rel="icon" href="./icons/icon-192.png" type="image/png">
+
+<link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-row">
+    <h1>Mes apps</h1>
+    <div class="topbar-actions">
+      <button type="button" id="btn-edit" class="icon-btn" aria-pressed="false" title="Organiser">Modifier</button>
+      <button type="button" id="btn-settings" class="icon-btn round" title="Réglages" aria-label="Réglages">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 8.5a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7Zm8.4 3.5c0 .5 0 1-.1 1.4l2 1.6a.5.5 0 0 1 .1.6l-1.9 3.2a.5.5 0 0 1-.6.2l-2.3-.9c-.5.4-1.1.7-1.7 1l-.4 2.5a.5.5 0 0 1-.5.4h-3.8a.5.5 0 0 1-.5-.4l-.4-2.5c-.6-.3-1.2-.6-1.7-1l-2.3.9a.5.5 0 0 1-.6-.2l-1.9-3.2a.5.5 0 0 1 .1-.6l2-1.6a8 8 0 0 1 0-2.8l-2-1.6a.5.5 0 0 1-.1-.6l1.9-3.2a.5.5 0 0 1 .6-.2l2.3.9c.5-.4 1.1-.7 1.7-1l.4-2.5a.5.5 0 0 1 .5-.4h3.8a.5.5 0 0 1 .5.4l.4 2.5c.6.3 1.2.6 1.7 1l2.3-.9a.5.5 0 0 1 .6.2l1.9 3.2a.5.5 0 0 1-.1.6l-2 1.6c.1.4.1.9.1 1.4Z"/></svg>
+      </button>
+    </div>
+  </div>
+  <div class="search-wrap">
+    <svg class="search-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M10.5 3a7.5 7.5 0 0 1 5.9 12.1l4.3 4.3a1 1 0 0 1-1.4 1.4l-4.3-4.3A7.5 7.5 0 1 1 10.5 3Zm0 2a5.5 5.5 0 1 0 0 11 5.5 5.5 0 0 0 0-11Z"/></svg>
+    <input type="search" id="search" placeholder="Rechercher" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" aria-label="Rechercher une application">
+  </div>
+</header>
+
+<main id="main">
+  <div id="grid" class="grid" role="list"></div>
+
+  <div id="empty" class="empty" hidden>
+    <div class="empty-icon" aria-hidden="true">
+      <svg viewBox="0 0 24 24"><path d="M4 4h6v6H4V4Zm10 0h6v6h-6V4ZM4 14h6v6H4v-6Zm10 0h6v6h-6v-6Z"/></svg>
+    </div>
+    <h2>Aucune application</h2>
+    <p>Ajoutez vos applications web : elles s'ouvriront ensuite d'un seul geste depuis l'écran d'accueil.</p>
+    <button type="button" class="btn primary" data-action="add">Ajouter une application</button>
+    <button type="button" class="btn ghost" data-action="bulk">Coller une liste d'URL</button>
+  </div>
+
+  <p id="no-result" class="no-result" hidden>Aucun résultat.</p>
+
+  <div id="ios-hint" class="hint" hidden>
+    <strong>Installer sur l'iPhone</strong>
+    <p>Dans Safari : bouton <span class="sf">Partager</span> → <span class="sf">Sur l'écran d'accueil</span>. L'app s'ouvrira alors en plein écran, sans barre d'adresse.</p>
+    <button type="button" class="btn ghost small" data-action="dismiss-hint">J'ai compris</button>
+  </div>
+</main>
+
+<button type="button" id="fab" class="fab" title="Ajouter une application" aria-label="Ajouter une application">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11 5h2v6h6v2h-6v6h-2v-6H5v-2h6V5Z"/></svg>
+</button>
+
+<!-- Feuille : ajout / édition d'une app -->
+<div class="sheet-backdrop" id="sheet-backdrop" hidden></div>
+
+<section class="sheet" id="sheet-app" role="dialog" aria-modal="true" aria-labelledby="sheet-app-title" hidden>
+  <div class="sheet-grabber" aria-hidden="true"></div>
+  <form id="form-app" novalidate>
+    <div class="sheet-head">
+      <button type="button" class="link" data-action="close">Annuler</button>
+      <h2 id="sheet-app-title">Nouvelle app</h2>
+      <button type="submit" class="link strong">OK</button>
+    </div>
+
+    <div class="field">
+      <label for="f-url">Adresse</label>
+      <input type="url" id="f-url" name="url" inputmode="url" placeholder="exemple.vincentmoulene.fr" autocapitalize="off" autocorrect="off" spellcheck="false" required>
+    </div>
+
+    <div class="field">
+      <label for="f-name">Nom</label>
+      <input type="text" id="f-name" name="name" placeholder="Mon app" maxlength="40" required>
+    </div>
+
+    <div class="field">
+      <label for="f-icon">Icône <span class="muted">— emoji, 1–2 lettres ou URL d'image</span></label>
+      <input type="text" id="f-icon" name="icon" placeholder="🚀" autocapitalize="off" spellcheck="false">
+    </div>
+
+    <div class="field">
+      <label for="f-color">Couleur</label>
+      <div class="swatches" id="swatches" role="radiogroup" aria-label="Couleur de la vignette"></div>
+    </div>
+
+    <div class="field">
+      <label for="f-mode">Ouverture</label>
+      <select id="f-mode" name="mode">
+        <option value="overlay">Dans l'app (lecteur intégré)</option>
+        <option value="browser">Dans le navigateur</option>
+      </select>
+      <p class="help">« Dans l'app » garde le lanceur ouvert : un bouton <em>OK</em> ramène ici.</p>
+    </div>
+
+    <div class="sheet-foot">
+      <button type="button" class="btn danger" id="btn-delete" hidden>Supprimer</button>
+    </div>
+  </form>
+</section>
+
+<!-- Feuille : réglages -->
+<section class="sheet" id="sheet-settings" role="dialog" aria-modal="true" aria-labelledby="sheet-settings-title" hidden>
+  <div class="sheet-grabber" aria-hidden="true"></div>
+  <div class="sheet-head">
+    <button type="button" class="link" data-action="close">Fermer</button>
+    <h2 id="sheet-settings-title">Réglages</h2>
+    <span class="link ghosted" aria-hidden="true">Fermer</span>
+  </div>
+
+  <div class="field">
+    <label for="f-bulk">Ajout rapide</label>
+    <textarea id="f-bulk" rows="4" placeholder="Une par ligne :&#10;Facturation | https://factures.vincentmoulene.fr&#10;https://crm.vincentmoulene.fr" autocapitalize="off" autocorrect="off" spellcheck="false"></textarea>
+    <button type="button" class="btn primary block" data-action="bulk-add">Ajouter ces applications</button>
+  </div>
+
+  <div class="field">
+    <label for="f-json">Sauvegarde (JSON)</label>
+    <textarea id="f-json" rows="5" autocapitalize="off" autocorrect="off" spellcheck="false"></textarea>
+    <div class="row">
+      <button type="button" class="btn ghost" data-action="copy-json">Copier</button>
+      <button type="button" class="btn ghost" data-action="restore-json">Restaurer</button>
+    </div>
+  </div>
+
+  <div class="field">
+    <button type="button" class="btn ghost block" data-action="reset">Réinitialiser depuis apps.json</button>
+    <button type="button" class="btn ghost block" data-action="update">Rechercher une mise à jour</button>
+  </div>
+
+  <p class="version">Lanceur PWA — <span id="version"></span></p>
+</section>
+
+<div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+
+<script src="./app.js"></script>
+</body>
+</html>

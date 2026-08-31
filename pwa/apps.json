@@ -1,0 +1,5 @@
+{
+  "version": 1,
+  "_lisezmoi": "Liste par défaut, utilisée au tout premier lancement et par « Réinitialiser ». Ensuite, la liste vit dans le stockage local de l'iPhone. Champs : name, url, icon (emoji, 1-2 lettres ou URL d'image), color (hex ou null pour une couleur déduite du domaine), mode ('overlay' = lecteur intégré, 'browser' = navigateur).",
+  "apps": []
+}
