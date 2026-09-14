@@ -616,14 +616,32 @@
     });
     return out;
   }
-  function prochainPalier(b){
-    if(!b.paliers||!b.paliers.length) return null;
-    var p=piecesBon(b), suivant=null, atteint=null;
-    b.paliers.forEach(function(x){
-      if(p>=x.seuil) atteint=x;
-      else if(!suivant) suivant=x;
+  /* Un même palier imprimé sur plusieurs bons (« 10P ENC + POS ») se compte sur
+     l'ensemble de ces bons : on regroupe les paliers de libellé identique. */
+  function paliersPartages(){
+    var map={}, L=liste();
+    L.forEach(function(b){
+      (b.paliers||[]).forEach(function(x){
+        var cle=x.seuil+"|"+String(x.gain||"").toUpperCase().replace(/[\s.]+/g,"");
+        if(!map[cle]) map[cle]={seuil:x.seuil, gain:x.gain, bons:[]};
+        if(map[cle].bons.indexOf(b)<0) map[cle].bons.push(b);
+      });
     });
-    return {pieces:p, atteint:atteint, suivant:suivant};
+    return Object.keys(map).map(function(k){
+      var g=map[k];
+      g.pieces=g.bons.reduce(function(s,b){ return s+piecesBon(b); },0);
+      g.partage=g.bons.length>1;
+      return g;
+    }).sort(function(a,b){ return a.seuil-b.seuil; });
+  }
+  function prochainPalier(b){
+    var gs=paliersPartages().filter(function(g){ return g.bons.indexOf(b)>-1; });
+    if(!gs.length) return null;
+    var suivant=null;
+    gs.forEach(function(g){
+      if(g.pieces<g.seuil && (!suivant || (g.seuil-g.pieces)<(suivant.seuil-suivant.pieces))) suivant=g;
+    });
+    return {pieces:gs[0].pieces, suivant:suivant, groupes:gs};
   }
 
   /* ---------------- contrôles ---------------- */
@@ -650,9 +668,10 @@
         if(l.ref && l.ref!=="—") (parRef[l.ref]=parRef[l.ref]||[]).push({b:b,l:l});
       });
       var pal=prochainPalier(b);
-      if(pal && pal.suivant && pal.pieces>0 && pal.suivant.seuil-pal.pieces<=2){
+      if(pal && pal.suivant && pal.suivant.pieces>0 && pal.suivant.seuil-pal.suivant.pieces<=2){
+        var g=pal.suivant, qui=g.partage? g.bons.map(function(x){ return x.fournisseur; }).join(" + ") : b.fournisseur;
         out.push({sev:"info",titre:"Palier à portée",
-          detail:b.fournisseur+" : "+pal.pieces+" pièces engagées, encore "+(pal.suivant.seuil-pal.pieces)+" pour atteindre "+pal.suivant.seuil+"P — "+pal.suivant.gain+"."});
+          detail:qui+" : "+g.pieces+" pièces engagées, encore "+(g.seuil-g.pieces)+" pour atteindre "+g.seuil+"P — "+g.gain+"."});
       }
     });
     Object.keys(parRef).forEach(function(ref){
@@ -741,7 +760,8 @@
         var ht=totalBon(b), mg=margeBon(b), pal=prochainPalier(b);
         var pvht=lignesCommandees(b).reduce(function(s,l){ return s+(isFinite(l.pv)?pvHT(l)*qte(l):0); },0);
         var etat = !pal ? '<span class="chip neutral">aucun palier lu</span>'
-          : pal.suivant ? '<span class="chip warn">'+(pal.suivant.seuil-pal.pieces)+' pièce(s) avant '+pal.suivant.seuil+'P</span>'
+          : pal.suivant ? '<span class="chip warn">'+(pal.suivant.seuil-pal.suivant.pieces)+' pièce(s) avant '+pal.suivant.seuil+'P'+
+              (pal.suivant.partage?' (cumul '+pal.suivant.bons.length+' bons)':'')+'</span>'
           : '<span class="chip ok">palier max atteint</span>';
         return '<tr><td>'+esc(b.fournisseur)+(b.demo?' <span class="chip warn">exemple</span>':'')+'</td>'+
           '<td class="n r">'+piecesBon(b)+'</td><td class="n r">'+eur(ht)+'</td>'+
@@ -752,20 +772,21 @@
       '<td class="n r">'+eur(L.reduce(function(s,b){ return s+margeBon(b); },0))+'</td><td></td><td></td></tr></tfoot>'+
       '</table></div></div>';
 
-    var avecPaliers=L.filter(function(b){ return b.paliers&&b.paliers.length; });
-    if(avecPaliers.length){
+    var groupes=paliersPartages();
+    if(groupes.length){
       html+='<div class="card"><h3>Accélérateurs</h3>'+
-        '<p class="hint">Paliers lus en bas des bons. Le compteur additionne toutes les périodes.</p>'+
-        avecPaliers.map(function(b){
-          var p=piecesBon(b);
-          return '<div><div class="palier"><div class="t"><strong>'+esc(b.fournisseur)+'</strong> — '+p+' pièce'+(p>1?"s":"")+'</div></div>'+
-            b.paliers.map(function(x){
-              var ok=p>=x.seuil, pr=Math.min(100,Math.round(p/x.seuil*100));
-              return '<div class="palier"><div class="t">'+
-                '<div>'+x.seuil+' pièces — '+esc(x.gain)+'</div>'+
-                '<span class="barre"><span style="width:'+pr+'%"></span></span></div>'+
-                '<span class="g">'+(ok?'<span class="chip ok">atteint</span>':'<span class="chip neutral">'+(x.seuil-p)+' à faire</span>')+'</span></div>';
-            }).join("")+'</div>';
+        '<p class="hint">Paliers lus en pied de bon. Un palier imprimé sur plusieurs bons — « 10P ENC + POS » par exemple — '+
+        'est compté sur le cumul de ces bons, toutes périodes confondues.</p>'+
+        groupes.map(function(g){
+          var ok=g.pieces>=g.seuil, pr=Math.min(100,Math.round(g.pieces/g.seuil*100));
+          return '<div class="palier">'+
+            '<div class="t"><div><strong>'+g.seuil+' pièces</strong> — '+esc(g.gain)+'</div>'+
+            '<div class="hint" style="font-size:12px">'+esc(g.bons.map(function(b){ return b.fournisseur; }).join(" + "))+
+              ' — '+g.pieces+' pièce'+(g.pieces>1?"s":"")+' engagée'+(g.pieces>1?"s":"")+
+              (g.partage?' au total':'')+'</div>'+
+            '<span class="barre"><span style="width:'+pr+'%"></span></span></div>'+
+            '<span class="g">'+(ok?'<span class="chip ok">atteint</span>':
+              '<span class="chip warn">'+(g.seuil-g.pieces)+' à faire</span>')+'</span></div>';
         }).join("")+'</div>';
     }
     document.getElementById("panel-engagement").innerHTML=html;
