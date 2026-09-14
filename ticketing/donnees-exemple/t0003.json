@@ -1,0 +1,41 @@
+{
+ "ref": "GS-0003",
+ "sujet": "Latences sur l'export CSV depuis mardi",
+ "de": {
+  "nom": "Théo Vasseur",
+  "email": "theo@vasseur-data.io"
+ },
+ "boite": "technique@guichet.fr",
+ "statut": "attente",
+ "priorite": "urgente",
+ "assigne": "Sofiane B.",
+ "etiquettes": [
+  "performance",
+  "export"
+ ],
+ "creeLe": "2026-09-11T08:38:11.842169Z",
+ "majLe": "2026-09-13T12:38:11.842169Z",
+ "messages": [
+  {
+   "sens": "in",
+   "auteur": "Théo Vasseur",
+   "email": "theo@vasseur-data.io",
+   "date": "2026-09-11T08:38:11.842169Z",
+   "corps": "Bonjour,\n\nL'export CSV met plus de quatre minutes depuis mardi, contre une vingtaine de secondes auparavant. Le volume est inchangé, environ 40 000 lignes.\n\nNos scripts de nuit tombent en timeout à cause de ça.\n\nThéo Vasseur"
+  },
+  {
+   "sens": "note",
+   "auteur": "Sofiane B.",
+   "email": "",
+   "date": "2026-09-12T08:38:11.842169Z",
+   "corps": "Index manquant sur commandes.date_creation, supprimé par la migration de lundi soir. Reproduit en préproduction : 3 min 50 contre 18 s avec l'index. Ticket infra INF-412 ouvert."
+  },
+  {
+   "sens": "out",
+   "auteur": "Sofiane B.",
+   "email": "technique@guichet.fr",
+   "date": "2026-09-13T12:38:11.842169Z",
+   "corps": "Bonjour,\n\nNous avons identifié la cause : un index de base de données supprimé par erreur lors d'une migration. Le correctif passe en production ce soir vers 22 h.\n\nPouvez-vous nous confirmer demain matin que les temps d'export sont revenus à la normale ?\n\nBien à vous,\nSofiane B. — Guichet Support"
+  }
+ ]
+}

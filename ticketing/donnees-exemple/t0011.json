@@ -1,0 +1,41 @@
+{
+ "ref": "GS-0011",
+ "sujet": "Accès révoqué après le changement de forfait",
+ "de": {
+  "nom": "Dimitri Sarkis",
+  "email": "d.sarkis@sarkis-events.eu"
+ },
+ "boite": "support@guichet.fr",
+ "statut": "attente",
+ "priorite": "haute",
+ "assigne": "Vincent M.",
+ "etiquettes": [
+  "compte",
+  "forfait"
+ ],
+ "creeLe": "2026-09-12T08:38:11.842169Z",
+ "majLe": "2026-09-13T12:38:11.842169Z",
+ "messages": [
+  {
+   "sens": "in",
+   "auteur": "Dimitri Sarkis",
+   "email": "d.sarkis@sarkis-events.eu",
+   "date": "2026-09-12T08:38:11.842169Z",
+   "corps": "Bonjour,\n\nAprès être passés au forfait supérieur hier, quatre membres de l'équipe ont perdu l'accès aux projets archivés. C'était pourtant l'argument qui nous a fait changer d'offre.\n\nDimitri Sarkis"
+  },
+  {
+   "sens": "out",
+   "auteur": "Vincent M.",
+   "email": "support@guichet.fr",
+   "date": "2026-09-12T09:28:11.842169Z",
+   "corps": "Bonjour,\n\nLe changement de forfait a bien été enregistré, mais les rôles des membres n'ont pas été recalculés — c'est un défaut connu du changement en cours de période.\n\nJ'ai relancé la synchronisation des droits sur votre organisation. Pouvez-vous demander aux quatre personnes de se déconnecter puis de se reconnecter, et me confirmer ?\n\nBien à vous,\nVincent M. — Guichet Support"
+  },
+  {
+   "sens": "note",
+   "auteur": "Vincent M.",
+   "email": "",
+   "date": "2026-09-13T12:38:11.842169Z",
+   "corps": "Troisième cas identique ce mois-ci. Signalé à l'équipe produit, correctif prévu dans la version 4.9."
+  }
+ ]
+}

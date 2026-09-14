@@ -1,0 +1,27 @@
+{
+ "ref": "GS-0007",
+ "sujet": "Le webhook de commande ne se déclenche plus",
+ "de": {
+  "nom": "Julien Perrot",
+  "email": "julien@perrot-shop.fr"
+ },
+ "boite": "technique@guichet.fr",
+ "statut": "nouveau",
+ "priorite": "urgente",
+ "assigne": "",
+ "etiquettes": [
+  "webhook",
+  "intégration"
+ ],
+ "creeLe": "2026-09-14T05:58:11.842169Z",
+ "majLe": "2026-09-14T05:58:11.842169Z",
+ "messages": [
+  {
+   "sens": "in",
+   "auteur": "Julien Perrot",
+   "email": "julien@perrot-shop.fr",
+   "date": "2026-09-14T05:58:11.842169Z",
+   "corps": "Bonjour,\n\nDepuis environ 9 h ce matin, notre webhook « commande.creee » ne reçoit plus rien. Nos préparateurs ne voient donc plus les commandes arriver et nous expédions à l'aveugle.\n\nL'URL n'a pas changé, notre serveur répond bien en 200 sur les tests manuels.\n\nJulien Perrot\nPerrot Shop"
+  }
+ ]
+}

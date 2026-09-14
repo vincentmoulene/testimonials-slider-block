@@ -1,0 +1,41 @@
+{
+ "ref": "GS-0005",
+ "sujet": "Erreur 500 à la connexion SSO",
+ "de": {
+  "nom": "Marc Tissier",
+  "email": "m.tissier@cabinet-tissier.fr"
+ },
+ "boite": "technique@guichet.fr",
+ "statut": "resolu",
+ "priorite": "urgente",
+ "assigne": "Sofiane B.",
+ "etiquettes": [
+  "sso",
+  "incident"
+ ],
+ "creeLe": "2026-09-05T08:38:11.842169Z",
+ "majLe": "2026-09-05T13:38:11.842169Z",
+ "messages": [
+  {
+   "sens": "in",
+   "auteur": "Marc Tissier",
+   "email": "m.tissier@cabinet-tissier.fr",
+   "date": "2026-09-05T08:38:11.842169Z",
+   "corps": "Bonjour,\n\nPlus personne au cabinet ne parvient à se connecter : erreur 500 juste après la redirection depuis notre annuaire. Une vingtaine de personnes sont bloquées.\n\nMarc Tissier"
+  },
+  {
+   "sens": "out",
+   "auteur": "Sofiane B.",
+   "email": "technique@guichet.fr",
+   "date": "2026-09-05T08:56:11.842169Z",
+   "corps": "Bonjour,\n\nNous prenons l'incident en charge immédiatement. Le certificat de signature de votre fournisseur d'identité a expiré cette nuit — la plateforme rejette donc les assertions.\n\nJe reviens vers vous dès que nous avons une solution de contournement.\n\nSofiane B. — Guichet Support"
+  },
+  {
+   "sens": "out",
+   "auteur": "Sofiane B.",
+   "email": "technique@guichet.fr",
+   "date": "2026-09-05T13:38:11.842169Z",
+   "corps": "Le nouveau certificat est en place et les connexions repartent normalement. Nous ajoutons une alerte à trente jours avant expiration pour éviter que cela se reproduise.\n\nJe clôture l'incident.\n\nSofiane B. — Guichet Support"
+  }
+ ]
+}

@@ -1,0 +1,41 @@
+{
+ "ref": "GS-0012",
+ "sujet": "Durée de conservation des données après résiliation",
+ "de": {
+  "nom": "Claire Fontaine",
+  "email": "dpo@fontaine-assurances.fr"
+ },
+ "boite": "support@guichet.fr",
+ "statut": "resolu",
+ "priorite": "normale",
+ "assigne": "Vincent M.",
+ "etiquettes": [
+  "rgpd",
+  "juridique"
+ ],
+ "creeLe": "2026-09-03T08:38:11.842169Z",
+ "majLe": "2026-09-04T16:38:11.842169Z",
+ "messages": [
+  {
+   "sens": "in",
+   "auteur": "Claire Fontaine",
+   "email": "dpo@fontaine-assurances.fr",
+   "date": "2026-09-03T08:38:11.842169Z",
+   "corps": "Bonjour,\n\nEn tant que déléguée à la protection des données, je dois documenter la durée de conservation de nos données chez vous après résiliation, ainsi que le sort des sauvegardes.\n\nClaire Fontaine"
+  },
+  {
+   "sens": "out",
+   "auteur": "Vincent M.",
+   "email": "support@guichet.fr",
+   "date": "2026-09-03T11:38:11.842169Z",
+   "corps": "Bonjour,\n\nAprès résiliation : les données restent accessibles trente jours pour vous permettre de les exporter, puis sont supprimées des bases de production. Les sauvegardes chiffrées suivent une rotation de trente-cinq jours, au terme de laquelle plus aucune copie ne subsiste.\n\nNotre registre de traitement et le contrat de sous-traitance (article 28) sont disponibles sur demande — dites-moi si vous les souhaitez.\n\nBien à vous,\nVincent M. — Guichet Support"
+  },
+  {
+   "sens": "in",
+   "auteur": "Claire Fontaine",
+   "email": "dpo@fontaine-assurances.fr",
+   "date": "2026-09-04T16:38:11.842169Z",
+   "corps": "C'est exactement ce qu'il me fallait, merci. Je reviendrai vers vous pour le contrat de sous-traitance."
+  }
+ ]
+}

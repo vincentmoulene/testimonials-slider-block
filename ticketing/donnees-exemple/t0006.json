@@ -1,0 +1,41 @@
+{
+ "ref": "GS-0006",
+ "sujet": "Changement d'IBAN pour le prélèvement",
+ "de": {
+  "nom": "Sophie Arnaud",
+  "email": "s.arnaud@maison-arnaud.com"
+ },
+ "boite": "facturation@guichet.fr",
+ "statut": "en_cours",
+ "priorite": "normale",
+ "assigne": "Léna K.",
+ "etiquettes": [
+  "facturation",
+  "prélèvement"
+ ],
+ "creeLe": "2026-09-13T02:38:11.842169Z",
+ "majLe": "2026-09-14T06:38:11.842169Z",
+ "messages": [
+  {
+   "sens": "in",
+   "auteur": "Sophie Arnaud",
+   "email": "s.arnaud@maison-arnaud.com",
+   "date": "2026-09-13T02:38:11.842169Z",
+   "corps": "Bonjour,\n\nNous changeons de banque au 1er octobre. Quelle est la marche à suivre pour mettre à jour le mandat de prélèvement ?\n\nSophie Arnaud"
+  },
+  {
+   "sens": "out",
+   "auteur": "Léna K.",
+   "email": "facturation@guichet.fr",
+   "date": "2026-09-13T03:58:11.842169Z",
+   "corps": "Bonjour,\n\nLa mise à jour se fait depuis Facturation › Moyen de paiement : le nouveau mandat remplace l'ancien et prend effet à l'échéance suivante.\n\nSi le prélèvement du 1er est déjà engagé, il partira sur l'ancien compte — pensez à le laisser provisionné.\n\nBien à vous,\nLéna K. — Guichet Support"
+  },
+  {
+   "sens": "in",
+   "auteur": "Sophie Arnaud",
+   "email": "s.arnaud@maison-arnaud.com",
+   "date": "2026-09-14T06:38:11.842169Z",
+   "corps": "Merci. Le nouveau mandat est enregistré, mais je vois toujours l'ancien IBAN sur le récapitulatif. Est-ce normal ?"
+  }
+ ]
+}

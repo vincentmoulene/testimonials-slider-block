@@ -1,0 +1,41 @@
+{
+ "ref": "GS-0008",
+ "sujet": "Demande de devis pour 50 licences",
+ "de": {
+  "nom": "Hélène Bouchard",
+  "email": "h.bouchard@mairie-veynes.fr"
+ },
+ "boite": "support@guichet.fr",
+ "statut": "en_cours",
+ "priorite": "basse",
+ "assigne": "Vincent M.",
+ "etiquettes": [
+  "commercial",
+  "secteur public"
+ ],
+ "creeLe": "2026-09-10T08:38:11.842169Z",
+ "majLe": "2026-09-11T14:38:11.842169Z",
+ "messages": [
+  {
+   "sens": "in",
+   "auteur": "Hélène Bouchard",
+   "email": "h.bouchard@mairie-veynes.fr",
+   "date": "2026-09-10T08:38:11.842169Z",
+   "corps": "Bonjour,\n\nDans le cadre de notre marché 2027, nous aurions besoin d'un devis pour cinquante licences, ainsi que de votre attestation de vigilance URSSAF.\n\nHélène Bouchard\nMairie de Veynes"
+  },
+  {
+   "sens": "out",
+   "auteur": "Vincent M.",
+   "email": "support@guichet.fr",
+   "date": "2026-09-10T14:38:11.842169Z",
+   "corps": "Bonjour,\n\nBien reçu. Je prépare le devis au tarif secteur public et joins l'attestation de vigilance ainsi que le KBIS.\n\nUne question avant de chiffrer : souhaitez-vous l'hébergement mutualisé ou une instance dédiée ? L'écart de prix est significatif.\n\nBien à vous,\nVincent M. — Guichet Support"
+  },
+  {
+   "sens": "note",
+   "auteur": "Vincent M.",
+   "email": "",
+   "date": "2026-09-11T14:38:11.842169Z",
+   "corps": "Marché public : prévoir le mémoire technique et le DC4 si sous-traitance. Relancer sous 48 h si pas de retour sur l'hébergement."
+  }
+ ]
+}

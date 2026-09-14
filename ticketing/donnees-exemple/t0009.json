@@ -1,0 +1,27 @@
+{
+ "ref": "GS-0009",
+ "sujet": "Facture 2026-0871 payée deux fois",
+ "de": {
+  "nom": "Olivier Naud",
+  "email": "o.naud@naud-menuiserie.fr"
+ },
+ "boite": "facturation@guichet.fr",
+ "statut": "nouveau",
+ "priorite": "haute",
+ "assigne": "",
+ "etiquettes": [
+  "facturation",
+  "remboursement"
+ ],
+ "creeLe": "2026-09-13T23:38:11.842169Z",
+ "majLe": "2026-09-13T23:38:11.842169Z",
+ "messages": [
+  {
+   "sens": "in",
+   "auteur": "Olivier Naud",
+   "email": "o.naud@naud-menuiserie.fr",
+   "date": "2026-09-13T23:38:11.842169Z",
+   "corps": "Bonjour,\n\nJe constate deux débits de 348 € le même jour pour la facture 2026-0871 : un virement que j'avais fait manuellement, et le prélèvement automatique qui est passé ensuite.\n\nPouvez-vous procéder au remboursement de l'un des deux ?\n\nOlivier Naud"
+  }
+ ]
+}

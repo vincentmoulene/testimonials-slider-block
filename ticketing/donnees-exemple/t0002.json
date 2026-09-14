@@ -1,0 +1,33 @@
+{
+ "ref": "GS-0002",
+ "sujet": "Duplicata de la facture de juillet",
+ "de": {
+  "nom": "Karim Belhadj",
+  "email": "compta@belhadj-transport.com"
+ },
+ "boite": "facturation@guichet.fr",
+ "statut": "en_cours",
+ "priorite": "normale",
+ "assigne": "Camille R.",
+ "etiquettes": [
+  "facturation"
+ ],
+ "creeLe": "2026-09-13T06:38:11.842169Z",
+ "majLe": "2026-09-14T05:38:11.842169Z",
+ "messages": [
+  {
+   "sens": "in",
+   "auteur": "Karim Belhadj",
+   "email": "compta@belhadj-transport.com",
+   "date": "2026-09-13T06:38:11.842169Z",
+   "corps": "Bonjour,\n\nNotre cabinet comptable réclame le duplicata de la facture de juillet pour boucler le trimestre. Pouvez-vous nous le renvoyer ?\n\nMerci,\nK. Belhadj"
+  },
+  {
+   "sens": "out",
+   "auteur": "Camille R.",
+   "email": "facturation@guichet.fr",
+   "date": "2026-09-14T05:38:11.842169Z",
+   "corps": "Bonjour,\n\nJe récupère le document auprès de la comptabilité et vous le transmets dans la journée. Toutes mes excuses pour le délai de réponse.\n\nBien à vous,\nCamille R. — Guichet Support"
+  }
+ ]
+}

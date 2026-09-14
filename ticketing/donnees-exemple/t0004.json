@@ -1,0 +1,48 @@
+{
+ "ref": "GS-0004",
+ "sujet": "Ajout de trois utilisateurs sur notre compte",
+ "de": {
+  "nom": "Nadia Lefèvre",
+  "email": "n.lefevre@groupe-orvault.fr"
+ },
+ "boite": "support@guichet.fr",
+ "statut": "resolu",
+ "priorite": "normale",
+ "assigne": "Camille R.",
+ "etiquettes": [
+  "compte",
+  "licences"
+ ],
+ "creeLe": "2026-09-08T08:38:11.842169Z",
+ "majLe": "2026-09-08T11:38:11.842169Z",
+ "messages": [
+  {
+   "sens": "in",
+   "auteur": "Nadia Lefèvre",
+   "email": "n.lefevre@groupe-orvault.fr",
+   "date": "2026-09-08T08:38:11.842169Z",
+   "corps": "Bonjour,\n\nNous accueillons trois nouveaux collaborateurs lundi. Comment ajouter leurs accès ?\n\nNadia Lefèvre"
+  },
+  {
+   "sens": "out",
+   "auteur": "Camille R.",
+   "email": "support@guichet.fr",
+   "date": "2026-09-08T10:13:11.842169Z",
+   "corps": "Bonjour,\n\nDepuis Réglages › Équipe, le bouton « Inviter » vous permet d'ajouter les adresses une par une. Chaque invitation reste valable sept jours.\n\nVotre forfait couvre douze sièges, vous en utilisez huit : aucun surcoût.\n\nBien à vous,\nCamille R. — Guichet Support"
+  },
+  {
+   "sens": "in",
+   "auteur": "Nadia Lefèvre",
+   "email": "n.lefevre@groupe-orvault.fr",
+   "date": "2026-09-08T10:38:11.842169Z",
+   "corps": " C'est parfait, les trois invitations sont parties. Merci beaucoup !"
+  },
+  {
+   "sens": "out",
+   "auteur": "Camille R.",
+   "email": "support@guichet.fr",
+   "date": "2026-09-08T11:38:11.842169Z",
+   "corps": "Avec plaisir. Je clôture le ticket ; répondez à ce message s'il vous faut autre chose.\n\nCamille R. — Guichet Support"
+  }
+ ]
+}

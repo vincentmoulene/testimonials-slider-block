@@ -1,0 +1,27 @@
+{
+ "ref": "GS-0001",
+ "sujet": "Impossible de téléverser un justificatif",
+ "de": {
+  "nom": "Amélie Sordet",
+  "email": "a.sordet@atelier-nord.fr"
+ },
+ "boite": "support@guichet.fr",
+ "statut": "nouveau",
+ "priorite": "haute",
+ "assigne": "",
+ "etiquettes": [
+  "bug",
+  "espace client"
+ ],
+ "creeLe": "2026-09-14T06:58:11.842169Z",
+ "majLe": "2026-09-14T06:58:11.842169Z",
+ "messages": [
+  {
+   "sens": "in",
+   "auteur": "Amélie Sordet",
+   "email": "a.sordet@atelier-nord.fr",
+   "date": "2026-09-14T06:58:11.842169Z",
+   "corps": "Bonjour,\n\nDepuis ce matin, le bouton « Ajouter un justificatif » ne répond plus dans l'espace client. Le fichier fait 1,2 Mo, c'est un PDF tout ce qu'il y a de plus classique, et rien ne se passe au clic — pas même un message d'erreur.\n\nNous avons un contrôle URSSAF jeudi, c'est assez pressant.\n\nBien cordialement,\nAmélie Sordet\nAtelier Nord"
+  }
+ ]
+}

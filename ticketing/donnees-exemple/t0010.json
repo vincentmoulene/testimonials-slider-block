@@ -1,0 +1,41 @@
+{
+ "ref": "GS-0010",
+ "sujet": "Export comptable au format FEC",
+ "de": {
+  "nom": "Patricia Moulin",
+  "email": "p.moulin@moulin-experts.fr"
+ },
+ "boite": "facturation@guichet.fr",
+ "statut": "ferme",
+ "priorite": "basse",
+ "assigne": "Léna K.",
+ "etiquettes": [
+  "export",
+  "comptabilité"
+ ],
+ "creeLe": "2026-09-02T08:38:11.842169Z",
+ "majLe": "2026-09-03T08:38:11.842169Z",
+ "messages": [
+  {
+   "sens": "in",
+   "auteur": "Patricia Moulin",
+   "email": "p.moulin@moulin-experts.fr",
+   "date": "2026-09-02T08:38:11.842169Z",
+   "corps": "Bonjour,\n\nEn tant qu'expert-comptable de plusieurs de vos clients, je cherche l'export au format FEC. Existe-t-il ?\n\nP. Moulin"
+  },
+  {
+   "sens": "out",
+   "auteur": "Léna K.",
+   "email": "facturation@guichet.fr",
+   "date": "2026-09-02T13:38:11.842169Z",
+   "corps": "Bonjour,\n\nOui : Facturation › Exports › « Fichier des écritures comptables (FEC) », avec sélection de l'exercice. Le fichier respecte l'arrêté du 29 juillet 2013.\n\nBien à vous,\nLéna K. — Guichet Support"
+  },
+  {
+   "sens": "in",
+   "auteur": "Patricia Moulin",
+   "email": "p.moulin@moulin-experts.fr",
+   "date": "2026-09-03T08:38:11.842169Z",
+   "corps": "Parfait, je l'ai trouvé. Merci de votre réactivité."
+  }
+ ]
+}
