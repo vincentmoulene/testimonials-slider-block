@@ -1,38 +1,60 @@
 # Bons Innovtec
 
-Application web autonome (un seul fichier, `index.html`) pour dépouiller les
-bons de commande PDF du salon Innovtec reçus par mail
-(`diffusion@reporting.mda-company.com`, objet « Votre commande INNOVTEC Num … »).
+Application web autonome (`index.html`) pour piloter les commandes passées sur
+les bons du salon Innovtec (MDA).
 
-## Ce qu'elle fait
+## Le format réel du bon
 
-- **Import PDF** : glisser-déposer d'un ou plusieurs bons. La lecture se fait
-  dans le navigateur (pdf.js), aucun fichier n'est envoyé ailleurs.
-- **Extraction des lignes** : référence, désignation, quantité, prix unitaire HT,
-  remise, montant HT. La quantité, le PU et le total sont identifiés par
-  cohérence arithmétique (`qté × PU = total`) et non par position de colonne,
-  ce qui rend la lecture indépendante de la mise en page exacte du bon.
-  Les codes à barres (8 chiffres et plus) sont exclus des montants candidats.
-- **Achats du jour** : total HT de la journée, répartition par fournisseur,
-  détail bon par bon, quantités et prix corrigeables à la main.
-- **Contrôles** : montants incohérents, même référence sur plusieurs bons
-  (double commande), écart de prix supérieur à 2 % sur une même référence,
-  quantités ≥ 10, bons dont aucune ligne n'a pu être lue.
-- **Export CSV** français (séparateur `;`, virgule décimale, BOM pour Excel).
-- **Calibrage** : le texte brut du dernier PDF est affiché, et les repères de
-  lecture (numéro de bon, date, fournisseur, magasin, format des références)
-  sont modifiables sans toucher au code. Saisie manuelle d'un bon également
-  possible.
+Un bon Innovtec n'est pas une facture : c'est un **catalogue par fournisseur**.
+Chaque ligne décrit un produit, et la commande consiste à inscrire des
+quantités dans les quatre colonnes de période de livraison.
+
+| Colonne | Contenu |
+|---|---|
+| FAMILLE / SOUS FAMILLE | segment produit |
+| MARQUE | marque commerciale |
+| REFERENCE | référence fournisseur |
+| DESCRIPTIF | caractéristiques abrégées |
+| COMMENTAIRES | promo, ODR, mention « prix promo » |
+| ODR | offre de remboursement client, en euros |
+| PAF | prix d'achat final, retenu HT |
+| PV TTC | prix de vente conseillé |
+| Période 1 à 4 | quantités commandées par quinzaine |
+
+Le bas de page porte les **accélérateurs** : paliers de volume déclenchant une
+remise par pièce ou un produit offert (« à partir de 6P : 20 € », « pour
+10 MWO : 1 MS20A3010AL gratuit », « 10P ENC + POS : 1 EW6FI6834BA offerte »).
+
+## Ce que fait l'application
+
+- **Engagement** : total HT et nombre de pièces par période de livraison,
+  répartition par fournisseur, marge potentielle, et distance au palier
+  d'accélérateur suivant.
+- **Bons** : catalogue complet ou seulement les lignes commandées, saisie des
+  quantités période par période, correction du PAF et du PV TTC en place.
+- **Contrôles** : marge négative, marge sous 15 %, PAF manquant sur une ligne
+  commandée, référence engagée sur plusieurs fournisseurs, PAF divergent pour
+  une même référence, palier atteignable à deux pièces près.
+- **Import** : PDF (lecture locale via pdf.js), tableau collé depuis Excel, ou
+  saisie manuelle. Export CSV au format français.
+
+## Lecture des PDF
+
+Les colonnes sont retrouvées par la **ligne d'en-tête** : le parseur repère les
+libellés `REFERENCE`, `MARQUE`, `DESCRIPTIF`, `ODR`, `PAF`, `PV TTC` et
+`Période 1` à `Période 4`, mémorise leur abscisse, puis affecte chaque cellule
+des lignes suivantes à la colonne la plus proche. Cette approche suit la mise
+en page réelle du document plutôt que de deviner le rôle des nombres.
+
+L'onglet « Import & saisie » affiche le texte brut du dernier PDF et les
+colonnes reconnues, ce qui permet de diagnostiquer un bon mal lu.
+
+## Marge
+
+`PV HT = PV TTC / 1,2` ; `marge unitaire = PV HT − PAF`. L'ODR n'entre pas dans
+le calcul : c'est un remboursement au client final, pas une remise d'achat.
 
 ## Stockage
 
-Publiée comme Artifact, l'app utilise la capacité `db` : les bons sont
-conservés d'une session à l'autre (collection `bons`, réglages dans
-`config/profil`). Hors de ce contexte, elle retombe sur le `localStorage`
-du navigateur. Rien n'est perdu si la base n'est pas disponible.
-
-## Calibrage sur un vrai bon
-
-Les repères par défaut sont génériques. Après le premier import, ouvrir
-« Calibrage & saisie » : si le numéro, la date ou le fournisseur sont mal lus,
-ajuster l'expression correspondante puis « Relire le dernier PDF ».
+Publiée comme Artifact, l'app utilise la capacité `db` (collection `bons`,
+réglages dans `config/profil`). Sinon, repli sur le `localStorage`.
