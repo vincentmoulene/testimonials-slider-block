@@ -1,0 +1,1057 @@
+<title>Bons Innovtec</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+  :root{
+    --ground:#E9ECEE;
+    --paper:#FFFFFF;
+    --paper-2:#F4F6F7;
+    --ink:#14181A;
+    --ink-2:#4B575C;
+    --ink-3:#77858B;
+    --line:#D3DADD;
+    --line-strong:#B6C1C6;
+    --accent:#0B5E6B;
+    --accent-ink:#083E47;
+    --accent-soft:#DCEDEF;
+    --signal:#BE4F1B;
+    --signal-soft:#F7E6DC;
+    --ok:#1C7048;
+    --ok-soft:#DCEDE3;
+    --warn:#96660A;
+    --warn-soft:#F6EBD3;
+    --crit:#A62016;
+    --crit-soft:#F7E0DE;
+    --btn-ink:#FFFFFF;
+    --shadow:0 1px 2px rgba(20,24,26,.06), 0 8px 24px -16px rgba(20,24,26,.35);
+    --radius:10px;
+    --f-display:"Archivo","Helvetica Neue",Arial,sans-serif;
+    --f-body:"IBM Plex Sans","Segoe UI",Roboto,Arial,sans-serif;
+    --f-mono:"IBM Plex Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --ground:#0E1214;
+      --paper:#171D20;
+      --paper-2:#1E262A;
+      --ink:#E6ECEE;
+      --ink-2:#A9B7BC;
+      --ink-3:#7E8D93;
+      --line:#2A3438;
+      --line-strong:#3A474C;
+      --accent:#57B6C2;
+      --accent-ink:#9BD8E0;
+      --accent-soft:#12333A;
+      --signal:#E5803F;
+      --signal-soft:#3A2416;
+      --ok:#5FBF8C;
+      --ok-soft:#14301F;
+      --warn:#D3A040;
+      --warn-soft:#332714;
+      --crit:#E9827A;
+      --crit-soft:#3A1B19;
+      --btn-ink:#06181C;
+      --shadow:0 1px 2px rgba(0,0,0,.4), 0 10px 26px -18px rgba(0,0,0,.9);
+    }
+  }
+  :root[data-theme="dark"]{
+    --ground:#0E1214;
+    --paper:#171D20;
+    --paper-2:#1E262A;
+    --ink:#E6ECEE;
+    --ink-2:#A9B7BC;
+    --ink-3:#7E8D93;
+    --line:#2A3438;
+    --line-strong:#3A474C;
+    --accent:#57B6C2;
+    --accent-ink:#9BD8E0;
+    --accent-soft:#12333A;
+    --signal:#E5803F;
+    --signal-soft:#3A2416;
+    --ok:#5FBF8C;
+    --ok-soft:#14301F;
+    --warn:#D3A040;
+    --warn-soft:#332714;
+    --crit:#E9827A;
+    --crit-soft:#3A1B19;
+    --btn-ink:#06181C;
+    --shadow:0 1px 2px rgba(0,0,0,.4), 0 10px 26px -18px rgba(0,0,0,.9);
+  }
+
+  *{box-sizing:border-box}
+  body{
+    background:var(--ground);
+    color:var(--ink);
+    font-family:var(--f-body);
+    font-size:15px;
+    line-height:1.5;
+    padding:0 20px;
+    padding-block:20px 56px;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:1180px;margin:0 auto;display:flex;flex-direction:column;gap:18px}
+  h1,h2,h3{font-family:var(--f-display);margin:0;text-wrap:balance;letter-spacing:-.01em}
+  p{margin:0}
+  button{font:inherit;color:inherit}
+  :focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:4px}
+  .num{font-family:var(--f-mono);font-variant-numeric:tabular-nums}
+  .eyebrow{
+    font-family:var(--f-mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--ink-3);
+  }
+
+  /* ---------- bandeau ---------- */
+  .masthead{
+    background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);
+    box-shadow:var(--shadow);
+    display:grid;grid-template-columns:minmax(0,1fr) minmax(280px,380px);gap:24px;
+    padding:22px 24px;align-items:center;
+  }
+  .masthead h1{font-size:30px;font-weight:700;line-height:1.1;margin-top:4px}
+  .masthead .lede{color:var(--ink-2);font-size:14px;max-width:58ch;margin-top:8px}
+  .rule{height:3px;width:46px;background:var(--signal);margin-top:14px;border-radius:2px}
+
+  .drop{
+    border:1.5px dashed var(--line-strong);border-radius:var(--radius);
+    background:var(--paper-2);
+    padding:18px 16px;text-align:center;display:flex;flex-direction:column;gap:8px;align-items:center;
+    transition:border-color .15s,background .15s;
+  }
+  .drop.hot{border-color:var(--accent);background:var(--accent-soft)}
+  .drop strong{font-family:var(--f-display);font-size:15px}
+  .drop small{color:var(--ink-3);font-size:12px}
+  .btn{
+    border:1px solid var(--accent);background:var(--accent);color:var(--btn-ink);
+    padding:8px 16px;border-radius:6px;cursor:pointer;font-weight:600;font-size:14px;
+    font-family:var(--f-body);
+  }
+  .btn:hover{filter:brightness(1.08)}
+  .btn.ghost{background:transparent;color:var(--accent);border-color:var(--line-strong)}
+  .btn.small{padding:5px 11px;font-size:13px}
+  .btn[disabled]{opacity:.45;cursor:not-allowed}
+
+  /* ---------- chiffres ---------- */
+  .stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+  .stat{
+    background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);
+    padding:14px 16px;display:flex;flex-direction:column;gap:2px;min-width:0;
+  }
+  .stat .v{font-family:var(--f-mono);font-size:24px;font-weight:600;font-variant-numeric:tabular-nums;letter-spacing:-.02em}
+  .stat .k{font-size:12px;color:var(--ink-3);font-family:var(--f-mono);letter-spacing:.08em;text-transform:uppercase}
+  .stat.flag .v{color:var(--signal)}
+
+  /* ---------- onglets ---------- */
+  .tabs{display:flex;gap:4px;flex-wrap:wrap;border-bottom:1px solid var(--line)}
+  .tab{
+    background:none;border:0;border-bottom:2px solid transparent;
+    padding:9px 14px;cursor:pointer;color:var(--ink-2);font-weight:500;font-size:14px;
+  }
+  .tab[aria-selected="true"]{color:var(--ink);border-bottom-color:var(--signal);font-weight:600}
+  .tab .badge{
+    font-family:var(--f-mono);font-size:11px;background:var(--paper-2);border:1px solid var(--line);
+    border-radius:999px;padding:1px 6px;margin-left:6px;color:var(--ink-2);
+  }
+  .tab .badge.alert{background:var(--crit-soft);border-color:transparent;color:var(--crit)}
+
+  .panel{display:flex;flex-direction:column;gap:14px}
+  .panel[hidden]{display:none}
+  .panel-head{display:flex;gap:12px;align-items:flex-end;justify-content:space-between;flex-wrap:wrap}
+  .panel-head h2{font-size:19px;font-weight:600}
+  .panel-head p{color:var(--ink-2);font-size:13px;margin-top:3px}
+  .controls{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+  input[type="date"],input[type="text"],input[type="number"],select,textarea{
+    font-family:var(--f-body);font-size:14px;color:var(--ink);background:var(--paper);
+    border:1px solid var(--line-strong);border-radius:6px;padding:6px 9px;
+  }
+  textarea{font-family:var(--f-mono);font-size:12px;width:100%;resize:vertical}
+
+  /* ---------- bon ---------- */
+  .docket{
+    background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);
+    box-shadow:var(--shadow);overflow:hidden;
+  }
+  .docket::before{
+    content:"";display:block;height:5px;
+    background:repeating-linear-gradient(90deg,var(--line-strong) 0 6px,transparent 6px 12px);
+  }
+  .docket.sample{opacity:.92;border-style:dashed}
+  .docket-head{
+    display:grid;grid-template-columns:minmax(0,1fr) auto;gap:14px;align-items:center;
+    padding:12px 16px;border-bottom:1px solid var(--line);
+  }
+  .docket-id{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;min-width:0}
+  .docket-id .no{font-family:var(--f-mono);font-size:18px;font-weight:600;letter-spacing:.02em}
+  .docket-id .meta{font-size:13px;color:var(--ink-2);min-width:0;overflow-wrap:anywhere}
+  .docket-tot{display:flex;gap:16px;align-items:baseline}
+  .docket-tot .amount{font-family:var(--f-mono);font-size:17px;font-weight:600}
+  .chip{
+    font-family:var(--f-mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;
+    padding:2px 7px;border-radius:999px;border:1px solid transparent;white-space:nowrap;
+  }
+  .chip.ok{background:var(--ok-soft);color:var(--ok)}
+  .chip.warn{background:var(--warn-soft);color:var(--warn)}
+  .chip.crit{background:var(--crit-soft);color:var(--crit)}
+  .chip.neutral{background:var(--paper-2);color:var(--ink-2);border-color:var(--line)}
+  .chip.accent{background:var(--accent-soft);color:var(--accent-ink)}
+  :root[data-theme="dark"] .chip.accent{color:var(--accent-ink)}
+
+  .table-scroll{overflow-x:auto}
+  table{border-collapse:collapse;width:100%;font-size:14px;min-width:640px}
+  th{
+    text-align:left;font-family:var(--f-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;
+    color:var(--ink-3);font-weight:500;padding:8px 10px;border-bottom:1px solid var(--line);white-space:nowrap;
+  }
+  td{padding:7px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+  tbody tr:last-child td{border-bottom:0}
+  td.r,th.r{text-align:right}
+  td.n{font-family:var(--f-mono);font-variant-numeric:tabular-nums;white-space:nowrap}
+  td .ref{font-family:var(--f-mono);font-size:13px;font-weight:500}
+  td .lib{color:var(--ink-2);font-size:13px;display:block;max-width:46ch}
+  tr.flagged td{background:var(--crit-soft)}
+  .cell-edit{
+    width:74px;text-align:right;font-family:var(--f-mono);font-variant-numeric:tabular-nums;
+    border:1px solid transparent;background:transparent;border-radius:4px;padding:2px 4px;
+  }
+  .cell-edit:hover{border-color:var(--line-strong)}
+  tfoot td{font-family:var(--f-mono);font-weight:600;border-top:1px solid var(--line-strong)}
+
+  .card{
+    background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);
+    box-shadow:var(--shadow);padding:16px 18px;display:flex;flex-direction:column;gap:12px;
+  }
+  .card h3{font-size:15px;font-weight:600}
+  .card .hint{font-size:13px;color:var(--ink-2)}
+  .empty{
+    border:1px dashed var(--line-strong);border-radius:var(--radius);background:var(--paper-2);
+    padding:26px 20px;text-align:center;color:var(--ink-2);font-size:14px;
+  }
+  .note{
+    display:flex;gap:10px;align-items:flex-start;font-size:13px;
+    background:var(--accent-soft);color:var(--accent-ink);
+    border-left:3px solid var(--accent);border-radius:6px;padding:10px 12px;
+  }
+  :root[data-theme="dark"] .note{color:var(--ink)}
+  .note.sample{background:var(--warn-soft);color:var(--warn);border-left-color:var(--warn)}
+
+  .alert{
+    display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:12px;align-items:center;
+    padding:11px 14px;border-bottom:1px solid var(--line);
+  }
+  .alert:last-child{border-bottom:0}
+  .alert .sev{width:4px;align-self:stretch;border-radius:2px;background:var(--ink-3)}
+  .alert.crit .sev{background:var(--crit)}
+  .alert.warn .sev{background:var(--warn)}
+  .alert.info .sev{background:var(--accent)}
+  .alert .t{font-weight:600;font-size:14px}
+  .alert .d{font-size:13px;color:var(--ink-2)}
+
+  .grid-2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+  .field{display:flex;flex-direction:column;gap:4px}
+  .field label{font-family:var(--f-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3)}
+  .field input{font-family:var(--f-mono);font-size:12px}
+  footer{color:var(--ink-3);font-size:12px;text-align:center;padding-top:8px}
+  footer code{font-family:var(--f-mono)}
+
+  @media (max-width:820px){
+    .masthead{grid-template-columns:1fr}
+    .stats{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .grid-2{grid-template-columns:1fr}
+    .docket-head{grid-template-columns:1fr}
+  }
+  @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+
+<div class="wrap">
+  <header class="masthead">
+    <div>
+      <span class="eyebrow">MDA · Salon Innovtec</span>
+      <h1>Bons Innovtec</h1>
+      <div class="rule"></div>
+      <p class="lede">Déposez les bons de commande PDF reçus par mail. L'app lit chaque ligne,
+        totalise la journée et signale les écarts : montants incohérents, références commandées deux fois,
+        prix qui bougent d'un bon à l'autre.</p>
+    </div>
+    <div class="drop" id="drop">
+      <strong>Déposez vos bons PDF ici</strong>
+      <small>Plusieurs fichiers à la fois — la lecture se fait dans votre navigateur.</small>
+      <button class="btn" id="pick" type="button">Choisir des fichiers</button>
+      <input type="file" id="file" accept="application/pdf,.pdf" multiple hidden>
+      <small id="dropstatus" class="num"></small>
+    </div>
+  </header>
+
+  <section class="stats" id="stats"></section>
+
+  <nav class="tabs" role="tablist" id="tabs">
+    <button class="tab" role="tab" id="tab-jour" aria-selected="true" type="button">Achats du jour</button>
+    <button class="tab" role="tab" id="tab-tous" aria-selected="false" type="button">Tous les bons <span class="badge" id="badge-bons">0</span></button>
+    <button class="tab" role="tab" id="tab-controles" aria-selected="false" type="button">Contrôles <span class="badge" id="badge-alertes">0</span></button>
+    <button class="tab" role="tab" id="tab-calibrage" aria-selected="false" type="button">Calibrage &amp; saisie</button>
+  </nav>
+
+  <section class="panel" id="panel-jour"></section>
+  <section class="panel" id="panel-tous" hidden></section>
+  <section class="panel" id="panel-controles" hidden></section>
+  <section class="panel" id="panel-calibrage" hidden></section>
+
+  <footer>
+    Lecture des PDF en local (pdf.js). Les bons enregistrés sont conservés pour cet artifact ;
+    à défaut, ils restent dans ce navigateur. Montants <strong>HT</strong>, hors éco-participation sauf mention.
+  </footer>
+</div>
+
+<script>
+(function(){
+  "use strict";
+
+  /* ------------------------------------------------------------------ *
+   * Réglages de lecture par défaut (modifiables dans « Calibrage »)      *
+   * ------------------------------------------------------------------ */
+  var PROFIL_DEFAUT = {
+    numRe:    "(?:N[°ou]*\\s*|Num[ée]ro\\s*:?\\s*|Commande\\s*:?\\s*)(\\d{3,8})",
+    dateRe:   "(\\d{1,2}[\\/.\\-]\\d{1,2}[\\/.\\-]\\d{2,4})",
+    fournRe:  "(?:Fournisseur|Marque|Soci[ée]t[ée]|Vendeur)\\s*:?\\s*(.{2,40})",
+    magRe:    "(?:Magasin|Point de vente|Adh[ée]rent|Client)\\s*:?\\s*(.{2,40})",
+    refRe:    "^[A-Z0-9][A-Z0-9._\\/\\-]{3,24}$",
+    ecoMots:  "eco-part|éco-part|eco part|deee|ecopart"
+  };
+
+  var MARQUES = ["LIEBHERR","BOSCH","SIEMENS","SAMSUNG","LG","WHIRLPOOL","CANDY","HOOVER","BEKO",
+    "ELECTROLUX","AEG","MIELE","BRANDT","SAUTER","DE DIETRICH","HOTPOINT","INDESIT","ARISTON","SMEG",
+    "THOMSON","HAIER","SHARP","PANASONIC","SONY","TCL","HISENSE","PHILIPS","DYSON","ROBOROCK","SEB",
+    "MOULINEX","ROWENTA","KRUPS","TEFAL","MAGIMIX","DELONGHI","NESPRESSO","BOSE","JBL","AMICA","VALBERG",
+    "GORENJE","FALMEC","ROBLIN","AIRLUX","SCHOLTES","LISTO","CONTINENTAL EDISON","BELLAVITA"];
+
+  /* ------------------------------------------------------------------ *
+   * Utilitaires                                                         *
+   * ------------------------------------------------------------------ */
+  var euro = new Intl.NumberFormat("fr-FR",{style:"currency",currency:"EUR"});
+  var dec2 = new Intl.NumberFormat("fr-FR",{minimumFractionDigits:2,maximumFractionDigits:2});
+  function eur(v){ return isFinite(v) ? euro.format(v) : "—"; }
+  function esc(s){ return String(s==null?"":s).replace(/[&<>"']/g,function(c){
+    return {"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[c];}); }
+  function todayISO(){ var d=new Date(); return isoOf(d); }
+  function isoOf(d){
+    return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0");
+  }
+  function frDate(iso){
+    if(!iso) return "—";
+    var p=iso.split("-"); return p.length===3 ? p[2]+"/"+p[1]+"/"+p[0] : iso;
+  }
+  function toISO(fr){
+    if(!fr) return "";
+    var m=String(fr).match(/(\d{1,2})[\/.\-](\d{1,2})[\/.\-](\d{2,4})/);
+    if(!m) return "";
+    var y=m[3].length===2 ? "20"+m[3] : m[3];
+    return y+"-"+m[2].padStart(2,"0")+"-"+m[1].padStart(2,"0");
+  }
+  function toNum(s){
+    if(typeof s!=="string") return NaN;
+    var t=s.replace(/[\s ]/g,"").replace(/[€]|EUR/gi,"");
+    if(t.indexOf(",")>-1){ t=t.replace(/\./g,"").replace(",","."); }
+    else if(/^-?\d{1,3}(\.\d{3})+$/.test(t)){ t=t.replace(/\./g,""); }
+    var v=parseFloat(t);
+    return isFinite(v)?v:NaN;
+  }
+  function rx(src,flags){ try{ return new RegExp(src,flags||"i"); }catch(e){ return null; } }
+  function slug(s){ return String(s).replace(/[^A-Za-z0-9_.\-]/g,"-").slice(0,60); }
+  function hash(s){
+    var h=5381; s=String(s);
+    for(var i=0;i<s.length;i++){ h=((h<<5)+h+s.charCodeAt(i))>>>0; }
+    return h.toString(36);
+  }
+
+  /* ------------------------------------------------------------------ *
+   * État                                                                *
+   * ------------------------------------------------------------------ */
+  var state = {
+    bons: [],                 // bons réels (importés ou saisis)
+    profil: Object.assign({},PROFIL_DEFAUT),
+    jour: todayISO(),
+    onglet: "jour",
+    ouverts: {},              // id -> bool (détail déplié)
+    dernierTexte: null,       // { fichier, lignes[] } pour le calibrage
+    db: null,
+    dl: null
+  };
+
+  var EXEMPLE = [{
+    id:"exemple", exemple:true, num:"DÉMO", date:todayISO(), fournisseur:"LIEBHERR",
+    magasin:"—", fichier:"exemple.pdf", importedAt:new Date().toISOString(),
+    lignes:[
+      {ref:"CNE-5735", lib:"Réfrigérateur combiné 201 cm NoFrost", qte:2, pu:649.00, remise:0, total:1298.00, exact:true},
+      {ref:"CBNB-4835", lib:"Combiné BioFresh 186 cm", qte:1, pu:989.00, remise:5, total:989.00, exact:true},
+      {ref:"FNE-4625", lib:"Congélateur armoire 186 cm", qte:3, pu:519.00, remise:0, total:1557.00, exact:true}
+    ]
+  }];
+
+  function bonsAffichables(){ return state.bons.length ? state.bons : EXEMPLE; }
+  function estExemple(){ return state.bons.length===0; }
+  function totalBon(b){ return (b.lignes||[]).reduce(function(s,l){ return s+(isFinite(l.total)?l.total:0); },0); }
+  function nbArticles(b){ return (b.lignes||[]).reduce(function(s,l){ return s+(isFinite(l.qte)?l.qte:0); },0); }
+  function jourDuBon(b){ return b.date || (b.importedAt||"").slice(0,10); }
+
+  /* ------------------------------------------------------------------ *
+   * Lecture des PDF                                                     *
+   * ------------------------------------------------------------------ */
+  function pdfPret(){
+    if(!window.pdfjsLib) return false;
+    if(!pdfjsLib.GlobalWorkerOptions.workerSrc){
+      pdfjsLib.GlobalWorkerOptions.workerSrc =
+        "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js";
+    }
+    return true;
+  }
+
+  function lignesDuPdf(buffer){
+    return pdfjsLib.getDocument({data:buffer}).promise.then(function(pdf){
+      var pages=[], chaine=Promise.resolve();
+      for(var p=1;p<=pdf.numPages;p++){
+        (function(n){
+          chaine=chaine.then(function(){
+            return pdf.getPage(n).then(function(page){
+              return page.getTextContent().then(function(tc){
+                var seaux=[];
+                tc.items.forEach(function(it){
+                  if(!it.str || !it.str.trim()) return;
+                  var x=it.transform[4], y=it.transform[5], s=null;
+                  for(var i=0;i<seaux.length;i++){
+                    if(Math.abs(seaux[i].y-y)<=2.4){ s=seaux[i]; break; }
+                  }
+                  if(!s){ s={y:y,items:[]}; seaux.push(s); }
+                  s.items.push({x:x,str:it.str});
+                });
+                seaux.sort(function(a,b){ return b.y-a.y; });
+                seaux.forEach(function(s){
+                  s.items.sort(function(a,b){ return a.x-b.x; });
+                  var txt=s.items.map(function(i){ return i.str; }).join(" ")
+                          .replace(/\s+/g," ").trim();
+                  if(txt) pages.push(txt);
+                });
+              });
+            });
+          });
+        })(p);
+      }
+      return chaine.then(function(){ return pages; });
+    });
+  }
+
+  /* --- résolution qté / PU / total sur une ligne ---------------------- */
+  function resoudre(nombres){
+    var i,p,t,q;
+    for(q=0;q<nombres.length;q++){
+      var qv=nombres[q].v;
+      if(!Number.isInteger(qv) || qv<=0 || qv>500) continue;
+      for(p=0;p<nombres.length;p++){
+        if(p===q) continue;
+        if(nombres[p].v<=0) continue;
+        for(t=0;t<nombres.length;t++){
+          if(t===q||t===p) continue;
+          if(nombres[t].i<nombres[p].i) continue;
+          var att=qv*nombres[p].v;
+          if(Math.abs(att-nombres[t].v)<=Math.max(0.02, Math.abs(nombres[t].v)*0.005)){
+            return {qte:qv, pu:nombres[p].v, total:nombres[t].v, exact:true};
+          }
+        }
+      }
+    }
+    // repli : les deux derniers nombres = PU puis total
+    if(nombres.length>=2){
+      var total=nombres[nombres.length-1].v, pu=nombres[nombres.length-2].v;
+      var qte = (pu>0) ? Math.round(total/pu) : 1;
+      if(!isFinite(qte) || qte<1 || qte>500) qte=1;
+      return {qte:qte, pu:pu, total:total, exact:false};
+    }
+    return null;
+  }
+
+  function lireLigne(txt, profil){
+    if(/^(total|sous-total|tva|net [àa] payer|report|page )/i.test(txt)) return null;
+    var jetons = txt.split(/\s+/);
+    var remise = 0;
+    var nombres = [];
+    var motifNombre = /^-?(?:\d+[\s .])*\d+(?:[.,]\d{1,3})?$/;
+    var indexPremierNombre = -1;
+
+    jetons.forEach(function(j,idx){
+      if(/^\d{1,2}([.,]\d{1,2})?%$/.test(j)){ remise = toNum(j.replace("%","")); return; }
+      var brut=j.replace(/[€]/g,"");
+      if(!motifNombre.test(brut)) return;
+      var chiffres = brut.replace(/\D/g,"");
+      if(chiffres.length>=8) return;          // EAN / code-barres : pas un montant
+      var v=toNum(brut);
+      if(!isFinite(v)) return;
+      if(indexPremierNombre<0) indexPremierNombre=idx;
+      nombres.push({v:v,i:idx});
+    });
+
+    if(nombres.length<2) return null;
+
+    var reRef = rx(profil.refRe,"i");
+    var ref="", debutLib=0;
+    var eanIdx = jetons.findIndex(function(j){ return /^\d{12,14}$/.test(j); });
+    if(reRef && reRef.test(jetons[0])){ ref=jetons[0]; debutLib=1; }
+    else if(eanIdx>-1){ ref=jetons[eanIdx]; debutLib=eanIdx+1; }
+
+    var finLib = indexPremierNombre>debutLib ? indexPremierNombre : debutLib;
+    var lib = jetons.slice(debutLib, finLib).join(" ").replace(/[|;:]+$/,"").trim();
+    if(!ref && !lib) return null;
+
+    var r = resoudre(nombres);
+    if(!r) return null;
+    if(!lib) lib = "(désignation non lue)";
+    return {ref:ref||"—", lib:lib, qte:r.qte, pu:r.pu, remise:remise, total:r.total, exact:r.exact};
+  }
+
+  function extraire(lignes, fichier){
+    var profil = state.profil;
+    var texte = lignes.join("\n");
+    var num="", date="", fournisseur="", magasin="", eco=0;
+
+    var re;
+    re = rx(profil.numRe,"i");
+    if(re){ var m=texte.match(re); if(m) num=m[1]; }
+    if(!num){ var mf=(fichier||"").match(/(\d{4,8})/); if(mf) num=mf[1]; }
+
+    re = rx(profil.dateRe,"i");
+    if(re){ var md=texte.match(re); if(md) date=toISO(md[1]); }
+
+    re = rx(profil.fournRe,"i");
+    if(re){ var mo=texte.match(re); if(mo) fournisseur=mo[1].trim(); }
+    if(!fournisseur){
+      var hay=texte.toUpperCase();
+      for(var i=0;i<MARQUES.length;i++){ if(hay.indexOf(MARQUES[i])>-1){ fournisseur=MARQUES[i]; break; } }
+    }
+
+    re = rx(profil.magRe,"i");
+    if(re){ var mm=texte.match(re); if(mm) magasin=mm[1].trim(); }
+
+    var reEco = rx("("+profil.ecoMots+")","i");
+    var arts=[];
+    lignes.forEach(function(l){
+      if(reEco && reEco.test(l)){
+        var n=l.match(/(\d+[.,]\d{2})\s*€?\s*$/);
+        if(n){ eco+=toNum(n[1]); return; }
+      }
+      var a=lireLigne(l, profil);
+      if(a) arts.push(a);
+    });
+
+    return {
+      num: num||"?", date: date||todayISO(), fournisseur: fournisseur||"—",
+      magasin: magasin||"—", fichier: fichier||"", eco: eco,
+      lignes: arts, importedAt: new Date().toISOString(),
+      brut: lignes.slice(0,400)
+    };
+  }
+
+  /* ------------------------------------------------------------------ *
+   * Persistance                                                         *
+   * ------------------------------------------------------------------ */
+  var LS="bons-innovtec-v1";
+  function sauverLocal(){
+    try{ localStorage.setItem(LS, JSON.stringify({bons:state.bons, profil:state.profil})); }catch(e){}
+  }
+  function chargerLocal(){
+    try{
+      var raw=localStorage.getItem(LS); if(!raw) return;
+      var d=JSON.parse(raw);
+      if(d && Array.isArray(d.bons)) state.bons=d.bons;
+      if(d && d.profil) state.profil=Object.assign({},PROFIL_DEFAUT,d.profil);
+    }catch(e){}
+  }
+  function idDuBon(b){ return "bon-"+slug(b.num||"x")+"-"+hash((b.fichier||"")+"|"+b.date+"|"+totalBon(b).toFixed(2)); }
+
+  function enregistrer(bon){
+    if(!bon.id) bon.id = idDuBon(bon);
+    var i = state.bons.findIndex(function(b){ return b.id===bon.id; });
+    if(i>-1) state.bons[i]=bon; else state.bons.unshift(bon);
+    sauverLocal();
+    if(state.db){
+      var copie = JSON.parse(JSON.stringify(bon));
+      delete copie.id;
+      state.db.collection("bons").doc(bon.id).set(copie).catch(function(e){
+        statut("Enregistrement serveur impossible ("+(e&&e.code||"erreur")+") — conservé dans ce navigateur.");
+      });
+    }
+  }
+  function supprimer(id){
+    state.bons = state.bons.filter(function(b){ return b.id!==id; });
+    sauverLocal();
+    if(state.db){ state.db.collection("bons").doc(id).delete().catch(function(){}); }
+    rendre();
+  }
+  var sauverProfilTimer=null;
+  function sauverProfil(){
+    sauverLocal();
+    if(!state.db) return;
+    clearTimeout(sauverProfilTimer);
+    sauverProfilTimer=setTimeout(function(){
+      state.db.doc("config/profil").set(state.profil).catch(function(){});
+    },600);
+  }
+
+  /* ------------------------------------------------------------------ *
+   * Contrôles                                                           *
+   * ------------------------------------------------------------------ */
+  function controles(){
+    var out=[], parRef={};
+    state.bons.forEach(function(b){
+      if(!b.lignes || !b.lignes.length){
+        out.push({sev:"warn", titre:"Aucune ligne lue", bon:b,
+          detail:"Bon n° "+b.num+" ("+(b.fichier||"saisie manuelle")+") : le PDF n'a pas livré de ligne exploitable. Ajustez le calibrage ou saisissez les lignes à la main."});
+        return;
+      }
+      b.lignes.forEach(function(l){
+        var attendu=(l.qte||0)*(l.pu||0);
+        if(isFinite(attendu) && Math.abs(attendu-(l.total||0))>0.02){
+          out.push({sev:"crit", titre:"Montant incohérent", bon:b, ref:l.ref,
+            detail:"Bon "+b.num+" · "+l.ref+" : "+l.qte+" × "+eur(l.pu)+" = "+eur(attendu)+", or la ligne affiche "+eur(l.total)+"."});
+        }
+        if((l.qte||0)>=10){
+          out.push({sev:"info", titre:"Quantité élevée", bon:b, ref:l.ref,
+            detail:"Bon "+b.num+" · "+l.ref+" : "+l.qte+" pièces. À confirmer avant validation."});
+        }
+        if(l.ref && l.ref!=="—"){
+          (parRef[l.ref]=parRef[l.ref]||[]).push({bon:b,l:l});
+        }
+      });
+    });
+    Object.keys(parRef).forEach(function(ref){
+      var occ=parRef[ref];
+      if(occ.length<2) return;
+      var bons={}; occ.forEach(function(o){ bons[o.bon.num]=1; });
+      var nums=Object.keys(bons);
+      if(nums.length>1){
+        out.push({sev:"warn", titre:"Référence commandée sur plusieurs bons", ref:ref, bon:occ[0].bon,
+          detail:ref+" apparaît sur les bons "+nums.join(", ")+" — risque de double commande."});
+      }
+      var prix=occ.map(function(o){ return o.l.pu; }).filter(isFinite);
+      var min=Math.min.apply(null,prix), max=Math.max.apply(null,prix);
+      if(min>0 && (max-min)/min>0.02){
+        out.push({sev:"warn", titre:"Écart de prix sur une même référence", ref:ref, bon:occ[0].bon,
+          detail:ref+" : de "+eur(min)+" à "+eur(max)+" selon les bons (+"+dec2.format((max-min)/min*100)+" %)."});
+      }
+    });
+    var ordre={crit:0,warn:1,info:2};
+    return out.sort(function(a,b){ return ordre[a.sev]-ordre[b.sev]; });
+  }
+
+  /* ------------------------------------------------------------------ *
+   * Export CSV                                                          *
+   * ------------------------------------------------------------------ */
+  function csv(bons){
+    var l=["Date;N° bon;Fournisseur;Magasin;Référence;Désignation;Qté;PU HT;Remise %;Montant HT;Fichier"];
+    bons.forEach(function(b){
+      (b.lignes||[]).forEach(function(a){
+        l.push([frDate(jourDuBon(b)), b.num, b.fournisseur, b.magasin, a.ref,
+          String(a.lib||"").replace(/[;\r\n]/g," "),
+          a.qte, dec2.format(a.pu||0), a.remise||0, dec2.format(a.total||0), b.fichier||""].join(";"));
+      });
+    });
+    return "﻿"+l.join("\r\n");
+  }
+  function exporter(bons, nom){
+    var contenu=csv(bons);
+    if(state.dl){
+      state.dl.save({filename:nom, data:contenu}).then(function(){
+        statut("Export « "+nom+" » enregistré.");
+      }).catch(function(e){
+        statut(e && e.code==="declined" ? "Export annulé." : "Export impossible ici — copiez le tableau à la place.");
+      });
+    } else if(navigator.clipboard && navigator.clipboard.writeText){
+      navigator.clipboard.writeText(contenu).then(function(){
+        statut("Export non disponible dans cette vue : le CSV a été copié dans le presse-papiers.");
+      }, function(){ statut("Export indisponible dans cette vue."); });
+    } else {
+      statut("Export indisponible dans cette vue.");
+    }
+  }
+  function statut(msg){
+    var el=document.getElementById("dropstatus");
+    if(el) el.textContent=msg;
+  }
+
+  /* ------------------------------------------------------------------ *
+   * Rendu                                                               *
+   * ------------------------------------------------------------------ */
+  function chipCoherence(b){
+    var l=b.lignes||[];
+    if(!l.length) return '<span class="chip warn">à calibrer</span>';
+    var faux=l.filter(function(a){ return Math.abs((a.qte||0)*(a.pu||0)-(a.total||0))>0.02; }).length;
+    if(faux) return '<span class="chip crit">'+faux+' écart'+(faux>1?"s":"")+'</span>';
+    var flous=l.filter(function(a){ return !a.exact; }).length;
+    if(flous) return '<span class="chip warn">'+flous+' ligne'+(flous>1?"s":"")+' à vérifier</span>';
+    return '<span class="chip ok">cohérent</span>';
+  }
+
+  function tableauLignes(b, editable){
+    if(!b.lignes || !b.lignes.length){
+      return '<div class="empty">Aucune ligne lue dans ce bon. Onglet « Calibrage &amp; saisie » pour ajuster la lecture ou saisir les lignes.</div>';
+    }
+    var rows=b.lignes.map(function(l,i){
+      var ecart=Math.abs((l.qte||0)*(l.pu||0)-(l.total||0))>0.02;
+      return '<tr class="'+(ecart?"flagged":"")+'">'+
+        '<td><span class="ref">'+esc(l.ref)+'</span><span class="lib">'+esc(l.lib)+'</span></td>'+
+        '<td class="n r">'+(editable
+            ? '<input class="cell-edit num" type="number" step="1" min="0" value="'+(l.qte||0)+'" data-bon="'+esc(b.id)+'" data-i="'+i+'" data-champ="qte" aria-label="Quantité">'
+            : (l.qte||0))+'</td>'+
+        '<td class="n r">'+(editable
+            ? '<input class="cell-edit num" type="number" step="0.01" min="0" value="'+(l.pu||0)+'" data-bon="'+esc(b.id)+'" data-i="'+i+'" data-champ="pu" aria-label="Prix unitaire HT">'
+            : dec2.format(l.pu||0))+'</td>'+
+        '<td class="n r">'+(l.remise? dec2.format(l.remise)+" %" : "—")+'</td>'+
+        '<td class="n r">'+eur(l.total)+'</td>'+
+        '<td class="r">'+(ecart?'<span class="chip crit">écart</span>':(l.exact?'':'<span class="chip warn">à vérifier</span>'))+
+          (editable?' <button class="btn ghost small" data-supprimer-ligne="'+esc(b.id)+'" data-i="'+i+'" type="button">×</button>':'')+'</td>'+
+      '</tr>';
+    }).join("");
+    return '<div class="table-scroll"><table>'+
+      '<thead><tr><th>Référence / désignation</th><th class="r">Qté</th><th class="r">PU HT</th>'+
+      '<th class="r">Remise</th><th class="r">Montant HT</th><th class="r">État</th></tr></thead>'+
+      '<tbody>'+rows+'</tbody>'+
+      '<tfoot><tr><td>Total bon</td><td class="n r">'+nbArticles(b)+'</td><td></td><td></td>'+
+      '<td class="n r">'+eur(totalBon(b))+'</td><td></td></tr></tfoot></table></div>';
+  }
+
+  function carteBon(b, editable){
+    var ouvert = !!state.ouverts[b.id];
+    return '<article class="docket'+(b.exemple?" sample":"")+'">'+
+      '<div class="docket-head">'+
+        '<div class="docket-id">'+
+          '<span class="no">N° '+esc(b.num)+'</span>'+
+          '<span class="chip accent">'+esc(b.fournisseur)+'</span>'+
+          (b.exemple?'<span class="chip warn">exemple</span>':'')+
+          '<span class="meta">'+frDate(jourDuBon(b))+' · '+((b.lignes||[]).length)+' ligne'+((b.lignes||[]).length>1?"s":"")+
+            ' · '+nbArticles(b)+' pièce'+(nbArticles(b)>1?"s":"")+
+            (b.fichier?' · '+esc(b.fichier):'')+'</span>'+
+        '</div>'+
+        '<div class="docket-tot">'+
+          chipCoherence(b)+
+          '<span class="amount">'+eur(totalBon(b))+'</span>'+
+          '<button class="btn ghost small" data-basculer="'+esc(b.id)+'" type="button" aria-expanded="'+ouvert+'">'+
+            (ouvert?"Replier":"Détail")+'</button>'+
+          (b.exemple?'':'<button class="btn ghost small" data-supprimer="'+esc(b.id)+'" type="button">Retirer</button>')+
+        '</div>'+
+      '</div>'+
+      (ouvert? tableauLignes(b, !b.exemple) : '')+
+    '</article>';
+  }
+
+  function rendreStats(){
+    var liste=bonsAffichables();
+    var duJour=liste.filter(function(b){ return jourDuBon(b)===state.jour; });
+    var totJour=duJour.reduce(function(s,b){ return s+totalBon(b); },0);
+    var arts=duJour.reduce(function(s,b){ return s+nbArticles(b); },0);
+    var al=controles();
+    var bloquants=al.filter(function(a){ return a.sev!=="info"; }).length;
+    document.getElementById("stats").innerHTML =
+      stat("Bons du "+frDate(state.jour), duJour.length) +
+      stat("Pièces commandées", arts) +
+      stat("Total HT du jour", eur(totJour)) +
+      stat("Points à vérifier", estExemple()? "—" : bloquants, !estExemple() && bloquants>0);
+    document.getElementById("badge-bons").textContent = state.bons.length;
+    var bAl=document.getElementById("badge-alertes");
+    bAl.textContent = al.length;
+    bAl.className = "badge"+(bloquants?" alert":"");
+  }
+  function stat(k,v,flag){
+    return '<div class="stat'+(flag?" flag":"")+'"><span class="v">'+esc(v)+'</span><span class="k">'+esc(k)+'</span></div>';
+  }
+
+  function rendreJour(){
+    var liste=bonsAffichables().filter(function(b){ return jourDuBon(b)===state.jour; });
+    var tot=liste.reduce(function(s,b){ return s+totalBon(b); },0);
+    var parFourn={};
+    liste.forEach(function(b){ parFourn[b.fournisseur]=(parFourn[b.fournisseur]||0)+totalBon(b); });
+    var fourns=Object.keys(parFourn).sort(function(a,b){ return parFourn[b]-parFourn[a]; });
+
+    var html='<div class="panel-head">'+
+      '<div><h2>Achats du '+frDate(state.jour)+'</h2>'+
+      '<p>Les bons dont la date lue correspond à cette journée. Dépliez un bon pour corriger une quantité ou un prix.</p></div>'+
+      '<div class="controls">'+
+        '<label class="eyebrow" for="jour">Journée</label>'+
+        '<input type="date" id="jour" value="'+state.jour+'">'+
+        '<button class="btn ghost small" id="export-jour" type="button">Exporter le CSV</button>'+
+      '</div></div>';
+
+    if(estExemple()){
+      html+='<div class="note sample"><span>Aucun bon importé : les chiffres ci-dessous sont un <strong>exemple</strong>, pas vos achats. Déposez vos PDF pour les remplacer.</span></div>';
+    }
+    if(!liste.length){
+      html+='<div class="empty">Aucun bon daté du '+frDate(state.jour)+'. Changez de journée ou déposez le PDF correspondant.</div>';
+    } else {
+      html+='<div class="card"><h3>Répartition par fournisseur</h3><div class="table-scroll"><table>'+
+        '<thead><tr><th>Fournisseur</th><th class="r">Total HT</th><th class="r">Part</th></tr></thead><tbody>'+
+        fourns.map(function(f){
+          var part = tot>0 ? (parFourn[f]/tot*100) : 0;
+          return '<tr><td>'+esc(f)+'</td><td class="n r">'+eur(parFourn[f])+'</td><td class="n r">'+dec2.format(part)+' %</td></tr>';
+        }).join("")+
+        '</tbody><tfoot><tr><td>Total</td><td class="n r">'+eur(tot)+'</td><td class="n r">100,00 %</td></tr></tfoot>'+
+        '</table></div></div>';
+      html+=liste.map(function(b){ return carteBon(b, true); }).join("");
+    }
+    document.getElementById("panel-jour").innerHTML=html;
+  }
+
+  function rendreTous(){
+    var liste=bonsAffichables().slice().sort(function(a,b){
+      return String(jourDuBon(b)).localeCompare(String(jourDuBon(a)));
+    });
+    var tot=liste.reduce(function(s,b){ return s+totalBon(b); },0);
+    var html='<div class="panel-head">'+
+      '<div><h2>Tous les bons</h2><p>'+liste.length+' bon'+(liste.length>1?"s":"")+' · '+eur(tot)+' HT au total.</p></div>'+
+      '<div class="controls"><button class="btn ghost small" id="export-tout" type="button">Exporter tout en CSV</button></div></div>';
+    if(estExemple()){
+      html+='<div class="note sample"><span>Exemple de présentation — déposez vos bons PDF pour y voir vos commandes.</span></div>';
+    }
+    html+=liste.map(function(b){ return carteBon(b, true); }).join("");
+    document.getElementById("panel-tous").innerHTML=html;
+  }
+
+  function rendreControles(){
+    var al=controles();
+    var html='<div class="panel-head"><div><h2>Contrôles</h2>'+
+      '<p>Vérifications automatiques sur l\'ensemble des bons enregistrés.</p></div></div>';
+    if(estExemple()){
+      html+='<div class="empty">Les contrôles portent sur vos bons importés. Déposez au moins un PDF pour les activer.</div>';
+      document.getElementById("panel-controles").innerHTML=html; return;
+    }
+    if(!al.length){
+      html+='<div class="card"><h3>Rien à signaler</h3><p class="hint">Chaque ligne est cohérente (qté × PU = montant), aucune référence n\'apparaît sur deux bons, aucun écart de prix détecté.</p></div>';
+    } else {
+      html+='<div class="card" style="padding:0">'+al.map(function(a){
+        return '<div class="alert '+a.sev+'"><span class="sev"></span>'+
+          '<div><div class="t">'+esc(a.titre)+'</div><div class="d">'+esc(a.detail)+'</div></div>'+
+          '<span class="chip '+(a.sev==="crit"?"crit":a.sev==="warn"?"warn":"neutral")+'">'+
+            (a.sev==="crit"?"bloquant":a.sev==="warn"?"à vérifier":"info")+'</span></div>';
+      }).join("")+'</div>';
+    }
+    document.getElementById("panel-controles").innerHTML=html;
+  }
+
+  function rendreCalibrage(){
+    var p=state.profil;
+    var champs=[
+      ["numRe","Numéro de bon"],["dateRe","Date"],["fournRe","Fournisseur"],
+      ["magRe","Magasin"],["refRe","Format des références"],["ecoMots","Mots éco-participation"]
+    ];
+    var html='<div class="panel-head"><div><h2>Calibrage &amp; saisie</h2>'+
+      '<p>Si un bon est mal lu, ajustez ici les repères de lecture, ou saisissez le bon à la main.</p></div></div>';
+
+    html+='<div class="card"><h3>Repères de lecture</h3>'+
+      '<p class="hint">Expressions régulières appliquées au texte du PDF. Le premier groupe capturé est la valeur retenue.</p>'+
+      '<div class="grid-2">'+champs.map(function(c){
+        return '<div class="field"><label for="p-'+c[0]+'">'+c[1]+'</label>'+
+          '<input type="text" id="p-'+c[0]+'" data-profil="'+c[0]+'" value="'+esc(p[c[0]])+'"></div>';
+      }).join("")+'</div>'+
+      '<div class="controls"><button class="btn ghost small" id="profil-reset" type="button">Rétablir les valeurs par défaut</button>'+
+      '<button class="btn small" id="profil-relire" type="button">Relire le dernier PDF</button></div></div>';
+
+    html+='<div class="card"><h3>Saisie manuelle d\'un bon</h3>'+
+      '<p class="hint">Un bon par ligne de commande : référence, désignation, quantité, prix unitaire HT.</p>'+
+      '<div class="grid-2">'+
+        '<div class="field"><label for="m-num">N° de bon</label><input type="text" id="m-num" placeholder="24030"></div>'+
+        '<div class="field"><label for="m-date">Date</label><input type="date" id="m-date" value="'+state.jour+'"></div>'+
+        '<div class="field"><label for="m-fourn">Fournisseur</label><input type="text" id="m-fourn" placeholder="LIEBHERR"></div>'+
+        '<div class="field"><label for="m-mag">Magasin</label><input type="text" id="m-mag" placeholder="MDA Les Rousses"></div>'+
+      '</div>'+
+      '<div class="field"><label for="m-lignes">Lignes — réf ; désignation ; qté ; PU HT</label>'+
+      '<textarea id="m-lignes" rows="4" placeholder="CNE-5735 ; Combiné 201 cm ; 2 ; 649,00"></textarea></div>'+
+      '<div class="controls"><button class="btn small" id="m-ajouter" type="button">Ajouter ce bon</button></div></div>';
+
+    var d=state.dernierTexte;
+    html+='<div class="card"><h3>Texte lu dans le dernier PDF</h3>'+
+      (d ? '<p class="hint">'+esc(d.fichier)+' — '+d.lignes.length+' lignes de texte extraites.</p>'+
+           '<textarea rows="12" readonly>'+esc(d.lignes.join("\n"))+'</textarea>'
+         : '<p class="hint">Aucun PDF lu pour l\'instant. Déposez un bon : son texte brut s\'affichera ici pour régler la lecture.</p>')+
+      '</div>';
+
+    document.getElementById("panel-calibrage").innerHTML=html;
+  }
+
+  function rendre(){
+    rendreStats(); rendreJour(); rendreTous(); rendreControles(); rendreCalibrage();
+  }
+
+  /* ------------------------------------------------------------------ *
+   * Interactions                                                        *
+   * ------------------------------------------------------------------ */
+  var ONGLETS=["jour","tous","controles","calibrage"];
+  function activer(nom){
+    state.onglet=nom;
+    ONGLETS.forEach(function(o){
+      document.getElementById("tab-"+o).setAttribute("aria-selected", String(o===nom));
+      document.getElementById("panel-"+o).hidden = (o!==nom);
+    });
+  }
+  ONGLETS.forEach(function(o){
+    document.getElementById("tab-"+o).addEventListener("click", function(){ activer(o); });
+  });
+
+  document.addEventListener("click", function(ev){
+    var t=ev.target.closest ? ev.target.closest("[data-basculer],[data-supprimer],[data-supprimer-ligne],#export-jour,#export-tout,#profil-reset,#profil-relire,#m-ajouter,#pick") : null;
+    if(!t) return;
+    if(t.id==="pick"){ document.getElementById("file").click(); return; }
+    if(t.hasAttribute("data-basculer")){
+      var id=t.getAttribute("data-basculer");
+      state.ouverts[id]=!state.ouverts[id];
+      rendre(); activer(state.onglet); return;
+    }
+    if(t.hasAttribute("data-supprimer")){ supprimer(t.getAttribute("data-supprimer")); activer(state.onglet); return; }
+    if(t.hasAttribute("data-supprimer-ligne")){
+      var bid=t.getAttribute("data-supprimer-ligne"), i=+t.getAttribute("data-i");
+      var b=state.bons.find(function(x){ return x.id===bid; });
+      if(b){ b.lignes.splice(i,1); enregistrer(b); rendre(); activer(state.onglet); }
+      return;
+    }
+    if(t.id==="export-jour"){
+      var duJour=state.bons.filter(function(b){ return jourDuBon(b)===state.jour; });
+      if(!duJour.length){ statut("Rien à exporter pour le "+frDate(state.jour)+"."); return; }
+      exporter(duJour, "achats-innovtec-"+state.jour+".csv"); return;
+    }
+    if(t.id==="export-tout"){
+      if(!state.bons.length){ statut("Aucun bon enregistré à exporter."); return; }
+      exporter(state.bons, "bons-innovtec-tous.csv"); return;
+    }
+    if(t.id==="profil-reset"){ state.profil=Object.assign({},PROFIL_DEFAUT); sauverProfil(); rendre(); activer("calibrage"); return; }
+    if(t.id==="profil-relire"){ relireDernier(); return; }
+    if(t.id==="m-ajouter"){ ajouterManuel(); return; }
+  });
+
+  document.addEventListener("change", function(ev){
+    var el=ev.target;
+    if(el.id==="jour"){ state.jour=el.value||todayISO(); rendre(); activer(state.onglet); return; }
+    if(el.hasAttribute && el.hasAttribute("data-profil")){
+      state.profil[el.getAttribute("data-profil")]=el.value; sauverProfil(); return;
+    }
+    if(el.hasAttribute && el.hasAttribute("data-champ")){
+      var b=state.bons.find(function(x){ return x.id===el.getAttribute("data-bon"); });
+      if(!b) return;
+      var l=b.lignes[+el.getAttribute("data-i")]; if(!l) return;
+      var v=parseFloat(String(el.value).replace(",","."));
+      if(!isFinite(v)||v<0) return;
+      l[el.getAttribute("data-champ")]=v;
+      l.total = (l.qte||0)*(l.pu||0);
+      l.exact = true;
+      enregistrer(b); rendre(); activer(state.onglet);
+    }
+  });
+
+  function ajouterManuel(){
+    var num=(document.getElementById("m-num").value||"").trim();
+    var date=document.getElementById("m-date").value||state.jour;
+    var fourn=(document.getElementById("m-fourn").value||"—").trim();
+    var mag=(document.getElementById("m-mag").value||"—").trim();
+    var brut=(document.getElementById("m-lignes").value||"").split(/\n/);
+    var lignes=[];
+    brut.forEach(function(r){
+      if(!r.trim()) return;
+      var c=r.split(";").map(function(x){ return x.trim(); });
+      if(c.length<4) return;
+      var q=parseFloat(c[2].replace(",",".")), pu=parseFloat(c[3].replace(",","."));
+      if(!isFinite(q)||!isFinite(pu)) return;
+      lignes.push({ref:c[0]||"—", lib:c[1]||"(sans désignation)", qte:q, pu:pu, remise:0, total:q*pu, exact:true});
+    });
+    if(!num && !lignes.length){ statut("Renseignez au moins un numéro de bon et une ligne."); return; }
+    var bon={num:num||"?", date:date, fournisseur:fourn, magasin:mag, fichier:"", eco:0,
+             lignes:lignes, importedAt:new Date().toISOString(), brut:[], manuel:true};
+    enregistrer(bon);
+    statut("Bon n° "+bon.num+" ajouté ("+lignes.length+" ligne"+(lignes.length>1?"s":"")+").");
+    document.getElementById("m-lignes").value="";
+    rendre(); activer("calibrage");
+  }
+
+  /* ------------------------------------------------------------------ *
+   * Import des fichiers                                                 *
+   * ------------------------------------------------------------------ */
+  var dernierBuffer=null, dernierNom="";
+  function traiter(fichiers){
+    var liste=Array.prototype.slice.call(fichiers).filter(function(f){
+      return /\.pdf$/i.test(f.name) || f.type==="application/pdf";
+    });
+    if(!liste.length){ statut("Déposez des fichiers PDF."); return; }
+    if(!pdfPret()){ statut("Le lecteur PDF n'a pas pu se charger. Utilisez la saisie manuelle (onglet Calibrage)."); return; }
+    statut("Lecture de "+liste.length+" fichier"+(liste.length>1?"s":"")+"…");
+    var faits=0, echecs=0;
+    var suite=Promise.resolve();
+    liste.forEach(function(f){
+      suite=suite.then(function(){
+        return f.arrayBuffer().then(function(buf){
+          dernierBuffer=buf.slice(0); dernierNom=f.name;
+          return lignesDuPdf(buf).then(function(lignes){
+            state.dernierTexte={fichier:f.name, lignes:lignes};
+            var bon=extraire(lignes, f.name);
+            enregistrer(bon); faits++;
+          });
+        }).catch(function(){ echecs++; });
+      });
+    });
+    suite.then(function(){
+      statut(faits+" bon"+(faits>1?"s":"")+" lu"+(faits>1?"s":"")+
+             (echecs?" · "+echecs+" échec"+(echecs>1?"s":""):"")+".");
+      rendre(); activer(state.onglet);
+    });
+  }
+  function relireDernier(){
+    if(!dernierBuffer){ statut("Aucun PDF en mémoire — redéposez le fichier."); return; }
+    lignesDuPdf(dernierBuffer.slice(0)).then(function(lignes){
+      state.dernierTexte={fichier:dernierNom, lignes:lignes};
+      var bon=extraire(lignes, dernierNom);
+      enregistrer(bon);
+      statut("Bon n° "+bon.num+" relu : "+bon.lignes.length+" ligne(s).");
+      rendre(); activer("calibrage");
+    }).catch(function(){ statut("Relecture impossible."); });
+  }
+
+  var drop=document.getElementById("drop");
+  ["dragenter","dragover"].forEach(function(e){
+    drop.addEventListener(e, function(ev){ ev.preventDefault(); drop.classList.add("hot"); });
+  });
+  ["dragleave","drop"].forEach(function(e){
+    drop.addEventListener(e, function(ev){ ev.preventDefault(); drop.classList.remove("hot"); });
+  });
+  drop.addEventListener("drop", function(ev){
+    if(ev.dataTransfer && ev.dataTransfer.files) traiter(ev.dataTransfer.files);
+  });
+  document.getElementById("file").addEventListener("change", function(ev){
+    traiter(ev.target.files); ev.target.value="";
+  });
+
+  /* ------------------------------------------------------------------ *
+   * Démarrage                                                           *
+   * ------------------------------------------------------------------ */
+  chargerLocal();
+  rendre();
+  activer("jour");
+
+  if(window.claude && typeof window.claude.use==="function"){
+    window.claude.use("downloads").then(function(d){ state.dl=d||null; }, function(){});
+    window.claude.use("db").then(function(db){
+      if(!db) return;
+      state.db=db;
+      db.doc("config/profil").get().then(function(s){
+        if(s.exists){ state.profil=Object.assign({},PROFIL_DEFAUT,s.data()); rendre(); activer(state.onglet); }
+      }).catch(function(){});
+      db.collection("bons").limit(500).onSnapshot(function(snap){
+        var distants=snap.docs.map(function(d){
+          var o=d.data()||{}; o.id=d.id; return o;
+        });
+        var locaux={};
+        state.bons.forEach(function(b){ locaux[b.id]=b; });
+        distants.forEach(function(b){ locaux[b.id]=b; });
+        state.bons=Object.keys(locaux).map(function(k){ return locaux[k]; })
+          .sort(function(a,b){ return String(b.importedAt||"").localeCompare(String(a.importedAt||"")); });
+        sauverLocal();
+        rendre(); activer(state.onglet);
+      }, function(){});
+      state.bons.forEach(function(b){
+        var c=JSON.parse(JSON.stringify(b)); delete c.id;
+        db.collection("bons").doc(b.id).set(c).catch(function(){});
+      });
+    }, function(){});
+  }
+})();
+</script>
