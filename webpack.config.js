@@ -15,7 +15,16 @@
  *        ESNext (new standards of JavaScript) into old JavaScript through a loader
  *        by Babel.
  *
- * TODO: Instructions.
+ * Instructions:
+ *     1. Install the dependencies once with `npm install`.
+ *     2. Run `npm start` while developing. It sets MODE=development and watches
+ *        src/ for changes, rebuilding the files below on every save.
+ *     3. Run `npm run build` before releasing. It sets MODE=production, which
+ *        minifies the JS and compresses the CSS.
+ *     4. The build writes three files to dist/, which src/init.php enqueues:
+ *            - dist/blocks.build.js         — block script (entry: src/index.js).
+ *            - dist/blocks.style.build.css  — frontend + editor styles (from style.scss).
+ *            - dist/blocks.editor.build.css — editor-only styles (from editor.scss).
  *
  * @since 1.0.0
  */
